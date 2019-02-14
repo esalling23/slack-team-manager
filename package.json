@@ -1,0 +1,70 @@
+{
+  "name": "slack-time",
+  "version": "0.0.2",
+  "description": "SlackTime bot",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "debug": "node inspect bot.js"
+  },
+  "dependencies": {
+    "@slack/client": "^4.8.0",
+    "@slack/events-api": "^1.0.1",
+    "app-root-path": "^2.0.1",
+    "body-parser": "^1.18.3",
+    "botkit": "^0.7.0",
+    "botkit-storage-mongo": "^1.0.7",
+    "botkit-studio-metrics": "^0.0.4",
+    "bson": "^2.0.5",
+    "cloudinary": "^1.10.0",
+    "cookie-parser": "^1.4.3",
+    "debug": "^3.1.0",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "express": "^4.16.4",
+    "express-hbs": "^1.0.4",
+    "fs": "^0.0.2",
+    "gojs": "^1.8.14",
+    "handlebars": "^4.0.11",
+    "node-cmd": "^3.0.0",
+    "node-env-file": "^0.1.8",
+    "os-utils": "0.0.14",
+    "querystring": "^0.2.0",
+    "request": "^2.83.0",
+    "sharp": "^0.20.5",
+    "sorted-object": "^2.0.1",
+    "underscore": "^1.8.3",
+    "wordfilter": "^0.2.6"
+  },
+  "engines": {
+    "node": "9.0.0",
+    "npm": "6.4.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/esalling23/SlackTime.git"
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "root": true,
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "rules": {
+      "prefer-const": "error",
+      "no-var": "error"
+    }
+  },
+  "keywords": [
+    "bots",
+    "chatbots",
+    "slack"
+  ],
+  "author": "erica.salling@gmail.com"
+}
