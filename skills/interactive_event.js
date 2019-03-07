@@ -105,12 +105,13 @@ module.exports = function (controller) {
         
           const vars = {
             status: confirmedChoice.choice,
-            name: _.findWhere(res.users, { userId: event.user }).name
+            name: _.findWhere(res.users, { userId: event.user }).real_name
           }
         
           if (event.actions[0].name.includes('status')) {
-            controller.makeCard(bot, event, 'morning_check', 'response', {}, function(convo) {
+            controller.makeCard(bot, event, 'morning_check', 'response', {}, function(card) {
               console.log('responded to morning status')
+              bot.replyInteractive(event, card)
             })
             
             controller.studio.get(bot, 'morning_check', event.user, res.general_channel).then(convo => {
