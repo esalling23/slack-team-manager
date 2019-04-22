@@ -1,9 +1,17 @@
 {
+<<<<<<< HEAD
   "name": "Botkit Starter Kit",
   "description": "A starting point for building custom Slack applications",
   "repository": "https://github.com/howdyai/botkit-starter-slack",
   "keywords": ["node", "bots", "slack","botkit"],
   "website": "https://studio.botkit.ai/",
+=======
+  "name": "GA SEI Manager Bot",
+  "description": "Bot for helping to manage SEI cohorts at General Assembly",
+  "repository": "https://github.com/esalling23/slack-team-manager",
+  "keywords": ["node", "bots", "slack","botkit"],
+  "website": "https://ga-manager.glitch.me",
+>>>>>>> updates
   "success_url":"/",
   "addons":[
     {

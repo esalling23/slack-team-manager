@@ -59,9 +59,6 @@ require(__dirname + '/components/user_registration.js')(controller)
 // Send an onboarding message when a new team joins
 require(__dirname + '/components/onboarding.js')(controller)
 
-// enable advanced botkit studio metrics
-require('botkit-studio-metrics')(controller)
-
 const normalizedPath = require("path").join(__dirname, "skills")
 require("fs").readdirSync(normalizedPath).forEach(function(file) {
   if (!file.includes('save'))

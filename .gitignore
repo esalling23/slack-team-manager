@@ -8,3 +8,9 @@ json
 *.save.*
 dump
 *.sublime-*
+<<<<<<< HEAD
+=======
+.bash_history
+.glitch-assets
+token.json
+>>>>>>> updates

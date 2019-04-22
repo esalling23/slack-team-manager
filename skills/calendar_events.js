@@ -75,57 +75,59 @@ module.exports = (controller) => {
       }
     })
   }
-  
+
   // Grab the calendar events
-  controller.calendarEvents = (auth) => {
+  // takes `opt` object with:
+  // `auth` from calendarAuth
+  // `lessons` to query lessons (true) or homework (false)
+  // `startTime` for the timeMin in calOpt
+  // `endTime` for the timeMax in calOpt
+  controller.calendarEvents = (opt) => {
     return new Promise((resolve, reject) => {
-      const calendar = google.calendar({version: 'v3', auth});
-      const days = 7
-      const start = new Date()
-      // end time should be adjusted by 240 (3 hours to be boston time)
-      // then by the number of days into the future we want to look (7 for a week)
-      const end = new Date(start.getTime() + 240 + (days * 24 * 60 * 60 * 1000))
+      const calendar = google.calendar({version: 'v3', auth: opt.auth});
+
       // console.log(start, end)
 
-      const opt = {
-        timeMin: start.toISOString(),
-        timeMax: end.toISOString(),
-        maxResults: 10,
+      const calOpt = {
+        timeMin: opt.startTime,
+        timeMax: opt.endTime,
+        maxResults: 40,
         singleEvents: true,
         orderBy: 'startTime'
       }
 
       calendar.calendarList.list((err, res) => {
+        if (err) reject(err)
         const filtered = _.filter(res.data.items, (event) => {
-          const lessonCal = event.summary.match(/WDI BOS/i)
+          const lessonCal = event.summary.match(/WDI BOS/i|/SEI BOS/i)
           let activeCal = false
           if (lessonCal !== null) {
-            activeCal = lessonCal.input.split(lessonCal[0])[1].replace(' ', '')
+            activeCal = lessonCal.input.slice(lessonCal.index, lessonCal.input.length).replace(' ', '')
           }
           return lessonCal && controller.activeCohorts.includes(activeCal)
         })
 
+        // create a bunch of promises to get calendar events
         const calPromises = _.map(filtered, (cal) => {
-          const calOpt = opt
-          calOpt.calendarId = cal.id
-          return eventsPromise(calendar, calOpt)
+          const data = calOpt
+          data.calendarId = cal.id
+          return eventsPromise(calendar, data, opt.lessons)
         })
 
-        Promise.all(calPromises).then((res) => {
-          console.log(res, 'before filter')
-          // console.log(flat, 'after flatten')
+        // promise all the promises
+        return Promise.all(calPromises).then((res) => {
+          // only include calendars with at least one lesson
           const filtered = _.pick(res, (v, k, o) => {
             return v.lessons.length > 0
           })
-          console.log(filtered, 'filtered')
           resolve(filtered)
         }).catch(reject)
       })
     })
   }
-  
+
   // Filter out just the lessons
-  const filteredMaterials = () => {
+  const filteredLessons = () => {
     return controller.materialList.reduce((lessons, curr) => {
       // console.log(curr)
 
@@ -140,18 +142,34 @@ module.exports = (controller) => {
     }, [])
   }
 
+  // filter out just the practices/studies
+  const filteredHomework = () => {
+    return controller.materialList.reduce((lessons, curr) => {
+      // console.log(curr)
+
+      const availLessons = [curr['Homework1'], curr['Homework2']].filter(les => {
+        // console.log(les.match(/\[(.*?)\]/)[1])
+        return les !== '' && les.match(/\[(.*?)\]/)
+      }).map(les => {
+        return les.match(/\[(.*?)\]/)[1]
+      })
+
+      return lessons.concat(availLessons)
+    }, [])
+  }
+
   // Set up events promises
-  const eventsPromise = (calendar, opt) => {
+  const eventsPromise = (calendar, opt, lessons) => {
     return new Promise((resolve, reject) => {
       return calendar.events.list(opt, (err, res) => {
         if (err) reject(err)
         const events = _.map(res.data.items, item => {
-          return item.summary.replace(/\((.*?)\)/, '').replace(' ', '')
+          return item.summary.replace(/\((.*?)\)/, '').replace(/\s+/g, '')
         }).filter(item => {
-          return filteredMaterials().includes(item)
+          return lessons ? filteredLessons().includes(item) : filteredHomework().includes(item)
         })
         const id = res.data.summary.split('BOS ')[1]
-        const items = { 
+        const items = {
           cohort: id,
           lessons: events
         }
@@ -159,5 +177,5 @@ module.exports = (controller) => {
       })
     })
   }
-  
+
 }

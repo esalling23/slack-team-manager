@@ -18,30 +18,39 @@ module.exports = function (controller) {
         storeTeam.oauth_token = auth.access_token
         // store
         controller.store.teams[team.id] = storeTeam
+        // return web.users.list()
       })
-      .then(web.users.list)
-      .then((res) => {
-        const storeTeam = controller.store.teams[team.id]
-        // console.log(res)
-        const realUsers = _.filter(res.members, member => isUser(member))
-        storeTeam.users = _.map(realUsers, function (user) {
-          console.log(user)
-          return {
-            userId: user.id,
-            name: user.name,
-            real_name: user.real_name,
-            email: user.profile.email
-          }
-        })
+      // .then(res => {
+      //   const storeTeam = controller.store.teams[team.id]
+      //   // console.log(res)
+      //   const realUsers = _.filter(res.members, member => isUser(member))
+      //   storeTeam.users = _.map(realUsers, function (user) {
+      //     console.log(user)
+      //     return {
+      //       userId: user.id,
+      //       name: user.name,
+      //       real_name: user.real_name,
+      //       email: user.profile.email
+      //     }
+      //   })
+      //   controller.store.teams[team.id] = storeTeam
+      //   // return web.conversations.list({ types: 'private_channel' })
+      // })
+//       .then(res => {
+//         const general_channel = _.findWhere(res.channels, { name: 'sei-bos-faculty' }).id
+//         const forum_channels = _.filter(res.channels, channel => {
+//           return channel.name.match(/forum/i) !== null
+//         })
+//         forum_channels = _.filter(forum_channels, channel => {
 
-        controller.store.teams[team.id] = storeTeam
-        return web.channels.list()
-      })
+//         })
+
+//         controller.store.teams[team.id].general_channel = general_channel
+//         console.log(general_channel)
+//         return web.groups.invite({ channel: general_channel, user: team.bot.user_id })
+//       })
       .then(res => {
-        const general_channel = _.findWhere(res.channels, { name: "wdi-bos-faculty" }).id
-        controller.store.teams[team.id].general_channel = general_channel
-        console.log(general_channel)
-        return web.channels.invite({ channel: general_channel, user: team.bot.user_id })
+        console.log(res, ' successful invite')
       })
       .catch((error) => console.log(error)) // End users.list call
   })
