@@ -1,6 +1,6 @@
 {
   "name": "slack-time",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "SlackTime bot",
   "main": "bot.js",
   "scripts": {
@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "@slack/client": "^4.8.0",
-    "@slack/events-api": "^1.0.1",
+    "@slack/events-api": "^2.1.1",
     "app-root-path": "^2.0.1",
     "body-parser": "^1.18.3",
-    "botkit": "^0.7.0",
+    "botkit": "^0.7.4",
     "botkit-storage-mongo": "^1.0.7",
     "botkit-studio-metrics": "^0.0.4",
     "bson": "^2.0.5",
@@ -38,7 +38,8 @@
     "sharp": "^0.20.5",
     "sorted-object": "^2.0.1",
     "underscore": "^1.8.3",
-    "wordfilter": "^0.2.6"
+    "wordfilter": "^0.2.6",
+    "flat": "^4.1.0"
   },
   "engines": {
     "node": "9.0.0",

@@ -19,6 +19,8 @@ const bot_options = {
   studio_command_uri: process.env.studio_command_uri
 }
 
+console.log(process.env.cal_id)
+
 // Use a mongo database if specified, otherwise store in a JSON file local to the app.
 // Mongo is automatically configured when deploying to Heroku
 if (process.env.MONGO_URI) {

@@ -38,7 +38,7 @@ module.exports = function (controller) {
         return web.channels.list()
       })
       .then(res => {
-        const general_channel = _.findWhere(res.channels, { name: "general" }).id
+        const general_channel = _.findWhere(res.channels, { name: "wdi-bos-faculty" }).id
         controller.store.teams[team.id].general_channel = general_channel
         console.log(general_channel)
         return web.channels.invite({ channel: general_channel, user: team.bot.user_id })
