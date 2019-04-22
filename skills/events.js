@@ -3,9 +3,7 @@ const { WebClient } = require('@slack/client')
 
 module.exports = function (controller) {
   // Events go here
-  
-<<<<<<< HEAD
-=======
+
   controller.on('homework_thread', function(bot, team, cohorts) {
     let cohortChannels
     const web = new WebClient(bot.config.token)
@@ -27,15 +25,15 @@ module.exports = function (controller) {
       })
       .then(convos => {
         // console.log(convos)
-      
+
         for (let convo of convos) {
           const channel = _.findWhere(cohortChannels, { id: convo.context.channel })
-          
+
           const lessons = _.uniq(_.filter(cohorts, item => {
             console.log(item, channel.name)
             return item.cohort === channel.name.split('-')[2]
           })[0].lessons)
-          
+
           convo.changeTopic('default')
           console.log(lessons, 'are the homeworks')
           if (lessons.length > 1) {
@@ -45,7 +43,7 @@ module.exports = function (controller) {
             template.attachments[0].text += '\n'
 
             for (let i of lessons) {
-              template.attachments[0].text += '- ' + i + '\n' 
+              template.attachments[0].text += '- ' + i + '\n'
             }
 
             convo.activate()
@@ -54,8 +52,7 @@ module.exports = function (controller) {
       })
     // }
   })
-  
->>>>>>> updates
+
   controller.on('morning_checkin', function(bot, team) {
     // console.log(event)
     console.log(team.id)
@@ -81,22 +78,14 @@ module.exports = function (controller) {
         .catch(console.error)
     }
   })
-  
+
   controller.on('calendar', function(bot, team, cohorts) {
     console.log(cohorts)
-    let cohortChannels 
-    
+    let cohortChannels
+
     const web = new WebClient(bot.config.token)
     web.conversations.list({ types: 'private_channel' })
       .then(list => {
-<<<<<<< HEAD
-        cohortChannels = _.each(list.channels, (channel) => {
-          for (let key in cohorts) {
-            console.log('the cohort this time is' , key.split('BOS ')[1])
-            const match = new RegExp(key.split('BOS ')[1] + '-forum', 'g')
-            if (channel.name.match(match) !== null) return channel
-          }
-=======
         cohortChannels = _.filter(list.channels, (channel) => {
           const match = _.pick(cohorts, (val, key, obj) => {
             console.log(val, key, obj)
@@ -104,7 +93,6 @@ module.exports = function (controller) {
             return channel.name.match(match) !== null
           })
           return Object.keys(match).length > 0
->>>>>>> updates
         })
         console.log(cohortChannels)
         const calPromises = _.map(cohortChannels, (channel) => {
@@ -113,40 +101,25 @@ module.exports = function (controller) {
         return Promise.all(calPromises)
       })
       .then(convos => {
-<<<<<<< HEAD
-        console.log(convos)
-=======
         // console.log(convos)
->>>>>>> updates
-      
+
         for (let convo of convos) {
           const channel = _.findWhere(cohortChannels, { id: convo.context.channel })
-          
-<<<<<<< HEAD
-          const lessons = _.filter(cohorts, item => {
-            console.log(item)
-            return item.cohort === channel.name.split('-')[2]
-          })[0].lessons
-=======
+
           const lessons = _.uniq(_.filter(cohorts, item => {
             console.log(item, channel.name)
             return item.cohort === channel.name.split('-')[2]
           })[0].lessons)
->>>>>>> updates
-          
+
           convo.changeTopic('default')
           console.log(lessons, 'are the lessons')
           const template = convo.threads['default'][0]
-<<<<<<< HEAD
-          template.username = process.env.username
-=======
           template.username = process.env.username.replace('_', ' ')
->>>>>>> updates
           template.icon_url = process.env.icon_url
           template.attachments[0].text += '\n'
 
           for (let i of lessons) {
-            template.attachments[0].text += '- ' + i + '\n' 
+            template.attachments[0].text += '- ' + i + '\n'
           }
 
           convo.activate()
@@ -154,37 +127,20 @@ module.exports = function (controller) {
       })
       // .then(console.log)
       .catch(console.error)
-    
+
   })
-  
+
   // interval for every minute
   setInterval(function() {
     const now = new Date()
-<<<<<<< HEAD
-    const hours = now.getHours() - 5
-=======
     const hours = now.getHours() - 4
->>>>>>> updates
     const mins = now.getMinutes()
     const dayOfWeek = now.getDay()
     console.log(hours, mins)
     console.log('is it friday @ 3pm?', now.getDay() === 5 && mins === 0 && hours === 15)
-    
+
     if (dayOfWeek === 5 && mins === 0 && hours === 15) {
-<<<<<<< HEAD
-      // Every friday at 3pm
-      controller.calendarAuth()
-      .then(controller.calendarEvents)
-      .then(lessons => {
-        console.log(lessons, 'the lessons')
-        for (const id in controller.store.teams) {
-          const team = controller.store.teams[id]
-          controller.trigger('calendar', [controller.spawn(team.bot), team, lessons])
-        }
-      })
-      .catch(console.error)
-=======
-      
+
       // Every friday at 3pm
       controller.calendarAuth()
         .then(auth => {
@@ -196,7 +152,7 @@ module.exports = function (controller) {
 
           // then by the number of days into the future we want to look (7 for a week)
           const end = new Date(now + (7 * 24 * 60 * 60 * 1000))
-          
+
           return controller.calendarEvents({
             auth,
             lessons: false,
@@ -216,15 +172,10 @@ module.exports = function (controller) {
           }
         })
         .catch(console.error)
->>>>>>> updates
     } else if (hours === 13 && mins === 0 && dayOfWeek !== 0 && dayOfWeek !== 6) {
       // Every week day at 8am
       for (const id in controller.store.teams) {
         const team = controller.store.teams[id]
-<<<<<<< HEAD
-        controller.trigger('morning_checkin', [controller.spawn(team.bot), team])
-      }
-=======
         // controller.trigger('morning_checkin', [controller.spawn(team.bot), team])
       }
     } else if (hours === 17 && mins === 0 && dayOfWeek !== 0 && dayOfWeek !== 6) {
@@ -237,7 +188,7 @@ module.exports = function (controller) {
           const start = new Date(now - (3 * 60 * 60 * 1000))
           // end in a couple hours
           const end = new Date(now + (2 * 24 * 60 * 60 * 1000))
-          
+
           return controller.calendarEvents({
             auth,
             lessons: false,
@@ -257,7 +208,6 @@ module.exports = function (controller) {
           }
         })
         .catch(console.error)
->>>>>>> updates
     }
   }, 1000 * 60)
 }

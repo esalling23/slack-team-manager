@@ -527,11 +527,7 @@ module.exports = (controller) => {
       "Week": 8,
       "Unit": 3,
       "Morning Exercise": "",
-<<<<<<< HEAD
-      "Lesson1": "[express-multer-upload-api](https://git.generalassemb.ly/ga-wdi-boston/express-multer-upload-api)",
-=======
       "Lesson1": "[express-multer](https://git.generalassemb.ly/ga-wdi-boston/express-multer-upload-api)",
->>>>>>> updates
       "Lesson2": "",
       "Lesson3": "",
       "Lesson4": "",
@@ -544,11 +540,7 @@ module.exports = (controller) => {
       "Week": 9,
       "Unit": 3,
       "Morning Exercise": "",
-<<<<<<< HEAD
-      "Lesson1": "[express-multer-upload-api](https://git.generalassemb.ly/ga-wdi-boston/express-multer-upload-api)",
-=======
       "Lesson1": "[express-multer](https://git.generalassemb.ly/ga-wdi-boston/express-multer-upload-api)",
->>>>>>> updates
       "Lesson2": "[scrum](https://git.generalassemb.ly/ga-wdi-boston/scrum)",
       "Lesson3": "",
       "Lesson4": "",

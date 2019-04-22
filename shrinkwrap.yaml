@@ -4300,18 +4300,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
-<<<<<<< HEAD
-  /twilio/3.29.0:
-    dependencies:
-      '@types/express': 4.16.1
-      deprecate: 1.0.0
-      jsonwebtoken: 8.5.0
-=======
   /twilio/3.29.2:
     dependencies:
       deprecate: 1.0.0
       jsonwebtoken: 8.5.1
->>>>>>> updates
       lodash: 4.17.11
       moment: 2.19.3
       q: 2.0.3
