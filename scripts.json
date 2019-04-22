@@ -1,0 +1,3069 @@
+[{
+    "command": "help",
+    "description": "A flexible help system for your bot",
+    "script": [{
+        "script": [{
+            "attachments": [{
+                "fallback": "Command 1",
+                "color": "#ff0000",
+                "actions": [],
+                "fields": [],
+                "text": "See how long this bot has been running",
+                "title": "uptime"
+              },
+              {
+                "color": "#ff8000",
+                "actions": [],
+                "fields": [],
+                "text": "Who is this bot, anyways?",
+                "title": "identify"
+              },
+              {
+                "color": "#ffff00",
+                "actions": [],
+                "fields": [],
+                "text": "The bot will repeat after you",
+                "title": "say <something>"
+              },
+              {
+                "color": "#80ff00",
+                "actions": [],
+                "fields": [],
+                "text": "Customize me!",
+                "title": "My Custom Command"
+              },
+              {
+                "color": "#0080ff",
+                "actions": [],
+                "fields": [],
+                "text": "Customize Me!",
+                "title": "My Custom Command"
+              }
+            ],
+            "text": [
+              "I'm here to help! Here are some of the commands that come standard with my starter kit.\n\nYou can say `help <command>` to get more details."
+            ],
+            "triggers": []
+          },
+          {
+            "text": [
+              "As you add features and adapt me to be _your own bot_, you should update my help system <https://studio.botkit.ai|via the Botkit Studio dialog editor.>"
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "default"
+      },
+      {
+        "script": [{
+            "text": [
+              "My uptime command displays information about my application process."
+            ],
+            "triggers": []
+          },
+          {
+            "attachments": [{
+              "callback_id": "help_uptime",
+              "fallback": "Try Now",
+              "actions": [{
+                "style": "default",
+                "type": "button",
+                "value": "uptime",
+                "name": "say",
+                "text": "Try Now"
+              }],
+              "fields": [],
+              "text": "",
+              "title": ""
+            }],
+            "text": [
+              "To activate it, say `@{{identity.name}} uptime`"
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "uptime"
+      },
+      {
+        "script": [{
+            "text": [
+              "You can make me say silly things."
+            ],
+            "triggers": []
+          },
+          {
+            "attachments": [{
+              "callback_id": "say_example",
+              "actions": [{
+                  "type": "button",
+                  "value": "say foo",
+                  "name": "say",
+                  "text": "Say Foo"
+                },
+                {
+                  "type": "button",
+                  "value": "bar",
+                  "name": "say",
+                  "text": "Say Bar"
+                }
+              ],
+              "fields": [],
+              "text": "",
+              "title": ""
+            }],
+            "text": [
+              "Say `@{{identity.name}} say _something hilarious_`"
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "say"
+      },
+      {
+        "script": [{
+            "text": [
+              "As a Botkit-powered robot, I am required to identify myself when asked."
+            ],
+            "triggers": []
+          },
+          {
+            "attachments": [{
+              "callback_id": "identify_help",
+              "actions": [{
+                "type": "button",
+                "value": "identify yourself",
+                "name": "say",
+                "text": "Try now"
+              }],
+              "fields": [],
+              "text": "",
+              "title": ""
+            }],
+            "text": [
+              "Say `@{{identity.name}} identify yourself` or `@{{identity.name}} who are you?`"
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "identify"
+      }
+    ],
+    "triggers": [{
+      "pattern": "help",
+      "type": "string"
+    }],
+    "variables": [],
+    "tags": [],
+    "id": 0
+  },
+  {
+    "command": "onboarding",
+    "description": "Script for welcoming new users to your bot",
+    "script": [{
+      "script": [{
+          "attachments": [{
+            "callback_id": "onboard_intro",
+            "actions": [{
+              "type": "button",
+              "url": "https:/slacktime.glitch.me/link/intro_video/{{vars.team}}/{{vars.user}}",
+              "name": "link_button",
+              "text": "Intro Video"
+            }],
+            "fields": [],
+            "text": "Watch this intro video to learn about where you are and what you are meant to do.",
+            "title": "Welcome to SlackTime"
+          }],
+          "text": [
+            ""
+          ],
+          "meta": [],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ],
+      "topic": "default"
+    }],
+    "triggers": [{
+      "id": 209,
+      "type": "string",
+      "pattern": "welcome"
+    }],
+    "variables": [],
+    "tags": [
+      "onboard_intro",
+      "onboard_start",
+      "phase_1"
+    ],
+    "id": 1,
+    "modified": "2019-02-01T19:31:21.786Z"
+  },
+  {
+    "command": "fallback",
+    "description": "What the bot says if no other trigger matches",
+    "script": [{
+        "script": [{
+            "text": [
+              "I apologize, but my circuits have not been configured for that input. Say `help` for information about my current capabilities."
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "default"
+      },
+      {
+        "script": [{
+            "text": [
+              "Looks like you got distracted. We can continue later."
+            ],
+            "triggers": []
+          },
+          {
+            "action": "timeout",
+            "triggers": []
+          }
+        ],
+        "topic": "timeout"
+      }
+    ],
+    "triggers": [],
+    "variables": [],
+    "tags": [],
+    "id": 2
+  },
+  {
+    "command": "safe",
+    "description": "safe script",
+    "script": [{
+        "topic": "default",
+        "script": [{
+            "collect": null,
+            "text": [
+              ""
+            ],
+            "attachments": [{
+                "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1529679536/escape-room/safe.jpg",
+                "title": "Safe",
+                "text": "There is a combination lock, and also a sticky note!",
+                "fields": [],
+                "actions": [{
+                    "text": "1st Three Digits",
+                    "name": "choose multi 0",
+                    "type": "select",
+                    "data_source": "default",
+                    "options": [{
+                        "text": "1",
+                        "value": "1",
+                        "description": ""
+                      },
+                      {
+                        "value": "2",
+                        "text": "2"
+                      },
+                      {
+                        "value": "3",
+                        "text": "3"
+                      }
+                    ]
+                  },
+                  {
+                    "options": [{
+                        "selected": false,
+                        "description": "",
+                        "value": "1",
+                        "text": "1"
+                      },
+                      {
+                        "value": "2",
+                        "text": "2"
+                      },
+                      {
+                        "value": "3",
+                        "text": "3"
+                      }
+                    ],
+                    "data_source": "default",
+                    "type": "select",
+                    "name": "choose multi 1",
+                    "text": "2nd Three Digits"
+                  },
+                  {
+                    "options": [{
+                        "selected": false,
+                        "description": "",
+                        "value": "1",
+                        "text": "1"
+                      },
+                      {
+                        "value": "2",
+                        "text": "2"
+                      },
+                      {
+                        "value": "3",
+                        "text": "3"
+                      }
+                    ],
+                    "data_source": "default",
+                    "type": "select",
+                    "name": "choose multi 2",
+                    "text": "3rd Three Digits"
+                  }
+                ],
+                "callback_id": "safe_code"
+              },
+              {
+                "image_url": "",
+                "callback_id": "safe",
+                "actions": [{
+                    "type": "button",
+                    "value": "1",
+                    "name": "code safe",
+                    "text": "Confirm"
+                  },
+                  {
+                    "type": "button",
+                    "value": "the_room_2",
+                    "name": "say",
+                    "text": "Back"
+                  },
+                  {
+                    "text": "Sticky Note",
+                    "name": "say",
+                    "value": "sticky_note_1",
+                    "type": "button"
+                  }
+                ],
+                "fields": [],
+                "text": "",
+                "title": ""
+              }
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "script": [{
+            "attachments": [{
+              "callback_id": "safe_wrong",
+              "actions": [{
+                  "type": "button",
+                  "value": "safe",
+                  "name": "say",
+                  "text": "Try again"
+                },
+                {
+                  "type": "button",
+                  "value": "the_room_2",
+                  "name": "say",
+                  "text": "Back"
+                }
+              ],
+              "fields": [],
+              "text": "Not quite...",
+              "title": "Safe"
+            }],
+            "text": [
+              ""
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "wrong"
+      },
+      {
+        "script": [{
+            "attachments": [{
+              "callback_id": "safe_correct",
+              "actions": [{
+                  "type": "button",
+                  "value": "tamagotchi_room",
+                  "name": "say",
+                  "text": "Climb down ladder"
+                },
+                {
+                  "type": "button",
+                  "value": "sticky_note_1",
+                  "name": "say",
+                  "text": "Sticky Note"
+                }
+              ],
+              "fields": [],
+              "text": "The safe pops open and… it’s empty. But wait, the bottom of the safe actually looks like a shaft dropping downward. And there is a ladder.",
+              "title": "Safe"
+            }],
+            "text": [
+              ""
+            ],
+            "meta": [],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "correct"
+      },
+      {
+        "script": [{
+            "attachments": [{
+              "callback_id": "safe_repeat",
+              "actions": [{
+                  "type": "button",
+                  "value": "tamagotchi_room",
+                  "name": "say",
+                  "text": "Climb Down Ladder"
+                },
+                {
+                  "type": "button",
+                  "value": "sticky_note_1",
+                  "name": "say",
+                  "text": "Sticky Note"
+                }
+              ],
+              "fields": [],
+              "text": "The safe pops open and… it’s empty. But wait, the bottom of the safe actually looks like a shaft dropping downward. And there is a ladder.",
+              "title": "Someone on your team has already unlocked the safe!"
+            }],
+            "text": [
+              ""
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "repeat"
+      }
+    ],
+    "triggers": [{
+      "type": "string",
+      "pattern": "safe"
+    }],
+    "variables": [],
+    "tags": [
+      "phase_1",
+      "safe_code",
+      "safe",
+      "safe_wrong",
+      "safe_correct",
+      "safe_repeat"
+    ],
+    "id": 3
+  },
+  {
+    "command": "the_room",
+    "description": "the main room",
+    "script": [{
+        "script": [{
+            "meta": [{
+              "value": "3",
+              "key": "movement"
+            }],
+            "attachments": [{
+              "callback_id": "the_room",
+              "actions": [{
+                  "options": [{
+                      "selected": false,
+                      "description": "",
+                      "value": "safari",
+                      "text": "Strange Symbols"
+                    },
+                    {
+                      "value": "many_dots_painting",
+                      "text": "Many Dots"
+                    },
+                    {
+                      "value": "few_dots",
+                      "text": "Few Dots"
+                    },
+                    {
+                      "value": "abstract_symbols",
+                      "text": "Swirling Glyphs"
+                    },
+                    {
+                      "value": "buttons",
+                      "text": "Buttons"
+                    }
+                  ],
+                  "data_source": "default",
+                  "type": "select",
+                  "name": "choose",
+                  "text": "Locations"
+                },
+                {
+                  "type": "button",
+                  "value": "confirm",
+                  "name": "confirm",
+                  "text": "Go"
+                }
+              ],
+              "fields": [],
+              "text": "You are in a room with four white walls. On each wall is a picture frame. One frame shows a digital slideshow of *strange symbols*. Another frame has a painting of *many dots*. Another frame has an abstract painting of *swirling glyphs*. Finally, there is a frame with a painting of a *few dots*. In the middle of the room are six *buttons*. Beside that, is a table with a few pages resting on it. Select a choice in the menu and go.",
+              "title": "The Room"
+            }],
+            "text": [
+              ""
+            ],
+            "collect": null,
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "default"
+      },
+      {
+        "topic": "state_a_the_room",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "The Room",
+              "text": "You look around the room again. You are in a room with four white walls. On each wall is a picture frame. One frame shows a digital slideshow of *strange symbols*. Another frame has a painting of *many dots*. Another frame has an abstract painting of *swirling glyphs*. Finally, there is a frame with a painting of a *few dots*. In the middle of the room are six *buttons*. Beside that, is a table with a few pages resting on it. Select a choice in the menu and go.",
+              "fields": [],
+              "actions": [{
+                  "text": "Locations",
+                  "name": "choose",
+                  "type": "select",
+                  "data_source": "default",
+                  "options": [{
+                      "text": "Safari Video",
+                      "value": "safari",
+                      "description": "",
+                      "selected": false
+                    },
+                    {
+                      "value": "few_dots",
+                      "text": "Few Dots Painting"
+                    },
+                    {
+                      "value": "many_dots_painting",
+                      "text": "Many Dots Painting"
+                    },
+                    {
+                      "value": "abstract_symbols",
+                      "text": "Glyph Painting"
+                    },
+                    {
+                      "value": "buttons",
+                      "text": "Buttons"
+                    }
+                  ]
+                },
+                {
+                  "text": "Go",
+                  "name": "confirm",
+                  "value": "confirm",
+                  "type": "button"
+                },
+                {
+                  "text": "Node 1",
+                  "name": "say",
+                  "value": "the_room_1",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "the_room_3.1"
+            }],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "state_b_the_room",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "Node 3 - Main Room",
+              "text": "You look around the room again. One frame shows a digital slideshow of safari animals. Another frame has a painting of many dots. Another frame has a painting of glyphs. Finally, in the last frame is *a hole* where the few dots painting used to be. In the middle of the room are nine buttons. Select a choice in the menu and go.",
+              "fields": [],
+              "actions": [{
+                  "text": "Locations",
+                  "name": "choose",
+                  "type": "select",
+                  "data_source": "default",
+                  "options": [{
+                      "text": "Safari Painting",
+                      "value": "safari",
+                      "description": "",
+                      "selected": false
+                    },
+                    {
+                      "value": "few_dots",
+                      "text": "Hole in wall"
+                    },
+                    {
+                      "value": "many_dots_painting",
+                      "text": "Many Dots Painting"
+                    },
+                    {
+                      "value": "abstract_symbols",
+                      "text": "Glyph Painting"
+                    },
+                    {
+                      "value": "buttons",
+                      "text": "Buttons"
+                    }
+                  ]
+                },
+                {
+                  "text": "Go",
+                  "name": "confirm",
+                  "value": "confirm",
+                  "type": "button"
+                },
+                {
+                  "text": "Node 1",
+                  "name": "say",
+                  "value": "the_room_1",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "the_room_3.2"
+            }],
+            "collect": null,
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "state_c_the_room",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "Node 3 - Main Room",
+              "text": "You look around the room again. One frame shows a digital slideshow of safari animals. Another frame has a painting of many dots. Another frame has *strange glyphs*. Finally, there is a frame with a painting of a few dots. In the middle of the room are nine buttons. Select a choice in the menu and go.",
+              "fields": [],
+              "actions": [{
+                  "text": "Locations",
+                  "name": "choose",
+                  "type": "select",
+                  "data_source": "default",
+                  "options": [{
+                      "text": "Safari Painting",
+                      "value": "safari",
+                      "description": "",
+                      "selected": false
+                    },
+                    {
+                      "value": "few_dots",
+                      "text": "Few Dots Painting"
+                    },
+                    {
+                      "value": "many_dots_painting",
+                      "text": "Many Dots Painting"
+                    },
+                    {
+                      "value": "abstract_symbols",
+                      "text": "Glyph"
+                    },
+                    {
+                      "value": "buttons",
+                      "text": "Buttons"
+                    }
+                  ]
+                },
+                {
+                  "text": "Go",
+                  "name": "confirm",
+                  "value": "confirm",
+                  "type": "button"
+                },
+                {
+                  "type": "button",
+                  "value": "the_room_1",
+                  "name": "say",
+                  "text": "Node 1"
+                }
+              ],
+              "callback_id": "the_room_3.3"
+            }],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "state_d_the_room",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "Node 3 - Main Room",
+              "text": "You look around the room again. One frame shows *a video* where the digital slideshow of safari animals used to be. Another frame has a painting of many dots. Another frame has *strange glyphs*. Finally, there is a frame with a painting of a few dots. In the middle of the room are nine buttons. Select a choice in the menu and go.",
+              "fields": [],
+              "actions": [{
+                  "text": "Locations",
+                  "name": "choose",
+                  "type": "select",
+                  "data_source": "default",
+                  "options": [{
+                      "text": "Safari Video",
+                      "value": "safari",
+                      "description": "",
+                      "selected": false
+                    },
+                    {
+                      "value": "few_dots",
+                      "text": "Few Dots Painting"
+                    },
+                    {
+                      "value": "many_dots_painting",
+                      "text": "Many Dots Painting"
+                    },
+                    {
+                      "value": "abstract_symbols",
+                      "text": "Glyph"
+                    },
+                    {
+                      "value": "buttons",
+                      "text": "Buttons"
+                    }
+                  ]
+                },
+                {
+                  "text": "Go",
+                  "name": "confirm",
+                  "value": "1",
+                  "type": "button"
+                },
+                {
+                  "text": "Node 1",
+                  "name": "say",
+                  "value": "the_room_1",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "the_room_3.4"
+            }],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "state_e_the_room",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "Node 3 - Main Room",
+              "text": "You look around the room again. One frame shows *a video* where the digital slideshow of safari animals used to be. Another frame has a painting of many dots. Another frame has a painting of glyphs. Finally, in the last frame is *a hole* where the few dots painting used to be. In the middle of the room are nine buttons. Select a choice in the menu and go.",
+              "fields": [],
+              "actions": [{
+                  "text": "Locations",
+                  "name": "choose",
+                  "type": "select",
+                  "data_source": "default",
+                  "options": [{
+                      "text": "Safari Video",
+                      "value": "safari",
+                      "description": "",
+                      "selected": false
+                    },
+                    {
+                      "value": "few_dots",
+                      "text": "Hole in wall"
+                    },
+                    {
+                      "value": "many_dots_painting",
+                      "text": "Many Dots Painting"
+                    },
+                    {
+                      "value": "abstract_symbols",
+                      "text": "Glyph Painting"
+                    },
+                    {
+                      "value": "buttons",
+                      "text": "Buttons"
+                    }
+                  ]
+                },
+                {
+                  "text": "Go",
+                  "name": "confirm",
+                  "value": "1",
+                  "type": "button"
+                },
+                {
+                  "text": "Node 1",
+                  "name": "say",
+                  "value": "the_room_1",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "the_room_3.5"
+            }],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "state_f_the_room",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "Node 3 - Main Room",
+              "text": "You look around the room again. One frame shows a digital slideshow of safari animals. Another frame has a painting of many dots. Another frame has *strange glyphs*. Finally, in the last frame is *a hole* where the few dots painting used to be. In the middle of the room are nine buttons. Select a choice in the menu and go.",
+              "fields": [],
+              "actions": [{
+                  "text": "Locations",
+                  "name": "choose",
+                  "type": "select",
+                  "data_source": "default",
+                  "options": [{
+                      "text": "Safari Painting",
+                      "value": "safari",
+                      "description": "",
+                      "selected": false
+                    },
+                    {
+                      "value": "few_dots",
+                      "text": "Hole in wall"
+                    },
+                    {
+                      "value": "many_dots_painting",
+                      "text": "Many Dots Painting"
+                    },
+                    {
+                      "value": "abstract_symbols",
+                      "text": "Glyph"
+                    },
+                    {
+                      "value": "buttons",
+                      "text": "Buttons"
+                    }
+                  ]
+                },
+                {
+                  "text": "Go",
+                  "name": "confirm",
+                  "value": "1",
+                  "type": "button"
+                },
+                {
+                  "text": "Node 1",
+                  "name": "say",
+                  "value": "the_room_1",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "the_room_3.6"
+            }],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "state_g_the_room",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "Node 3 - Main Room",
+              "text": "You look around the room again. One frame shows *a video* where the digital slideshow of safari animals used to be. Another frame has a painting of many dots. Another frame has *strange glyphs*. Finally, in the last frame is *a hole* where the few dots painting used to be. In the middle of the room are nine buttons. Select a choice in the menu and go.",
+              "fields": [],
+              "actions": [{
+                  "text": "Locations",
+                  "name": "choose",
+                  "type": "select",
+                  "data_source": "default",
+                  "options": [{
+                      "text": "Safari Video",
+                      "value": "safari",
+                      "description": "",
+                      "selected": false
+                    },
+                    {
+                      "value": "few_dots",
+                      "text": "Hole in wall"
+                    },
+                    {
+                      "value": "many_dots_painting",
+                      "text": "Many Dots Painting"
+                    },
+                    {
+                      "value": "abstract_symbols",
+                      "text": "Glyph"
+                    },
+                    {
+                      "value": "buttons",
+                      "text": "Buttons"
+                    }
+                  ]
+                },
+                {
+                  "text": "Go",
+                  "name": "confirm",
+                  "value": "1",
+                  "type": "button"
+                },
+                {
+                  "text": "Node 1",
+                  "name": "say",
+                  "value": "the_room_1",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "the_room_3.7"
+            }],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "script": [{
+            "meta": [{
+              "value": "3",
+              "key": "movement"
+            }],
+            "attachments": [{
+              "callback_id": "the_room",
+              "actions": [{
+                  "options": [{
+                      "selected": false,
+                      "description": "",
+                      "value": "safari",
+                      "text": "Hole"
+                    },
+                    {
+                      "value": "many_dots_painting",
+                      "text": "Safe"
+                    },
+                    {
+                      "value": "few_dots",
+                      "text": "Stars"
+                    },
+                    {
+                      "value": "abstract_symbols",
+                      "text": "Organized Glyphs"
+                    },
+                    {
+                      "value": "buttons",
+                      "text": "Buttons"
+                    }
+                  ],
+                  "data_source": "default",
+                  "type": "select",
+                  "name": "choose",
+                  "text": "Locations"
+                },
+                {
+                  "type": "button",
+                  "value": "confirm",
+                  "name": "confirm",
+                  "text": "Go"
+                }
+              ],
+              "fields": [],
+              "text": "You are in a room with four white walls. On each wall is a picture frame. One frame shows a *hole* in the wall where the slideshow of strange symbols used to be. There is a *safe* behind where the many dots used to be. The *glyphs* are no longer swirling and are now organized in a decipherable way. Finally, in the last frame is a painting of *stars* where the few dots painting used to be. In the middle of the room are six *buttons*. Beside that, is a *table* with a few pages resting on it. Select a choice in the menu and go.",
+              "title": "The Room"
+            }],
+            "text": [
+              ""
+            ],
+            "collect": null,
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "state_end_the_room"
+      }
+    ],
+    "triggers": [{
+        "pattern": "the_room",
+        "type": "string",
+        "id": 263
+      },
+      {
+        "id": 20,
+        "type": "string",
+        "pattern": "start"
+      }
+    ],
+    "variables": [],
+    "tags": [
+      "escape",
+      "phase_1",
+      "the_room_3",
+      "the_room_3.1",
+      "the_room_3.2",
+      "the_room_3.3",
+      "the_room_3.4",
+      "the_room_3.5",
+      "the_room_3.6",
+      "the_room_3.7"
+    ],
+    "id": 4,
+    "modified": "2019-02-01T19:41:02.183Z"
+  },
+  {
+    "command": "buttons",
+    "description": "buttons and correct code threads",
+    "script": [{
+        "topic": "default",
+        "script": [{
+            "collect": null,
+            "text": [
+              ""
+            ],
+            "attachments": [{
+                "footer": "",
+                "title": "Button Matrix",
+                "text": "Here are the nine buttons. They change colors: grey, green, and red. Press them to change colors.",
+                "fields": [],
+                "actions": [{
+                    "text": "1",
+                    "name": "color",
+                    "value": "1",
+                    "type": "button",
+                    "style": "default"
+                  },
+                  {
+                    "style": "primary",
+                    "text": "2",
+                    "name": "color",
+                    "value": "2",
+                    "type": "button"
+                  },
+                  {
+                    "style": "danger",
+                    "text": "3",
+                    "name": "color",
+                    "value": "3",
+                    "type": "button"
+                  }
+                ],
+                "callback_id": "buttons_1_2_3"
+              },
+              {
+                "title": "",
+                "text": "",
+                "fields": [],
+                "actions": [{
+                    "style": "danger",
+                    "text": "4",
+                    "name": "color",
+                    "value": "4",
+                    "type": "button"
+                  },
+                  {
+                    "style": "default",
+                    "text": "5",
+                    "name": "color",
+                    "value": "5",
+                    "type": "button"
+                  },
+                  {
+                    "style": "primary",
+                    "text": "6",
+                    "name": "color",
+                    "value": "6",
+                    "type": "button"
+                  }
+                ],
+                "callback_id": "buttons_4_5_6"
+              },
+              {
+                "callback_id": "buttons_7_8_9",
+                "actions": [{
+                    "style": "primary",
+                    "type": "button",
+                    "value": "7",
+                    "name": "color",
+                    "text": "7"
+                  },
+                  {
+                    "style": "danger",
+                    "type": "button",
+                    "value": "8",
+                    "name": "color",
+                    "text": "8"
+                  },
+                  {
+                    "type": "button",
+                    "value": "9",
+                    "name": "color",
+                    "text": "9"
+                  }
+                ],
+                "fields": [],
+                "text": "",
+                "title": ""
+              },
+              {
+                "title": "",
+                "text": "",
+                "fields": [],
+                "actions": [{
+                    "text": "Main Room",
+                    "name": "say",
+                    "value": "the_room_3",
+                    "type": "button",
+                    "style": "default"
+                  },
+                  {
+                    "text": "Confirm",
+                    "name": "code buttons",
+                    "value": "code buttons",
+                    "type": "button",
+                    "style": "default"
+                  }
+                ],
+                "callback_id": "buttons_confirm"
+              }
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "correct_orb",
+        "script": [{
+            "collect": null,
+            "attachments": [{
+              "callback_id": "buttons_correct_orb",
+              "actions": [{
+                  "type": "button",
+                  "value": "buttons",
+                  "name": "say",
+                  "text": "Enter another code"
+                },
+                {
+                  "type": "button",
+                  "value": "the_room_3",
+                  "name": "say",
+                  "text": "Main Room"
+                }
+              ],
+              "fields": [],
+              "text": "The air hums electrically, and a glowing orb appears in your hand. The orb fits snugly in your palm, shedding a faint light. What might you want to light up with a glowing ball?",
+              "title": "You entered a correct button sequence"
+            }],
+            "text": [
+              ""
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "correct_safari",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "You entered a correct button sequence",
+              "text": "The animal pictures are replaced by a video.",
+              "fields": [],
+              "actions": [{
+                  "text": "Watch video",
+                  "name": "say",
+                  "value": "safari",
+                  "type": "button"
+                },
+                {
+                  "text": "Enter another code",
+                  "name": "say",
+                  "value": "buttons",
+                  "type": "button"
+                },
+                {
+                  "type": "button",
+                  "value": "the_room_3",
+                  "name": "say",
+                  "text": "Main Room"
+                }
+              ],
+              "callback_id": "buttons_correct_video"
+            }],
+            "collect": null,
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "correct_random",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "You entered a correct button sequence",
+              "text": "You hear a faint click from a “random” direction.",
+              "fields": [],
+              "actions": [{
+                  "text": "Main Room",
+                  "name": "say",
+                  "value": "the_room_3",
+                  "type": "button"
+                },
+                {
+                  "text": "Enter another code",
+                  "name": "say",
+                  "value": "buttons",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "buttons_correct_random"
+            }],
+            "collect": null,
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "correct_hole",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "collect": null,
+            "attachments": [{
+              "title": "You entered a correct button sequence",
+              "text": "The room starts to rumble… The small dots painting falls of the wall. There is a hole there.",
+              "fields": [],
+              "actions": [{
+                  "text": "Look at the hole",
+                  "name": "say",
+                  "value": "few_dots",
+                  "type": "button"
+                },
+                {
+                  "text": "Enter another code",
+                  "name": "say",
+                  "value": "buttons",
+                  "type": "button"
+                },
+                {
+                  "text": "Main Room",
+                  "name": "say",
+                  "value": "the_room_3",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "buttons_correct_hole"
+            }],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "correct_glyph",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "You entered a correct button sequence",
+              "text": "The room starts to rumble… The abstract symbol begins to shift. The glyphs form a circle and one symbol stands out in the center.",
+              "fields": [],
+              "actions": [{
+                  "text": "Check out glyph",
+                  "name": "say",
+                  "value": "abstract_symbols",
+                  "type": "button"
+                },
+                {
+                  "type": "button",
+                  "value": "buttons",
+                  "name": "say",
+                  "text": "Enter another code"
+                },
+                {
+                  "type": "button",
+                  "value": "the_room_3",
+                  "name": "say",
+                  "text": "Main Room"
+                }
+              ],
+              "callback_id": "buttons_correct_glyph"
+            }],
+            "collect": null,
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "topic": "wrong",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "Button Matrix",
+              "text": "Nothing happens...",
+              "fields": [],
+              "actions": [{
+                  "text": "Enter another code",
+                  "name": "say",
+                  "value": "buttons",
+                  "type": "button"
+                },
+                {
+                  "text": "Main Room",
+                  "name": "say",
+                  "value": "the_room_3",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "buttons_wrong"
+            }],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "script": [{
+            "attachments": [{
+                "callback_id": "buttons_repeat",
+                "actions": [],
+                "fields": [],
+                "text": "",
+                "title": "You already entered that code! Here's a recap:"
+              },
+              {
+                "title": "",
+                "text": "",
+                "fields": [],
+                "actions": []
+              }
+            ],
+            "text": [
+              ""
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "repeat"
+      }
+    ],
+    "triggers": [{
+      "type": "string",
+      "pattern": "buttons"
+    }],
+    "variables": [],
+    "tags": [
+      "phase_1",
+      "buttons_1_2_3",
+      "buttons_4_5_6",
+      "buttons_7_8_9",
+      "buttons_confirm",
+      "buttons_correct_orb",
+      "buttons_correct_video",
+      "buttons_correct_random",
+      "buttons_correct_hole",
+      "buttons_correct_glyph",
+      "buttons_wrong",
+      "buttons_repeat"
+    ],
+    "id": 5
+  },
+  {
+    "command": "safari",
+    "description": "safari painting",
+    "script": [{
+        "script": [{
+            "attachments": [{
+              "callback_id": "safari_default",
+              "actions": [{
+                  "options": [{
+                      "value": "safari_plaque",
+                      "text": "Plaque"
+                    },
+                    {
+                      "value": "safari_parrot",
+                      "text": "1. Parrot"
+                    },
+                    {
+                      "value": "safari_iguana",
+                      "text": "2. Iguana"
+                    },
+                    {
+                      "value": "safari_frog",
+                      "text": "3. Frog"
+                    },
+                    {
+                      "value": "safari_rhino",
+                      "text": "4. Rhino"
+                    },
+                    {
+                      "value": "safari_elephant",
+                      "text": "5. Elephant"
+                    },
+                    {
+                      "value": "safari_snake",
+                      "text": "6. Snake"
+                    },
+                    {
+                      "value": "safari_flamingo",
+                      "text": "7. Flamingo"
+                    },
+                    {
+                      "value": "safari_alligator",
+                      "text": "8. Alligator"
+                    },
+                    {
+                      "value": "safari_elephant2",
+                      "text": "9. Other Elephant"
+                    }
+                  ],
+                  "data_source": "default",
+                  "type": "select",
+                  "name": "choose",
+                  "text": "Move to see"
+                },
+                {
+                  "type": "button",
+                  "value": "safari_go",
+                  "name": "confirm",
+                  "text": "Go"
+                },
+                {
+                  "text": "Main Room",
+                  "name": "say",
+                  "value": "the_room_3",
+                  "type": "button"
+                }
+              ],
+              "fields": [],
+              "text": "It’s one of this digital picture frames…. Pictures of nine animals pop up for a few seconds each in a slideshow. A Parrot, Iguana, Frog, Rhino, Elephant,  Snake, Flamingo, Alligator and another Elephant. There is also a plaque next to the painting. Want to look at any of them more closely?",
+              "title": "Safari Slideshow"
+            }],
+            "text": [
+              ""
+            ],
+            "collect": null,
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "default"
+      },
+      {
+        "script": [{
+            "attachments": [{
+                "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1/escape-room/safari_thumb.png",
+                "title_link": "",
+                "actions": [{
+                    "type": "button",
+                    "url": "https://daedalus-game.glitch.me/link/safari_video/{{vars.team}}/{{vars.user}}",
+                    "name": "link_button",
+                    "text": "Watch Video"
+                  },
+                  {
+                    "type": "button",
+                    "value": "safari_plaque",
+                    "name": "say",
+                    "text": "Plaque"
+                  },
+                  {
+                    "type": "button",
+                    "value": "the_room_3",
+                    "name": "say",
+                    "text": "Main Room"
+                  }
+                ],
+                "fields": [],
+                "text": "",
+                "title": "The safari slideshow has turned into a safari video",
+                "callback_id": "safari_video"
+              },
+              {
+                "title": "Downloads:",
+                "text": "These look important",
+                "fields": [],
+                "actions": [{
+                    "text": "ARIS - Android",
+                    "name": "link_button",
+                    "url": "https://daedalus-game.glitch.me/link/aris_android/{{vars.team}}/{{vars.user}}",
+                    "type": "button"
+                  },
+                  {
+                    "text": "ARIS - iOS",
+                    "name": "link_button",
+                    "url": "https://daedalus-game.glitch.me/link/aris_ios/{{vars.team}}/{{vars.user}}",
+                    "type": "button"
+                  }
+                ],
+                "callback_id": "safari_aris_downloads"
+              }
+            ],
+            "text": [
+              ""
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "state_adge_safari"
+      }
+    ],
+    "triggers": [{
+      "pattern": "safari",
+      "type": "string",
+      "id": 67
+    }],
+    "variables": [],
+    "tags": [
+      "escape",
+      "phase_1",
+      "safari_default",
+      "safari_video",
+      "safari_aris_downloads"
+    ],
+    "id": 6
+  },
+  {
+    "command": "safari_plaque",
+    "description": "safari plaque script",
+    "script": [{
+      "topic": "default",
+      "script": [{
+          "text": [
+            ""
+          ],
+          "attachments": [{
+            "title": "Plaque",
+            "text": "“Really Great Game Records”",
+            "fields": [],
+            "actions": [{
+                "text": "Back",
+                "name": "say",
+                "value": "safari",
+                "type": "button"
+              },
+              {
+                "type": "button",
+                "value": "the_room_3",
+                "name": "say",
+                "text": "Main Room"
+              }
+            ],
+            "callback_id": "safari_plaque"
+          }],
+          "meta": [],
+          "collect": {
+            "key": "question_1",
+            "options": [{
+              "default": true,
+              "pattern": "default",
+              "action": "next"
+            }]
+          },
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ]
+    }],
+    "triggers": [{
+      "type": "string",
+      "pattern": "safari_plaque"
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "safari_plaque"
+    ],
+    "id": 7
+  },
+  {
+    "command": "many_dots_painting",
+    "description": "many dots painting and plaque",
+    "script": [{
+      "topic": "default",
+      "script": [{
+          "text": [
+            ""
+          ],
+          "attachments": [{
+            "title": "Many Dots",
+            "text": "You see a stunning abstract painting composed of bold dots in three colors: Red, Grey, and Green. It’s signed by the artist: Daedalus. A plaque is affixed to the wall beside it. There’s some writing.",
+            "fields": [],
+            "actions": [{
+                "text": "Main Room",
+                "name": "say",
+                "value": "the_room_3",
+                "type": "button"
+              },
+              {
+                "text": "Plaque",
+                "name": "say",
+                "value": "many_dots_painting_plaque",
+                "type": "button"
+              }
+            ],
+            "callback_id": "many_dots_painting",
+            "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523484396/escape-room/SquareDots.png"
+          }],
+          "collect": null,
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ]
+    }],
+    "triggers": [{
+      "type": "string",
+      "pattern": "many_dots_painting"
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "many_dots_painting"
+    ],
+    "id": 8
+  },
+  {
+    "command": "few_dots",
+    "description": "few dots painting and plaque",
+    "script": [{
+        "topic": "default",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "Few Dots",
+              "text": "Looks like the many dots painting but it's smaller. There is a plaque with something written on it.",
+              "fields": [],
+              "actions": [{
+                  "text": "Main Room",
+                  "name": "say",
+                  "value": "the_room_3",
+                  "type": "button"
+                },
+                {
+                  "text": "Plaque",
+                  "name": "say",
+                  "value": "few_dots_plaque",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "few_dots",
+              "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523543448/escape-room/Dots.png"
+            }],
+            "collect": {
+              "key": "question_1",
+              "options": [{
+                "default": true,
+                "pattern": "default",
+                "action": "next"
+              }]
+            },
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "script": [{
+            "attachments": [{
+              "callback_id": "few_dots_state_change",
+              "actions": [{
+                  "type": "button",
+                  "value": "the_room_3",
+                  "name": "say",
+                  "text": "Main Room"
+                },
+                {
+                  "type": "button",
+                  "value": "few_dots_plaque",
+                  "name": "say",
+                  "text": "Plaque"
+                },
+                {
+                  "type": "button",
+                  "url": "https://daedalus-game.glitch.me/download/CypherDirections.pdf/{{vars.team}}/{{vars.user}}",
+                  "name": "link_button",
+                  "text": "Download Documents"
+                },
+                {
+                  "type": "button",
+                  "url": "https://daedalus-game.glitch.me/download/CypherWheel.pdf/{{vars.team}}/{{vars.user}}",
+                  "name": "link_button",
+                  "text": "Download Ring"
+                }
+              ],
+              "fields": [],
+              "text": "There is a hole in the wall. In it are some documents and a ring!!! These look important. You should download them.",
+              "title": "Hole"
+            }],
+            "text": [
+              ""
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "state_befg_few_dots"
+      },
+      {
+        "script": [{
+            "attachments": [{
+              "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523543448/escape-room/Dots.png",
+              "callback_id": "few_dots_random_event",
+              "actions": [{
+                  "type": "button",
+                  "value": "the_room_3",
+                  "name": "say",
+                  "text": "Main Room"
+                },
+                {
+                  "text": "Pick Up Plaque",
+                  "name": "say",
+                  "value": "pick_up_plaque",
+                  "type": "button"
+                }
+              ],
+              "fields": [],
+              "text": "Looks like the many dots painting but it's smaller. Hey, the plaque is gone! Oh, there it is on the floor. It must have fallen off.",
+              "title": "Few Dots Painting"
+            }],
+            "text": [
+              ""
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "random_event_few_dots"
+      },
+      {
+        "script": [{
+            "attachments": [{
+              "callback_id": "few_dots_random_state_combo",
+              "actions": [{
+                  "type": "button",
+                  "value": "the_room_3",
+                  "name": "say",
+                  "text": "Main Room"
+                },
+                {
+                  "type": "button",
+                  "value": "pick_up_plaque",
+                  "name": "say",
+                  "text": "Plaque"
+                },
+                {
+                  "type": "button",
+                  "url": "https://daedalus-game.glitch.me/download/CypherDirections.pdf/{{vars.team}}/{{vars.user}}",
+                  "name": "link_button",
+                  "text": "Download Documents"
+                },
+                {
+                  "text": "Download Ring",
+                  "name": "link_button",
+                  "url": "https://daedalus-game.glitch.me/download/CypherWheel.pdf/{{vars.team}}/{{vars.user}}",
+                  "type": "button"
+                }
+              ],
+              "fields": [],
+              "text": "There is a hole in the wall. In it are some documents and a ring!!! These look important. You should download them. The plaque is still on the floor, too.",
+              "title": "Hole"
+            }],
+            "text": [
+              ""
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "combo_random_befg_few_dots"
+      }
+    ],
+    "triggers": [{
+      "id": 150,
+      "type": "string",
+      "pattern": "few_dots"
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "few_dots",
+      "few_dots_state_change",
+      "few_dots_random_event",
+      "few_dots_random_state_combo"
+    ],
+    "id": 9
+  },
+  {
+    "command": "pick_up_plaque",
+    "description": "pick up plaque script",
+    "script": [{
+      "script": [{
+          "collect": null,
+          "attachments": [{
+            "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523484401/escape-room/Stars.png",
+            "callback_id": "pick_up_plaque",
+            "actions": [{
+                "text": "Back",
+                "name": "say",
+                "value": "few_dots",
+                "type": "button"
+              },
+              {
+                "type": "button",
+                "value": "the_room_3",
+                "name": "say",
+                "text": "Main Room"
+              },
+              {
+                "text": "Download",
+                "name": "link_button",
+                "url": "https://daedalus-game.glitch.me/download/Stars.pdf/{{vars.team}}/{{vars.user}}",
+                "type": "button"
+              }
+            ],
+            "fields": [],
+            "text": "This looks important. You should probably download it.",
+            "title": "Examine Plaque"
+          }],
+          "text": [
+            ""
+          ],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ],
+      "topic": "default"
+    }],
+    "triggers": [{
+      "pattern": "pick_up_plaque",
+      "type": "string"
+    }],
+    "variables": [{
+        "type": "string",
+        "name": "question_1"
+      },
+      {
+        "type": "string",
+        "name": "question_2"
+      },
+      {
+        "type": "string",
+        "name": "question_3"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "pick_up_plaque"
+    ],
+    "id": 10
+  },
+  {
+    "command": "abstract_symbols",
+    "description": "abstract symbols and plaque",
+    "script": [{
+        "topic": "default",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "image_url": "http://res.cloudinary.com/extraludic/image/upload/escape-room/GlyphGif.gif",
+              "title": "Glyph Painting",
+              "text": "It’s a mess. Should you even read the plaque about this one?",
+              "fields": [],
+              "actions": [{
+                  "text": "Main Room",
+                  "name": "say",
+                  "value": "the_room_3",
+                  "type": "button"
+                },
+                {
+                  "text": "Plaque",
+                  "name": "say",
+                  "value": "abstract_symbols_plaque",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "abstract_symbols_default"
+            }],
+            "collect": {
+              "key": "question_1",
+              "options": [{
+                "default": true,
+                "pattern": "default",
+                "action": "next"
+              }]
+            },
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523986454/escape-room/CodedKey.png",
+              "title": "Strange Glyph",
+              "text": "This looks important…",
+              "fields": [],
+              "actions": [{
+                "text": "Main Room",
+                "name": "say",
+                "value": "the_room_3",
+                "type": "button"
+              }],
+              "callback_id": "abstract_symbols_state_cdfg"
+            }],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "state_cdfg_abstract_symbols"
+      }
+    ],
+    "triggers": [{
+      "pattern": "abstract_symbols",
+      "type": "string",
+      "id": 432
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "abstract_symbols_default",
+      "abstract_symbols_state_cdfg"
+    ],
+    "id": 11
+  },
+  {
+    "command": "many_dots_painting_plaque",
+    "description": "many dots painting plaque",
+    "script": [{
+      "topic": "default",
+      "script": [{
+          "text": [
+            ""
+          ],
+          "attachments": [{
+            "title": "Plaque",
+            "text": "\"Stars always go left to right.\"",
+            "fields": [],
+            "actions": [{
+                "text": "Back",
+                "name": "say",
+                "value": "many_dots_painting",
+                "type": "button"
+              },
+              {
+                "type": "button",
+                "value": "the_room_3",
+                "name": "say",
+                "text": "Main Room"
+              }
+            ],
+            "callback_id": "many_dots_painting_plaque"
+          }],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ]
+    }],
+    "triggers": [{
+      "type": "string",
+      "pattern": "many_dots_painting_plaque"
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "many_dots_painting_plaque"
+    ],
+    "id": 12
+  },
+  {
+    "command": "few_dots_plaque",
+    "description": "the few dots painting plaque",
+    "script": [{
+        "topic": "default",
+        "script": [{
+            "text": [
+              ""
+            ],
+            "attachments": [{
+              "title": "Plaque",
+              "text": "\"Random\"",
+              "fields": [],
+              "actions": [{
+                  "text": "Back",
+                  "name": "say",
+                  "value": "few_dots",
+                  "type": "button"
+                },
+                {
+                  "text": "Main Room",
+                  "name": "say",
+                  "value": "the_room_3",
+                  "type": "button"
+                }
+              ],
+              "callback_id": "few_dots_plaque"
+            }],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ]
+      },
+      {
+        "script": [{
+            "attachments": [{
+              "callback_id": "event_random_few_dots_plaque",
+              "actions": [{
+                  "type": "button",
+                  "value": "pick_up_plaque",
+                  "name": "say",
+                  "text": "Pick up plaque"
+                },
+                {
+                  "type": "button",
+                  "value": "the_room_3",
+                  "name": "say",
+                  "text": "Main Room"
+                }
+              ],
+              "fields": [],
+              "text": "The plaque fell off and is on the floor.",
+              "title": "Fallen Plaque"
+            }],
+            "text": [
+              ""
+            ],
+            "triggers": []
+          },
+          {
+            "action": "complete",
+            "triggers": []
+          }
+        ],
+        "topic": "event_random_few_dots_plaque"
+      }
+    ],
+    "triggers": [{
+      "type": "string",
+      "pattern": "few_dots_plaque"
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "few_dots_plaque",
+      "event_random_few_dots_plaque"
+    ],
+    "id": 13
+  },
+  {
+    "command": "safari_elephant",
+    "description": "elephant picture for safari slideshow",
+    "script": [{
+      "topic": "default",
+      "script": [{
+          "text": [
+            ""
+          ],
+          "attachments": [{
+            "title": "5. An Elephant",
+            "text": "It's an Elephant",
+            "fields": [],
+            "actions": [{
+                "text": "<",
+                "name": "say",
+                "value": "safari_rhino",
+                "type": "button"
+              },
+              {
+                "text": "Back",
+                "name": "say",
+                "value": "safari",
+                "type": "button"
+              },
+              {
+                "text": ">",
+                "name": "say",
+                "value": "safari_snake",
+                "type": "button"
+              }
+            ],
+            "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523986449/escape-room/ElephantG.png",
+            "callback_id": "safari_elephant"
+          }],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ]
+    }],
+    "triggers": [{
+      "type": "string",
+      "pattern": "safari_elephant"
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "safari_elephant"
+    ],
+    "id": 14
+  },
+  {
+    "command": "safari_iguana",
+    "description": "flamingo picture for safari slideshow",
+    "script": [{
+      "topic": "default",
+      "script": [{
+          "text": [
+            ""
+          ],
+          "attachments": [{
+            "title": "2. Iguana",
+            "text": "It's an Iguana",
+            "fields": [],
+            "actions": [{
+                "text": "<",
+                "name": "say",
+                "value": "safari_parrot",
+                "type": "button"
+              },
+              {
+                "type": "button",
+                "value": "safari",
+                "name": "say",
+                "text": "Back"
+              },
+              {
+                "type": "button",
+                "value": "safari_frog",
+                "name": "say",
+                "text": ">"
+              }
+            ],
+            "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523986449/escape-room/Iguana.png",
+            "callback_id": "safari_iguana"
+          }],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ]
+    }],
+    "triggers": [{
+      "id": 453,
+      "type": "string",
+      "pattern": "safari_iguana"
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "safari_iguana"
+    ],
+    "id": 15
+  },
+  {
+    "command": "safari_alligator",
+    "description": "crocodile picture for safari slideshow",
+    "script": [{
+      "script": [{
+          "attachments": [{
+            "callback_id": "safari_alligator",
+            "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523986449/escape-room/Croc.png",
+            "actions": [{
+                "type": "button",
+                "value": "safari_flamingo",
+                "name": "say",
+                "text": "<"
+              },
+              {
+                "text": "Back",
+                "name": "say",
+                "value": "safari",
+                "type": "button"
+              },
+              {
+                "text": ">",
+                "name": "say",
+                "value": "safari_elephant2",
+                "type": "button"
+              }
+            ],
+            "fields": [],
+            "text": "It's an Alligator... or a Crocodile... Or Maybe a Cayman, I can never tell.",
+            "title": "8. An Alligator"
+          }],
+          "text": [
+            ""
+          ],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ],
+      "topic": "default"
+    }],
+    "triggers": [{
+      "id": 98,
+      "type": "string",
+      "pattern": "safari_alligator"
+    }],
+    "variables": [{
+        "type": "string",
+        "name": "question_1"
+      },
+      {
+        "type": "string",
+        "name": "question_2"
+      },
+      {
+        "type": "string",
+        "name": "question_3"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "safari_alligator"
+    ],
+    "id": 16
+  },
+  {
+    "command": "safari_frog",
+    "description": "frog picture for safari slideshow",
+    "script": [{
+      "script": [{
+          "attachments": [{
+            "callback_id": "safari_frog",
+            "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523986457/escape-room/Frog.png",
+            "actions": [{
+                "type": "button",
+                "value": "safari_iguana",
+                "name": "say",
+                "text": "<"
+              },
+              {
+                "type": "button",
+                "value": "safari",
+                "name": "say",
+                "text": "Back"
+              },
+              {
+                "type": "button",
+                "value": "safari_rhino",
+                "name": "say",
+                "text": ">"
+              }
+            ],
+            "fields": [],
+            "text": "It's a Frog",
+            "title": "3. A Frog"
+          }],
+          "text": [
+            ""
+          ],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ],
+      "topic": "default"
+    }],
+    "triggers": [{
+      "id": 100,
+      "type": "string",
+      "pattern": "safari_frog"
+    }],
+    "variables": [{
+        "type": "string",
+        "name": "question_1"
+      },
+      {
+        "type": "string",
+        "name": "question_2"
+      },
+      {
+        "type": "string",
+        "name": "question_3"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "safari_frog"
+    ],
+    "id": 17
+  },
+  {
+    "command": "safari_snake",
+    "description": "rhino picture for safari slideshow",
+    "script": [{
+      "topic": "default",
+      "script": [{
+          "text": [
+            ""
+          ],
+          "attachments": [{
+            "title": "6. A Snake",
+            "text": "It's a Snake",
+            "fields": [],
+            "actions": [{
+                "text": "<",
+                "name": "say",
+                "value": "safari_elephant",
+                "type": "button"
+              },
+              {
+                "type": "button",
+                "value": "safari",
+                "name": "say",
+                "text": "Back"
+              },
+              {
+                "type": "button",
+                "value": "safari_flamingo",
+                "name": "say",
+                "text": ">"
+              }
+            ],
+            "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523986453/escape-room/Snake.png",
+            "callback_id": "safari_snake"
+          }],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ]
+    }],
+    "triggers": [{
+      "id": 394,
+      "type": "string",
+      "pattern": "safari_snake"
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "safari_snake"
+    ],
+    "id": 18
+  },
+  {
+    "command": "safari_parrot",
+    "description": "parrot picture for safari slideshow",
+    "script": [{
+      "topic": "default",
+      "script": [{
+          "text": [
+            ""
+          ],
+          "attachments": [{
+            "title": "1. A Parrot",
+            "text": "It's a parrot",
+            "fields": [],
+            "actions": [{
+                "text": "<",
+                "name": "say",
+                "value": "safari_elephant2",
+                "type": "button"
+              },
+              {
+                "text": "Back",
+                "name": "say",
+                "value": "safari",
+                "type": "button"
+              },
+              {
+                "text": ">",
+                "name": "say",
+                "value": "safari_iguana",
+                "type": "button"
+              }
+            ],
+            "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523986454/escape-room/Parrot.png",
+            "callback_id": "safari_parrot"
+          }],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ]
+    }],
+    "triggers": [{
+      "type": "string",
+      "pattern": "safari_parrot"
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "safari_parrot"
+    ],
+    "id": 19
+  },
+  {
+    "command": "abstract_symbols_plaque",
+    "description": "the plaque for the abstract symbols painting",
+    "script": [{
+      "topic": "default",
+      "script": [{
+          "text": [
+            ""
+          ],
+          "attachments": [{
+            "title": "Plaque",
+            "text": "\"Sometimes to go forward you must go back.\"",
+            "fields": [],
+            "actions": [{
+                "text": "Back",
+                "name": "say",
+                "value": "abstract_symbols",
+                "type": "button"
+              },
+              {
+                "type": "button",
+                "value": "the_room_3",
+                "name": "say",
+                "text": "Main Room"
+              }
+            ],
+            "callback_id": "abstract_symbols_plaque"
+          }],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ]
+    }],
+    "triggers": [{
+      "type": "string",
+      "pattern": "abstract_symbols_plaque"
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "escape",
+      "phase_1",
+      "abstract_symbols_plaque"
+    ],
+    "id": 20
+  },
+  {
+    "command": "three_color_buttons",
+    "description": "three color changing buttons",
+    "script": [{
+      "script": [{
+          "attachments": [{
+            "callback_id": "three_color_buttons",
+            "actions": [{
+                "style": "default",
+                "type": "button",
+                "value": "1",
+                "name": "color",
+                "text": "1"
+              },
+              {
+                "style": "primary",
+                "type": "button",
+                "value": "2",
+                "name": "color",
+                "text": "2"
+              },
+              {
+                "style": "danger",
+                "type": "button",
+                "value": "3",
+                "name": "color",
+                "text": "3"
+              }
+            ],
+            "fields": [],
+            "text": "\"Below are three buttons that can change colors. To start the game 2/3 of your buttons must be the same color.\"",
+            "title": ""
+          }],
+          "text": [
+            ""
+          ],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ],
+      "topic": "default"
+    }],
+    "triggers": [{
+      "pattern": "three_color_buttons",
+      "type": "string"
+    }],
+    "variables": [{
+        "type": "string",
+        "name": "question_1"
+      },
+      {
+        "type": "string",
+        "name": "question_2"
+      },
+      {
+        "type": "string",
+        "name": "question_3"
+      }
+    ],
+    "tags": [
+      "phase_1",
+      "three_color_buttons"
+    ],
+    "id": 21
+  },
+  {
+    "command": "safari_flamingo",
+    "description": "flamingo picture for safari slideshow",
+    "script": [{
+      "script": [{
+          "attachments": [{
+            "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523986449/escape-room/Flamingo.png",
+            "callback_id": "safari_flamingo",
+            "actions": [{
+                "type": "button",
+                "value": "safari_snake",
+                "name": "say",
+                "text": "<"
+              },
+              {
+                "type": "button",
+                "value": "safari",
+                "name": "say",
+                "text": "Back"
+              },
+              {
+                "type": "button",
+                "value": "safari_alligator",
+                "name": "say",
+                "text": ">"
+              }
+            ],
+            "fields": [],
+            "text": "It's a Flamingo",
+            "title": "7. A Flamingo"
+          }],
+          "text": [
+            ""
+          ],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ],
+      "topic": "default"
+    }],
+    "triggers": [{
+      "id": 64,
+      "type": "string",
+      "pattern": "safari_flamingo"
+    }],
+    "variables": [{
+        "type": "string",
+        "name": "question_1"
+      },
+      {
+        "type": "string",
+        "name": "question_2"
+      },
+      {
+        "type": "string",
+        "name": "question_3"
+      }
+    ],
+    "tags": [
+      "phase_1",
+      "escape",
+      "safari_flamingo"
+    ],
+    "id": 22
+  },
+  {
+    "command": "safari_elephant2",
+    "description": "elephant2 picture for safari slideshow",
+    "script": [{
+      "script": [{
+          "attachments": [{
+            "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523986449/escape-room/ElephantR.png",
+            "callback_id": "safari_elephant2",
+            "actions": [{
+                "type": "button",
+                "value": "safari_alligator",
+                "name": "say",
+                "text": "<"
+              },
+              {
+                "type": "button",
+                "value": "safari",
+                "name": "say",
+                "text": "Back"
+              },
+              {
+                "type": "button",
+                "value": "safari_parrot",
+                "name": "say",
+                "text": ">"
+              }
+            ],
+            "fields": [],
+            "text": "It's another Elephant",
+            "title": "9. An Elephant"
+          }],
+          "text": [
+            ""
+          ],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ],
+      "topic": "default"
+    }],
+    "triggers": [{
+      "pattern": "safari_elephant2",
+      "type": "string",
+      "id": 27
+    }],
+    "variables": [{
+        "type": "string",
+        "name": "question_1"
+      },
+      {
+        "type": "string",
+        "name": "question_2"
+      },
+      {
+        "type": "string",
+        "name": "question_3"
+      }
+    ],
+    "tags": [
+      "phase_1",
+      "escape",
+      "safari_elephant2"
+    ],
+    "id": 23
+  },
+  {
+    "command": "safari_rhino",
+    "description": "rhino picture for safari slideshow",
+    "script": [{
+      "script": [{
+          "attachments": [{
+            "callback_id": "safari_mouse",
+            "image_url": "http://res.cloudinary.com/extraludic/image/upload/v1523986449/escape-room/Rhino.png",
+            "actions": [{
+                "type": "button",
+                "value": "safari_frog",
+                "name": "say",
+                "text": "<"
+              },
+              {
+                "type": "button",
+                "value": "safari",
+                "name": "say",
+                "text": "Back"
+              },
+              {
+                "type": "button",
+                "value": "safari_elephant",
+                "name": "say",
+                "text": ">"
+              }
+            ],
+            "fields": [],
+            "text": "It's a Rhino",
+            "title": "4. A Rhino"
+          }],
+          "text": [
+            ""
+          ],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ],
+      "topic": "default"
+    }],
+    "triggers": [{
+      "pattern": "safari_rhino",
+      "type": "string",
+      "id": 459
+    }],
+    "variables": [{
+        "type": "string",
+        "name": "question_1"
+      },
+      {
+        "type": "string",
+        "name": "question_2"
+      },
+      {
+        "type": "string",
+        "name": "question_3"
+      }
+    ],
+    "tags": [
+      "phase_1",
+      "escape",
+      "safari_mouse"
+    ],
+    "id": 24
+  },
+  {
+    "command": "exit",
+    "description": "the end of the escape room",
+    "script": [{
+      "topic": "default",
+      "script": [{
+          "text": [
+            ""
+          ],
+          "attachments": [{
+            "title": "You escaped!",
+            "text": "You can now reach out to Wade or Sam for your prize!",
+            "fields": [],
+            "actions": []
+          }],
+          "meta": [{
+            "key": "movement",
+            "value": "7"
+          }],
+          "triggers": []
+        },
+        {
+          "action": "complete",
+          "triggers": []
+        }
+      ]
+    }],
+    "triggers": [{
+      "type": "string",
+      "pattern": "exit"
+    }],
+    "variables": [{
+        "name": "question_1",
+        "type": "string"
+      },
+      {
+        "name": "question_2",
+        "type": "string"
+      },
+      {
+        "name": "question_3",
+        "type": "string"
+      }
+    ],
+    "tags": [
+      "phase_5"
+    ],
+    "id": 25
+  }
+]
