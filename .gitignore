@@ -8,3 +8,6 @@ json
 *.save.*
 dump
 *.sublime-*
+.bash_history
+.glitch-assets
+token.json
