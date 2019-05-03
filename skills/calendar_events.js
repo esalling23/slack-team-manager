@@ -75,7 +75,7 @@ module.exports = (controller) => {
       }
     })
   }
-  
+
   // Grab the calendar events
   // takes `opt` object with:
   // `auth` from calendarAuth
@@ -85,7 +85,7 @@ module.exports = (controller) => {
   controller.calendarEvents = (opt) => {
     return new Promise((resolve, reject) => {
       const calendar = google.calendar({version: 'v3', auth: opt.auth});
-      
+
       // console.log(start, end)
 
       const calOpt = {
@@ -125,7 +125,7 @@ module.exports = (controller) => {
       })
     })
   }
-  
+
   // Filter out just the lessons
   const filteredLessons = () => {
     return controller.materialList.reduce((lessons, curr) => {
@@ -141,7 +141,7 @@ module.exports = (controller) => {
       return lessons.concat(availLessons)
     }, [])
   }
-  
+
   // filter out just the practices/studies
   const filteredHomework = () => {
     return controller.materialList.reduce((lessons, curr) => {
@@ -161,15 +161,16 @@ module.exports = (controller) => {
   // Set up events promises
   const eventsPromise = (calendar, opt, lessons) => {
     return new Promise((resolve, reject) => {
+      const itemList = lessons ? filteredLessons() : filteredHomework()
       return calendar.events.list(opt, (err, res) => {
         if (err) reject(err)
         const events = _.map(res.data.items, item => {
           return item.summary.replace(/\((.*?)\)/, '').replace(/\s+/g, '')
         }).filter(item => {
-          return lessons ? filteredLessons().includes(item) : filteredHomework().includes(item)
+          return itemList.includes(item)
         })
         const id = res.data.summary.split('BOS ')[1]
-        const items = { 
+        const items = {
           cohort: id,
           lessons: events
         }
@@ -177,5 +178,5 @@ module.exports = (controller) => {
       })
     })
   }
-  
+
 }
