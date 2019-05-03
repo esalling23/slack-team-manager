@@ -161,12 +161,13 @@ module.exports = (controller) => {
   // Set up events promises
   const eventsPromise = (calendar, opt, lessons) => {
     return new Promise((resolve, reject) => {
+      const itemList = lessons ? filteredLessons() : filteredHomework()
       return calendar.events.list(opt, (err, res) => {
         if (err) reject(err)
         const events = _.map(res.data.items, item => {
           return item.summary.replace(/\((.*?)\)/, '').replace(/\s+/g, '')
         }).filter(item => {
-          return lessons ? filteredLessons().includes(item) : filteredHomework().includes(item)
+          return itemList.includes(item)
         })
         const id = res.data.summary.split('BOS ')[1]
         const items = {

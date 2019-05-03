@@ -68,11 +68,21 @@ module.exports = function (controller) {
         // start a day ahead
         const start = new Date(now + (24 * 60 * 60 * 1000))
         // end in a week
+<<<<<<< HEAD
         const end = new Date(now + (7 * 24 * 60 * 60 * 1000))
 
         return controller.calendarEvents({
           auth,
           lessons: false,
+=======
+        const end = new Date(start.getTime() + (7 * 24 * 60 * 60 * 1000))
+        
+        console.log(start.toDateString(), end.toDateString())
+
+        return controller.calendarEvents({
+          auth,
+          lessons: true,
+>>>>>>> glitch
           startTime: start.toISOString(),
           endTime: end.toISOString()
         })
@@ -96,8 +106,16 @@ module.exports = function (controller) {
         const now = new Date().getTime() + 240
         // start a few hours behind
         const start = new Date(now - (3 * 60 * 60 * 1000))
+<<<<<<< HEAD
         // end in a couple hours
         const end = new Date(now + (2 * 24 * 60 * 60 * 1000))
+=======
+        // end at midnight tonight
+        const end = new Date(start.getTime())
+        end.setHours(24,0,0,0)
+        
+        console.log(start.toDateString(), end.toDateString())
+>>>>>>> glitch
 
         return controller.calendarEvents({
           auth,

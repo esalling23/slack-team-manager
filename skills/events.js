@@ -17,9 +17,9 @@ module.exports = function (controller) {
           })
           return Object.keys(match).length > 0
         })
-        console.log(cohortChannels)
+        console.log('Cohort Channels:', cohortChannels)
         const calPromises = _.map(cohortChannels, (channel) => {
-          return controller.studio.get(bot, 'homework_thread', team.creator, channel.id)
+          return controller.studio.get(bot, 'homework_thread', team.createdBy, channel.id)
         })
         return Promise.all(calPromises)
       })
@@ -36,7 +36,7 @@ module.exports = function (controller) {
 
           convo.changeTopic('default')
           console.log(lessons, 'are the homeworks')
-          if (lessons.length > 1) {
+          if (lessons.length > 0) {
             const template = convo.threads['default'][0]
             template.username = process.env.username.replace('_', ' ')
             template.icon_url = process.env.icon_url
@@ -111,18 +111,20 @@ module.exports = function (controller) {
             return item.cohort === channel.name.split('-')[2]
           })[0].lessons)
 
-          convo.changeTopic('default')
-          console.log(lessons, 'are the lessons')
-          const template = convo.threads['default'][0]
-          template.username = process.env.username.replace('_', ' ')
-          template.icon_url = process.env.icon_url
-          template.attachments[0].text += '\n'
+          if (lessons.length > 0) {
+            convo.changeTopic('default')
+            console.log(lessons, 'are the lessons')
+            const template = convo.threads['default'][0]
+            template.username = process.env.username.replace('_', ' ')
+            template.icon_url = process.env.icon_url
+            template.attachments[0].text += '\n'
 
-          for (let i of lessons) {
-            template.attachments[0].text += '- ' + i + '\n'
+            for (let i of lessons) {
+              template.attachments[0].text += '- ' + i + '\n'
+            }
+
+            convo.activate()
           }
-
-          convo.activate()
         }
       })
       // .then(console.log)
@@ -151,11 +153,11 @@ module.exports = function (controller) {
           const start = new Date(now + (24 * 60 * 60 * 1000))
 
           // then by the number of days into the future we want to look (7 for a week)
-          const end = new Date(now + (7 * 24 * 60 * 60 * 1000))
+          const end = new Date(start.getTime() + (7 * 24 * 60 * 60 * 1000))
 
           return controller.calendarEvents({
             auth,
-            lessons: false,
+            lessons: true,
             startTime: start.toISOString(),
             endTime: end.toISOString()
           })
@@ -187,7 +189,8 @@ module.exports = function (controller) {
           // start a few hours behind
           const start = new Date(now - (3 * 60 * 60 * 1000))
           // end in a couple hours
-          const end = new Date(now + (2 * 24 * 60 * 60 * 1000))
+          const end = new Date(start.getTime())
+          end.setHours(24,0,0,0)
 
           return controller.calendarEvents({
             auth,

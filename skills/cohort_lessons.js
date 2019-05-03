@@ -1,5 +1,5 @@
 module.exports = (controller) => {
-  controller.activeCohorts = ['030', '01']
+  controller.activeCohorts = ['01', '02']
   controller.materialList = [
     {
       "": "",
