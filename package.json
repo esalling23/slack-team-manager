@@ -1,6 +1,6 @@
 {
   "name": "ga-manager",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "GA Manager bot",
   "main": "bot.js",
   "scripts": {
