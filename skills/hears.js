@@ -1,7 +1,6 @@
-const _ = require('underscore')
 const { WebClient } = require('@slack/client')
 const stringifyObject = require('stringify-object')
-
+// const _ = require('underscore')
 
 module.exports = function (controller) {
   // Hears go here
@@ -12,7 +11,7 @@ module.exports = function (controller) {
   //   })
   // })
 
-  controller.hears('^delete (.*)', 'direct_message', function(bot, message) {
+  controller.hears('^delete (.*)', 'direct_message', function (bot, message) {
     // deletes a certain # of own messages sent previously
     controller.store.getTeam(message.team)
       .then(team => {
@@ -22,11 +21,11 @@ module.exports = function (controller) {
       }).catch(console.error)
   })
 
-  controller.hears('^find (.*)', 'direct_message', function(bot, message) {
+  controller.hears('^find (.*)', 'direct_message', function (bot, message) {
     // lookup history of messages
     controller.store.getTeam(message.team)
       .then(team => {
-      console.log(message.match[0].split(' ')[1])
+        console.log(message.match[0].split(' ')[1])
         const web = new WebClient(team.bot.app_token)
         return web.conversations.history({
           channel: message.match[0].split(' ')[1],
@@ -38,7 +37,7 @@ module.exports = function (controller) {
       .catch(console.error)
   })
 
-  controller.hears('test', 'direct_message', function(bot, message) {
+  controller.hears('test', 'direct_message', function (bot, message) {
     console.log(message)
     controller.store.getTeam(message.team)
       .then(team => {
@@ -51,10 +50,9 @@ module.exports = function (controller) {
           convo.activate()
         })
       }).catch(console.error)
-
   })
 
-  controller.hears('calendar', 'direct_message', function(bot, message) {
+  controller.hears('calendar', 'direct_message', function (bot, message) {
     console.log(message)
     let thisTeam
     controller.store.getTeam(message.team)
@@ -68,21 +66,13 @@ module.exports = function (controller) {
         // start a day ahead
         const start = new Date(now + (24 * 60 * 60 * 1000))
         // end in a week
-<<<<<<< HEAD
-        const end = new Date(now + (7 * 24 * 60 * 60 * 1000))
-
-        return controller.calendarEvents({
-          auth,
-          lessons: false,
-=======
         const end = new Date(start.getTime() + (7 * 24 * 60 * 60 * 1000))
-        
+
         console.log(start.toDateString(), end.toDateString())
 
         return controller.calendarEvents({
           auth,
           lessons: true,
->>>>>>> glitch
           startTime: start.toISOString(),
           endTime: end.toISOString()
         })
@@ -91,10 +81,9 @@ module.exports = function (controller) {
         console.log(lessons, 'the lessons')
         controller.trigger('calendar', [bot, thisTeam, lessons])
       }).catch(console.error)
-
   })
 
-  controller.hears('homework', 'direct_message', function(bot, message) {
+  controller.hears('homework', 'direct_message', function (bot, message) {
     console.log(message)
     let thisTeam
     controller.store.getTeam(message.team)
@@ -106,17 +95,10 @@ module.exports = function (controller) {
         const now = new Date().getTime() + 240
         // start a few hours behind
         const start = new Date(now - (3 * 60 * 60 * 1000))
-<<<<<<< HEAD
-        // end in a couple hours
-        const end = new Date(now + (2 * 24 * 60 * 60 * 1000))
-=======
         // end at midnight tonight
         const end = new Date(start.getTime())
-        end.setHours(24,0,0,0)
-        
+        end.setHours(24, 0, 0, 0)
         console.log(start.toDateString(), end.toDateString())
->>>>>>> glitch
-
         return controller.calendarEvents({
           auth,
           lessons: false,
@@ -127,6 +109,5 @@ module.exports = function (controller) {
         console.log(homework, 'the homework')
         controller.trigger('homework_thread', [bot, thisTeam, homework])
       }).catch(console.error)
-
   })
 }

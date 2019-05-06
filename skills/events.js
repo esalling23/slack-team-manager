@@ -4,7 +4,7 @@ const { WebClient } = require('@slack/client')
 module.exports = function (controller) {
   // Events go here
 
-  controller.on('homework_thread', function(bot, team, cohorts) {
+  controller.on('homework_thread', function (bot, team, cohorts) {
     let cohortChannels
     const web = new WebClient(bot.config.token)
     web.conversations.list({ types: 'private_channel' })
@@ -53,14 +53,14 @@ module.exports = function (controller) {
     // }
   })
 
-  controller.on('morning_checkin', function(bot, team) {
+  controller.on('morning_checkin', function (bot, team) {
     // console.log(event)
     console.log(team.id)
     for (const user of team.users) {
       console.log(bot)
-      const web = new WebClient(bot.config.token);
+      const web = new WebClient(bot.config.token)
 
-      web.conversations.list({ types: "im" })
+      web.conversations.list({ types: 'im' })
         .then(list => {
           console.log(list)
           const thisIM = _.findWhere(list.channels, { user: user.userId })
@@ -79,7 +79,7 @@ module.exports = function (controller) {
     }
   })
 
-  controller.on('calendar', function(bot, team, cohorts) {
+  controller.on('calendar', function (bot, team, cohorts) {
     console.log(cohorts)
     let cohortChannels
 
@@ -129,11 +129,10 @@ module.exports = function (controller) {
       })
       // .then(console.log)
       .catch(console.error)
-
   })
 
   // interval for every minute
-  setInterval(function() {
+  setInterval(function () {
     const now = new Date()
     const hours = now.getHours() - 4
     const mins = now.getMinutes()
@@ -142,7 +141,6 @@ module.exports = function (controller) {
     console.log('is it friday @ 3pm?', now.getDay() === 5 && mins === 0 && hours === 15)
 
     if (dayOfWeek === 5 && mins === 0 && hours === 15) {
-
       // Every friday at 3pm
       controller.calendarAuth()
         .then(auth => {
@@ -176,10 +174,10 @@ module.exports = function (controller) {
         .catch(console.error)
     } else if (hours === 13 && mins === 0 && dayOfWeek !== 0 && dayOfWeek !== 6) {
       // Every week day at 8am
-      for (const id in controller.store.teams) {
-        const team = controller.store.teams[id]
-        // controller.trigger('morning_checkin', [controller.spawn(team.bot), team])
-      }
+      // for (const id in controller.store.teams) {
+      //   const team = controller.store.teams[id]
+      //   controller.trigger('morning_checkin', [controller.spawn(team.bot), team])
+      // }
     } else if (hours === 17 && mins === 0 && dayOfWeek !== 0 && dayOfWeek !== 6) {
       // Every week day at 5pm
       controller.calendarAuth()
@@ -190,7 +188,7 @@ module.exports = function (controller) {
           const start = new Date(now - (3 * 60 * 60 * 1000))
           // end in a couple hours
           const end = new Date(start.getTime())
-          end.setHours(24,0,0,0)
+          end.setHours(24, 0, 0, 0)
 
           return controller.calendarEvents({
             auth,
@@ -200,7 +198,7 @@ module.exports = function (controller) {
           })
         })
         .then(homework => {
-        // only include calendars with at least one lesson
+          // only include calendars with at least one lesson
           const filtered = _.pick(homework, (v, k, o) => {
             return v.lessons.length > 0
           })

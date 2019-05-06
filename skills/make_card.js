@@ -1,4 +1,4 @@
-const _ = require('underscore')
+// const _ = require('underscore')
 
 module.exports = function (controller) {
   // Gets a script with thread, consts, and logic
@@ -28,7 +28,7 @@ module.exports = function (controller) {
       if (consts.recap) {
         template.attachments[1] = convo.threads[consts.recap][0].attachments[0]
       }
-      
+
       // Strange symbols slideshow logic
       if (consts.symbols_state) {
         template.attachments[0].actions.push({
