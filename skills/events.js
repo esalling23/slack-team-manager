@@ -38,8 +38,11 @@ module.exports = function (controller) {
         template.icon_url = process.env.icon_url
         template.attachments[0].text += '\n'
 
+        const hideUrl = template.attachments[0].title === 'Upcoming Lessons'
+
         for (let i of lessons) {
-          template.attachments[0].text += '- ' + i + '\n'
+          const text = hideUrl ? `${i}` : `<https://git.generalassemb.ly/ga-wdi-boston/${i}|${i}>`
+          template.attachments[0].text += `- ${text} \n`
         }
 
         convo.activate()
@@ -135,7 +138,7 @@ module.exports = function (controller) {
           const { start, end } = controller.setTime('lessons')
           return controller.calendarEvents({
             auth,
-            lessons: true,
+            grabLessons: true,
             startTime: start.toISOString(),
             endTime: end.toISOString()
           })
@@ -166,7 +169,7 @@ module.exports = function (controller) {
           const { start, end } = controller.setTime('homework')
           return controller.calendarEvents({
             auth,
-            lessons: false,
+            grabLessons: false,
             startTime: start.toISOString(),
             endTime: end.toISOString()
           })

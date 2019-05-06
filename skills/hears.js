@@ -64,7 +64,7 @@ module.exports = function (controller) {
         const { start, end } = controller.setTime('lessons')
         return controller.calendarEvents({
           auth,
-          lessons: true,
+          grabLessons: true,
           startTime: start.toISOString(),
           endTime: end.toISOString()
         })
@@ -87,7 +87,7 @@ module.exports = function (controller) {
         const { start, end } = controller.setTime('homework')
         return controller.calendarEvents({
           auth,
-          lessons: false,
+          grabLessons: false,
           startTime: start.toISOString(),
           endTime: end.toISOString()
         })

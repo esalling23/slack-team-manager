@@ -107,7 +107,7 @@ module.exports = (controller) => {
         const calPromises = _.map(filtered, (cal) => {
           const data = calOpt
           data.calendarId = cal.id
-          return eventsPromise(calendar, data, opt.lessons)
+          return eventsPromise(calendar, data, opt.grabLessons)
         })
 
         // promise all the promises
@@ -122,10 +122,10 @@ module.exports = (controller) => {
   }
 
   // filter out what we need
-  const filteredMaterial = (lessons) => {
+  const filteredMaterial = (grabLessons) => {
     return controller.materialList.reduce((lessons, curr) => {
       // console.log(curr)
-      const check = lessons ? [curr['Lesson1'], curr['Lesson2'], curr['Lesson3'], curr['Lesson4']] : [curr['Homework1'], curr['Homework2']]
+      const check = grabLessons ? [curr['Lesson1'], curr['Lesson2'], curr['Lesson3'], curr['Lesson4']] : [curr['Homework1'], curr['Homework2']]
 
       const availLessons = check.filter(les => {
         // console.log(les.match(/\[(.*?)\]/)[1])
@@ -139,14 +139,14 @@ module.exports = (controller) => {
   }
 
   // Set up events promises
-  const eventsPromise = (calendar, opt, lessons) => {
+  const eventsPromise = (calendar, opt, grabLessons) => {
     return new Promise((resolve, reject) => {
       return calendar.events.list(opt, (err, res) => {
         if (err) reject(err)
         const events = _.map(res.data.items, item => {
           return item.summary.replace(/\((.*?)\)/, '').replace(/\s+/g, '')
         }).filter(item => {
-          return filteredMaterial(lessons).includes(item)
+          return filteredMaterial(grabLessons).includes(item)
         })
         const id = res.data.summary.split('BOS ')[1]
         const items = {
