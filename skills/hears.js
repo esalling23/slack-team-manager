@@ -1,6 +1,6 @@
 const { WebClient } = require('@slack/client')
 const stringifyObject = require('stringify-object')
-// const _ = require('underscore')
+const _ = require('underscore')
 
 module.exports = function (controller) {
   // Hears go here
@@ -61,15 +61,7 @@ module.exports = function (controller) {
         return controller.calendarAuth()
       })
       .then(auth => {
-        // adjust 3 hours for boston time
-        const now = new Date().getTime() + 240
-        // start a day ahead
-        const start = new Date(now + (24 * 60 * 60 * 1000))
-        // end in a week
-        const end = new Date(start.getTime() + (7 * 24 * 60 * 60 * 1000))
-
-        console.log(start.toDateString(), end.toDateString())
-
+        const { start, end } = controller.setTime('lessons')
         return controller.calendarEvents({
           auth,
           lessons: true,
@@ -79,7 +71,7 @@ module.exports = function (controller) {
       })
       .then(lessons => {
         console.log(lessons, 'the lessons')
-        controller.trigger('calendar', [bot, thisTeam, lessons])
+        controller.trigger('material_message', [bot, thisTeam, 'calendar_alert', lessons])
       }).catch(console.error)
   })
 
@@ -90,24 +82,24 @@ module.exports = function (controller) {
       .then(team => {
         thisTeam = team
         return controller.calendarAuth()
-      }).then(auth => {
-        // adjust 3 hours for boston time
-        const now = new Date().getTime() + 240
-        // start a few hours behind
-        const start = new Date(now - (3 * 60 * 60 * 1000))
-        // end at midnight tonight
-        const end = new Date(start.getTime())
-        end.setHours(24, 0, 0, 0)
-        console.log(start.toDateString(), end.toDateString())
+      })
+      .then(auth => {
+        const { start, end } = controller.setTime('homework')
         return controller.calendarEvents({
           auth,
           lessons: false,
           startTime: start.toISOString(),
           endTime: end.toISOString()
         })
-      }).then(homework => {
-        console.log(homework, 'the homework')
-        controller.trigger('homework_thread', [bot, thisTeam, homework])
-      }).catch(console.error)
+      })
+      .then(homework => {
+        // only include calendars with at least one lesson
+        const filtered = _.pick(homework, (v, k, o) => {
+          return v.lessons.length > 0
+        })
+        console.log(filtered, 'the homework')
+        controller.trigger('material_message', [bot, thisTeam, 'homework_thread', filtered])
+      })
+      .catch(console.error)
   })
 }
