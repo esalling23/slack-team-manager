@@ -491,8 +491,8 @@ module.exports = (controller) => {
       'Lesson1': '[mongoose](https://git.generalassemb.ly/ga-wdi-boston/mongoose)',
       'Lesson2': '',
       'Lesson3': '',
-      'Lesson4': '[node-npm-practice](https://git.generalassemb.ly/ga-wdi-boston/node-npm-practice)',
-      'Homework1': '',
+      'Lesson4': '',
+      'Homework1': '[node-npm-practice](https://git.generalassemb.ly/ga-wdi-boston/node-npm-practice)',
       'Homework2': ''
     },
     {
