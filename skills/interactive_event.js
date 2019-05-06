@@ -4,7 +4,7 @@ module.exports = function (controller) {
   // for choose/confirm
   // Temporary storage
   let choiceSelect = []
-  const usersClicking = []
+  // const usersClicking = []
 
   controller.on('interactive_message_callback', function (bot, event) {
     // console.log(event, 'is the interactive message callback event')
@@ -102,24 +102,23 @@ module.exports = function (controller) {
       })
       controller.store.getTeam(event.team.id)
         .then((res) => {
-        
           const vars = {
             status: confirmedChoice.choice,
             name: _.findWhere(res.users, { userId: event.user }).real_name
           }
-        
+
           if (event.actions[0].name.includes('status')) {
-            controller.makeCard(bot, event, 'morning_check', 'response', {}, function(card) {
+            controller.makeCard(bot, event, 'morning_check', 'response', {}, function (card) {
               console.log('responded to morning status')
               bot.replyInteractive(event, card)
             })
-            
+
             controller.studio.get(bot, 'morning_check', event.user, res.general_channel).then(convo => {
               convo.changeTopic('status')
               const template = convo.threads['status'][0]
               template.username = process.env.username
               template.icon_url = process.env.icon_url
-              
+
               convo.vars = vars
 
               convo.activate()
@@ -133,41 +132,41 @@ module.exports = function (controller) {
           }
         })
     }
-    
-//     // User says something
-//     if (event.actions[0].name.match(/^say/)) {
-//       const opt = {
-//         bot: bot,
-//         event: event,
-//         data: event.actions[0]
-//       }
 
-//       controller.store.getTeam(event.team.id)
-//         .then((res) => {
-//           controller.studio.getScripts().then((list) => {
-//             let name = event.actions[0].value
-
-//             const script = _.findWhere(list, {
-//               command: name
-//             })
-            
-//             const scriptName = script.command
-
-//             controller.studio.get(bot, scriptName, event.user, event.channel).then((currentScript) => {
-//               controller.storage.teams.save(res).then(saved => {
-//                 opt.team = saved
-//                 opt.user = _.findWhere(res.users, {
-//                   userId: event.user
-//                 })
-//                 opt.script = currentScript
-
-//                 controller.confirmMovement(opt)
-//                 // usersClicking.splice(usersClicking.indexOf(event.user), 1)
-//               })
-//             })
-//           })
-//         })
-//         .catch(console.error)
-//     }
+    // User says something
+    // if (event.actions[0].name.match(/^say/)) {
+    //   const opt = {
+    //     bot: bot,
+    //     event: event,
+    //     data: event.actions[0]
+    //   }
+    //
+    //   controller.store.getTeam(event.team.id)
+    //     .then((res) => {
+    //       controller.studio.getScripts().then((list) => {
+    //         let name = event.actions[0].value
+    //
+    //         const script = _.findWhere(list, {
+    //           command: name
+    //         })
+    //
+    //         const scriptName = script.command
+    //
+    //         controller.studio.get(bot, scriptName, event.user, event.channel).then((currentScript) => {
+    //           controller.storage.teams.save(res).then(saved => {
+    //             opt.team = saved
+    //             opt.user = _.findWhere(res.users, {
+    //               userId: event.user
+    //             })
+    //             opt.script = currentScript
+    //
+    //             controller.confirmMovement(opt)
+    //             // usersClicking.splice(usersClicking.indexOf(event.user), 1)
+    //           })
+    //         })
+    //       })
+    //     })
+    //     .catch(console.error)
+    // }
   })
 }

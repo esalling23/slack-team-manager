@@ -10,33 +10,4 @@ module.exports = function (webserver, controller) {
     // Now, pass the webhook into be processed
     controller.handleWebhookPayload(req, res)
   })
-
-  webserver.post('/slack/menu', function (req, res) {
-    const data = JSON.parse(req.body.payload)
-    console.log('retrieving menu options', data)
-
-    const id = data.callback_id
-
-    console.log(id)
-    const options = {
-      options: []
-    }
-
-    if (id === 'door_a') {
-      options.options = [{
-        'text': 'Unexpected sentience',
-        'value': 'AI-2323'
-      },
-      {
-        'text': 'Bot biased toward other bots',
-        'value': 'SUPPORT-42'
-      },
-      {
-        'text': 'Bot broke my toaster',
-        'value': 'IOT-75'
-      }]
-    }
-
-    res.send(options)
-  })
 }

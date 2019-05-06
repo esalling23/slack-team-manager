@@ -24,7 +24,6 @@ module.exports = function (controller) {
 
         team.users = team.users
         controller.store.teams[team.id] = team
-        
       }).catch(error => console.log('Team Join User Profile Get error: ', error))
     })
   })

@@ -29,11 +29,11 @@ module.exports = function (controller) {
       })
     }
   }, 5000)
-  
+
   // Initial set-up
   controller.storage.teams.all().then(res => {
     for (const team of res) {
-      // console.log(team) 
+      // console.log(team)
       // console.log(controller.store.teams[team], ' we should probably save this team')
       controller.store.teams[team.id] = team
     }
