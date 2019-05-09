@@ -4,6 +4,7 @@ module.exports = function (controller) {
       .then(storeTeam => {
         // reset data
         storeTeam.oauth_token = auth.access_token
+        storeTeam.cohorts = {}
         // store
         controller.store.teams[team.id] = storeTeam
         console.log('Bot added to team: ', storeTeam.url)
