@@ -1,6 +1,7 @@
 const { WebClient } = require('@slack/client')
 const stringifyObject = require('stringify-object')
 const _ = require('underscore')
+const moment = require('moment')
 
 module.exports = function (controller) {
   // Hears go here
@@ -10,6 +11,31 @@ module.exports = function (controller) {
   //     bot.reply(message, 'I experienced an error with a request to Botkit Studio: ' + error)
   //   })
   // })
+
+  controller.hears('^cohort(.*)', 'direct_message', function (bot, message) {
+    if (message.match[0].split(' ').length < 4) {
+      bot.reply(message, 'I need more info. Please send me the new cohort\'s number, first day, and last day. Ex: \'cohort 01 05-03-2019 08-03-2019\'')
+      return
+    }
+    controller.store.getTeam(message.team)
+      .then(team => {
+        const newCohort = message.match[0].split(' ')[1]
+        if (!team.cohorts) {
+          team.cohorts = {}
+        }
+        team.cohorts[newCohort] = {
+          startDate: message.match[0].split(' ')[2],
+          endDate: message.match[0].split(' ')[3],
+          materialsSent: {
+            lastHw: '',
+            lastCal: ''
+          }
+        }
+        controller.store.teams[team.id] = team
+        console.log('Added new cohort: ', controller.store.teams[team.id].cohorts[newCohort])
+      })
+      .catch(console.error)
+  })
 
   controller.hears('^delete (.*)', 'direct_message', function (bot, message) {
     // deletes a certain # of own messages sent previously
@@ -75,7 +101,8 @@ module.exports = function (controller) {
       }).catch(console.error)
   })
 
-  controller.hears('^homework (.*)', 'direct_message', function (bot, message) {
+  controller.hears('^homework(.*)', 'direct_message', function (bot, message) {
+    const now = new Date()
     console.log(message)
     let thisTeam
     controller.store.getTeam(message.team)
@@ -94,10 +121,21 @@ module.exports = function (controller) {
       })
       .then(homework => {
         const onlyCohort = message.match[0].split(' ')[1]
+        console.log(onlyCohort)
         // only include calendars with at least one lesson
         const filtered = _.pick(homework, (v, k, o) => {
-          let thisCohort = onlyCohort.length === 0 || onlyCohort === v.cohort
-          return v.lessons.length > 0 && thisCohort
+          let thisCohort = !onlyCohort ? true : onlyCohort.length === 0 || onlyCohort === v.cohort
+
+          let hoursAgo = true
+          if (thisTeam.cohorts[v.cohort] && thisTeam.cohorts[v.cohort].materialsSent) {
+            if (thisTeam.cohorts[v.cohort].materialsSent.lastHw !== '') {
+              const lastHw = new Date(thisTeam.cohorts[v.cohort].materialsSent.lastHw)
+              const diff = new Date(Math.abs(lastHw.getTime(), now.getTime()))
+              console.log(`Last HW sent out ${moment.duration(diff).asHours()} hours ago`)
+              hoursAgo = moment.duration(diff).asHours() > 12
+            }
+          }
+          return v.lessons.length > 0 && thisCohort && hoursAgo
         })
         console.log(filtered, 'the homework')
         controller.trigger('material_message', [bot, thisTeam, 'homework_thread', filtered])

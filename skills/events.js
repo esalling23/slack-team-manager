@@ -1,5 +1,6 @@
 const _ = require('underscore')
 const { WebClient } = require('@slack/client')
+const moment = require('moment')
 
 module.exports = function (controller) {
   // Events go here
@@ -62,6 +63,27 @@ module.exports = function (controller) {
         return Promise.all(calPromises)
       })
       .then(convos => {
+        const thisTeam = controller.store.teams[team.id]
+        _.each(cohorts, cohort => {
+          const num = cohort.cohort
+          if (!thisTeam.cohorts[num].materialsSent) {
+            thisTeam.cohorts[num].materialsSent = {
+              lastHw: '',
+              lastCal: ''
+            }
+          }
+          switch (scriptName) {
+            case 'calendar_alert':
+              thisTeam.cohorts[num].materialsSent.lastCal = new Date()
+              break
+
+            case 'homework_thread':
+              thisTeam.cohorts[num].materialsSent.lastHw = new Date()
+              break
+          }
+          console.log(`Cohort ${num} got ${scriptName} last at ${new Date()}`)
+        })
+        controller.store.teams[thisTeam.id] = thisTeam
         controller.sendMaterialMessage(convos, cohorts, cohortChannels)
       })
       .catch(console.error)
@@ -128,7 +150,7 @@ module.exports = function (controller) {
     const mins = now.getMinutes()
     const dayOfWeek = now.getDay()
     console.log(hours, mins)
-    console.log('is it friday @ 3pm?', now.getDay() === 5 && mins === 0 && hours === 15)
+    // console.log('is it friday @ 3pm?', now.getDay() === 5 && mins === 0 && hours === 15)
 
     if (dayOfWeek === 5 && mins === 0 && hours === 15) {
       // Every friday at 3pm
@@ -175,13 +197,19 @@ module.exports = function (controller) {
           })
         })
         .then(homework => {
-          // only include calendars with at least one lesson
-          const filtered = _.pick(homework, (v, k, o) => {
-            return v.lessons.length > 0
-          })
-          console.log(filtered, 'the homework')
           for (const id in controller.store.teams) {
             const team = controller.store.teams[id]
+            // only include calendars with at least one lesson
+            const filtered = _.pick(homework, (v, k, o) => {
+              let hoursAgo = true
+              if (team.cohorts[v.cohort] && team.cohorts[v.cohort].materialsSent) {
+                const lastHw = new Date(team.cohorts[v.cohort].materialsSent.lastHw)
+                const diff = new Date(Math.abs(lastHw.getTime(), now.getTime()))
+                hoursAgo = moment.duration(diff).asHours() > 24
+              }
+              return v.lessons.length > 0 && hoursAgo
+            })
+            console.log(filtered, 'the homework')
             controller.trigger('material_message', [controller.spawn(team.bot), team, 'homework_thread', filtered])
           }
         })
