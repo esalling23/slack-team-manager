@@ -75,7 +75,7 @@ module.exports = function (controller) {
       }).catch(console.error)
   })
 
-  controller.hears('homework', 'direct_message', function (bot, message) {
+  controller.hears('^homework (.*)', 'direct_message', function (bot, message) {
     console.log(message)
     let thisTeam
     controller.store.getTeam(message.team)
@@ -93,9 +93,11 @@ module.exports = function (controller) {
         })
       })
       .then(homework => {
+        const onlyCohort = message.match[0].split(' ')[1]
         // only include calendars with at least one lesson
         const filtered = _.pick(homework, (v, k, o) => {
-          return v.lessons.length > 0
+          let thisCohort = onlyCohort.length === 0 || onlyCohort === v.cohort
+          return v.lessons.length > 0 && thisCohort
         })
         console.log(filtered, 'the homework')
         controller.trigger('material_message', [bot, thisTeam, 'homework_thread', filtered])
