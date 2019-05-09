@@ -161,8 +161,8 @@ module.exports = function (controller) {
       //   const team = controller.store.teams[id]
       //   controller.trigger('morning_checkin', [controller.spawn(team.bot), team])
       // }
-    } else if (hours === 17 && mins === 0 && dayOfWeek !== 0 && dayOfWeek !== 6) {
-      // Every week day at 5pm
+    } else if (hours === 16 && mins === 50 && dayOfWeek !== 0 && dayOfWeek !== 6) {
+      // Every week day at 4:50pm
       // Send night's homework list
       controller.calendarAuth()
         .then(auth => {
