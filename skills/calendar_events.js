@@ -28,8 +28,11 @@ module.exports = (controller) => {
        * @param {function} callback The callback to call with the authorized client.
        */
       function authorize (credentials, callback) {
-        const { client_secret, client_id, redirect_uris } = credentials.installed
-        const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0])
+        const clientSecret = credentials.installed.client_secret
+        const clientId = credentials.installed.client_id
+        const redirectUris = credentials.installed.redirect_uris
+
+        const oAuth2Client = new google.auth.OAuth2(clientId, clientSecret, redirectUris[0])
 
         // Check if we have previously stored a token.
         fs.readFile(TOKEN_PATH, (err, token) => {
@@ -125,7 +128,7 @@ module.exports = (controller) => {
   const filteredMaterial = (grabLessons) => {
     return controller.materialList.reduce((lessons, curr) => {
       // console.log(curr)
-      const check = grabLessons ? [curr['Lesson1'], curr['Lesson2'], curr['Lesson3'], curr['Lesson4']] : [curr['Homework1'], curr['Homework2']]
+      const check = grabLessons ? curr['Lessons'] : curr['Homework']
 
       const availLessons = check.filter(les => {
         // console.log(les.match(/\[(.*?)\]/)[1])

@@ -7,12 +7,12 @@ module.exports = (controller) => {
       'Week': ':----:',
       'Unit': ':----:',
       'Morning Exercise': ':----------------:',
-      'Lesson1': ':-------:',
-      'Lesson2': ':--------:',
-      'Lesson3': ':--------:',
-      'Lesson4': ':--------:',
-      'Homework1': ':--------:',
-      'Homework2': '---------:'
+      'Lessons': [
+        ':-------:'
+      ],
+      'Homework': [
+        ':--------:'
+      ]
     },
     {
       '': '',
@@ -20,12 +20,13 @@ module.exports = (controller) => {
       'Week': 1,
       'Unit': 1,
       'Morning Exercise': '',
-      'Lesson1': '[orientation](https://git.generalassemb.ly/ga-wdi-boston/orientation)',
-      'Lesson2': '[installfest](https://git.generalassemb.ly/ga-wdi-boston/installfest)',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[unix-cli-study](https://git.generalassemb.ly/ga-wdi-boston/unix-cli-study)',
-      'Homework2': ''
+      'Lessons': [
+        '[orientation](https://git.generalassemb.ly/ga-wdi-boston/orientation)',
+        '[installfest](https://git.generalassemb.ly/ga-wdi-boston/installfest)'
+      ],
+      'Homework': [
+        '[unix-cli-study](https://git.generalassemb.ly/ga-wdi-boston/unix-cli-study)'
+      ]
     },
     {
       '': '',
@@ -33,12 +34,14 @@ module.exports = (controller) => {
       'Week': 1,
       'Unit': 1,
       'Morning Exercise': '',
-      'Lesson1': '[unix-cli](https://git.generalassemb.ly/ga-wdi-boston/unix-cli)',
-      'Lesson2': '[git](https://git.generalassemb.ly/ga-wdi-boston/git)',
-      'Lesson3': '[git-github](https://git.generalassemb.ly/ga-wdi-boston/git-github)',
-      'Lesson4': '',
-      'Homework1': '[git-practice](https://git.generalassemb.ly/ga-wdi-boston/git-practice)',
-      'Homework2': ''
+      'Lessons': [
+        '[unix-cli](https://git.generalassemb.ly/ga-wdi-boston/unix-cli)',
+        '[git](https://git.generalassemb.ly/ga-wdi-boston/git)',
+        '[git-github](https://git.generalassemb.ly/ga-wdi-boston/git-github)'
+      ],
+      'Homework': [
+        '[git-practice](https://git.generalassemb.ly/ga-wdi-boston/git-practice)'
+      ]
     },
     {
       '': '',
@@ -46,12 +49,12 @@ module.exports = (controller) => {
       'Week': 1,
       'Unit': 1,
       'Morning Exercise': '[unix-cli-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/unix-cli-diagnostic)',
-      'Lesson1': '[js](https://git.generalassemb.ly/ga-wdi-boston/js)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[js-practice](https://git.generalassemb.ly/ga-wdi-boston/js-practice)',
-      'Homework2': ''
+      'Lessons': [
+        '[js](https://git.generalassemb.ly/ga-wdi-boston/js)'
+      ],
+      'Homework': [
+        '[js-practice](https://git.generalassemb.ly/ga-wdi-boston/js-practice)'
+      ]
     },
     {
       '': '',
@@ -59,12 +62,12 @@ module.exports = (controller) => {
       'Week': 1,
       'Unit': 1,
       'Morning Exercise': '[git-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/git-diagnostic)',
-      'Lesson1': '[js-reference-types](https://git.generalassemb.ly/ga-wdi-boston/js-reference-types)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[js-reference-types-practice](https://git.generalassemb.ly/ga-wdi-boston/js-reference-types-practice)',
-      'Homework2': ''
+      'Lessons': [
+        '[js-reference-types](https://git.generalassemb.ly/ga-wdi-boston/js-reference-types)'
+      ],
+      'Homework': [
+        '[js-reference-types-practice](https://git.generalassemb.ly/ga-wdi-boston/js-reference-types-practice)'
+      ]
     },
     {
       '': '',
@@ -72,12 +75,14 @@ module.exports = (controller) => {
       'Week': 1,
       'Unit': 1,
       'Morning Exercise': '[js-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/js-diagnostic)',
-      'Lesson1': '[js-objects-modeling](https://git.generalassemb.ly/ga-wdi-boston/js-objects-modeling)',
-      'Lesson2': '[js-objects-this](https://git.generalassemb.ly/ga-wdi-boston/js-objects-this)',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[js-this-prototype-study](https://git.generalassemb.ly/ga-wdi-boston/js-this-prototype-study)',
-      'Homework2': '[html-css-study](https://git.generalassemb.ly/ga-wdi-boston/html-css-study)'
+      'Lessons': [
+        '[js-objects-modeling](https://git.generalassemb.ly/ga-wdi-boston/js-objects-modeling)',
+        '[js-objects-this](https://git.generalassemb.ly/ga-wdi-boston/js-objects-this)'
+      ],
+      'Homework': [
+        '[js-this-prototype-study](https://git.generalassemb.ly/ga-wdi-boston/js-this-prototype-study)',
+        '[html-css-study](https://git.generalassemb.ly/ga-wdi-boston/html-css-study)'
+      ]
     },
     {
       '': '',
@@ -85,12 +90,15 @@ module.exports = (controller) => {
       'Week': 2,
       'Unit': 1,
       'Morning Exercise': '[js-reference-types-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/js-reference-types-diagnostic)',
-      'Lesson1': '[js-objects-constructors](https://git.generalassemb.ly/ga-wdi-boston/js-objects-constructors)',
-      'Lesson2': '[js-objects-prototypes](https://git.generalassemb.ly/ga-wdi-boston/js-objects-prototypes)',
-      'Lesson3': '[html-css](https://git.generalassemb.ly/ga-wdi-boston/html-css)',
-      'Lesson4': '',
-      'Homework1': '[js-functions-study](https://git.generalassemb.ly/ga-wdi-boston/js-Functions-study)',
-      'Homework2': '[html-css-layout-study](https://git.generalassemb.ly/ga-wdi-boston/html-css-layout-study)'
+      'Lessons': [
+        '[js-objects-constructors](https://git.generalassemb.ly/ga-wdi-boston/js-objects-constructors)',
+        '[js-objects-prototypes](https://git.generalassemb.ly/ga-wdi-boston/js-objects-prototypes)',
+        '[html-css](https://git.generalassemb.ly/ga-wdi-boston/html-css)'
+      ],
+      'Homework': [
+        '[js-functions-study](https://git.generalassemb.ly/ga-wdi-boston/js-Functions-study)',
+        '[html-css-layout-study](https://git.generalassemb.ly/ga-wdi-boston/html-css-layout-study)'
+      ]
     },
     {
       '': '',
@@ -98,12 +106,15 @@ module.exports = (controller) => {
       'Week': 2,
       'Unit': 1,
       'Morning Exercise': '[js-objects-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/js-objects-diagnostic)',
-      'Lesson1': '[js-functions](https://git.generalassemb.ly/ga-wdi-boston/js-functions)',
-      'Lesson2': '[html-css-layout](https://git.generalassemb.ly/ga-wdi-boston/html-css-layout)',
-      'Lesson3': '[project-planning-wireframes](https://git.generalassemb.ly/ga-wdi-boston/project-planning-wireframes)',
-      'Lesson4': '',
-      'Homework1': '[project-planning-wireframes-practice](https://git.generalassemb.ly/ga-wdi-boston/project-planning-wireframes-practice)',
-      'Homework2': '[jquery-dom-study](https://git.generalassemb.ly/ga-wdi-boston/jquery-dom-study)'
+      'Lessons': [
+        '[js-functions](https://git.generalassemb.ly/ga-wdi-boston/js-functions)',
+        '[html-css-layout](https://git.generalassemb.ly/ga-wdi-boston/html-css-layout)',
+        '[project-planning-wireframes](https://git.generalassemb.ly/ga-wdi-boston/project-planning-wireframes)'
+      ],
+      'Homework': [
+        '[project-planning-wireframes-practice](https://git.generalassemb.ly/ga-wdi-boston/project-planning-wireframes-practice)',
+        '[jquery-dom-study](https://git.generalassemb.ly/ga-wdi-boston/jquery-dom-study)'
+      ]
     },
     {
       '': '',
@@ -111,12 +122,13 @@ module.exports = (controller) => {
       'Week': 2,
       'Unit': 1,
       'Morning Exercise': '[js-functions-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/js-functions-diagnostic)',
-      'Lesson1': '[js-array-iteration-methods](https://git.generalassemb.ly/ga-wdi-boston/js-array-iteration-methods)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[json-study](https://git.generalassemb.ly/ga-wdi-boston/json-study)',
-      'Homework2': '[http-study](https://git.generalassemb.ly/ga-wdi-boston/http-study)'
+      'Lessons': [
+        '[js-array-iteration-methods](https://git.generalassemb.ly/ga-wdi-boston/js-array-iteration-methods)'
+      ],
+      'Homework': [
+        '[json-study](https://git.generalassemb.ly/ga-wdi-boston/json-study)',
+        '[http-study](https://git.generalassemb.ly/ga-wdi-boston/http-study)'
+      ]
     },
     {
       '': '',
@@ -124,12 +136,14 @@ module.exports = (controller) => {
       'Week': 2,
       'Unit': 1,
       'Morning Exercise': '[html-css-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/html-css-diagnostic)',
-      'Lesson1': '[jquery-dom](https://git.generalassemb.ly/ga-wdi-boston/jquery-dom)',
-      'Lesson2': '[http-json-discussion](https://git.generalassemb.ly/ga-wdi-boston/http-json-discussion)',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[js-async-study](https://git.generalassemb.ly/ga-wdi-boston/http-study)',
-      'Homework2': '[library-api-guide](https://git.generalassemb.ly/ga-wdi-boston/library-api-guide)'
+      'Lessons': [
+        '[jquery-dom](https://git.generalassemb.ly/ga-wdi-boston/jquery-dom)',
+        '[http-json-discussion](https://git.generalassemb.ly/ga-wdi-boston/http-json-discussion)'
+      ],
+      'Homework': [
+        '[js-async-study](https://git.generalassemb.ly/ga-wdi-boston/http-study)',
+        '[library-api-guide](https://git.generalassemb.ly/ga-wdi-boston/library-api-guide)'
+      ]
     },
     {
       '': '',
@@ -137,12 +151,13 @@ module.exports = (controller) => {
       'Week': 2,
       'Unit': 1,
       'Morning Exercise': '[js-array-iteration-methods-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/js-array-iteration-methods-diagnostic)',
-      'Lesson1': '[jquery-ajax-crud](https://git.generalassemb.ly/ga-wdi-boston/jquery-ajax-crud)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[spa-study](https://git.generalassemb.ly/ga-wdi-boston/spa-study)',
-      'Homework2': '[js-boggle-challenge](https://git.generalassemb.ly/ga-wdi-boston/js-boggle-challenge)'
+      'Lessons': [
+        '[jquery-ajax-crud](https://git.generalassemb.ly/ga-wdi-boston/jquery-ajax-crud)'
+      ],
+      'Homework': [
+        '[spa-study](https://git.generalassemb.ly/ga-wdi-boston/spa-study)',
+        '[js-boggle-challenge](https://git.generalassemb.ly/ga-wdi-boston/js-boggle-challenge)'
+      ]
     },
     {
       '': '',
@@ -150,12 +165,12 @@ module.exports = (controller) => {
       'Week': 3,
       'Unit': 1,
       'Morning Exercise': '[jquery-dom-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/jquery-dom-diagnostic)',
-      'Lesson1': '[api-token-auth](https://git.generalassemb.ly/ga-wdi-boston/api-token-auth)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[game-project-scope-study](https://git.generalassemb.ly/ga-wdi-boston/game-project-scope-study)',
-      'Homework2': ''
+      'Lessons': [
+        '[jquery-ajax-token-auth](https://git.generalassemb.ly/ga-wdi-boston/jquery-ajax-token-auth)'
+      ],
+      'Homework': [
+        '[game-project-scope-study](https://git.generalassemb.ly/ga-wdi-boston/game-project-scope-study'
+      ]
     },
     {
       '': '',
@@ -163,12 +178,15 @@ module.exports = (controller) => {
       'Week': 3,
       'Unit': 1,
       'Morning Exercise': '[jquery-ajax-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/jquery-ajax-diagnostic)',
-      'Lesson1': '[html-css-sass](https://git.generalassemb.ly/ga-wdi-boston/html-css-sass)',
-      'Lesson2': '[html-css-layout-bootstrap-sass](https://git.generalassemb.ly/ga-wdi-boston/html-css-layout-bootstrap-sass)',
-      'Lesson3': '[game-project-scope-discussion](https://git.generalassemb.ly/ga-wdi-boston/game-project-scope-discussion)',
-      'Lesson4': '',
-      'Homework1': '[gh-pages-deployment-guide](https://git.generalassemb.ly/ga-wdi-boston/gh-pages-deployment-guide)',
-      'Homework2': '[css-layout-challenge](https://git.generalassemb.ly/ga-wdi-boston/css-layout-challenge)'
+      'Lessons': [
+        '[html-css-sass](https://git.generalassemb.ly/ga-wdi-boston/html-css-sass)',
+        '[html-css-bootstrap-layout](https://git.generalassemb.ly/ga-wdi-boston/html-css-bootstrap-layout)',
+        '[game-project-scope-discussion](https://git.generalassemb.ly/ga-wdi-boston/game-project-scope-discussion)'
+      ],
+      'Homework': [
+        '[gh-pages-deployment-guide](https://git.generalassemb.ly/ga-wdi-boston/gh-pages-deployment-guide)',
+        '[css-layout-challenge](https://git.generalassemb.ly/ga-wdi-boston/css-layout-challenge)'
+      ]
     },
     {
       '': '',
@@ -176,12 +194,12 @@ module.exports = (controller) => {
       'Week': 3,
       'Unit': 1,
       'Morning Exercise': '',
-      'Lesson1': 'Project 1 Worktime',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        'Project 1 Worktime'
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -189,12 +207,12 @@ module.exports = (controller) => {
       'Week': 3,
       'Unit': 1,
       'Morning Exercise': '',
-      'Lesson1': 'Project 1 Worktime',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        'Project 1 Worktime'
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -202,12 +220,12 @@ module.exports = (controller) => {
       'Week': 3,
       'Unit': 1,
       'Morning Exercise': '',
-      'Lesson1': 'Project 1 Worktime',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        'Project 1 Worktime'
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -215,12 +233,12 @@ module.exports = (controller) => {
       'Week': 4,
       'Unit': 1,
       'Morning Exercise': '',
-      'Lesson1': 'Project 1 Worktime',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        'Project 1 Worktime'
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -228,12 +246,13 @@ module.exports = (controller) => {
       'Week': 4,
       'Unit': 1,
       'Morning Exercise': '',
-      'Lesson1': 'Project 1 Presentations',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[ruby-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-study)',
-      'Homework2': '[ruby-vs-js-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-study)'
+      'Lessons': [
+        'Project 1 Presentations'
+      ],
+      'Homework': [
+        '[ruby-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-study)',
+        '[ruby-vs-js-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-study)'
+      ]
     },
     {
       '': '',
@@ -241,12 +260,14 @@ module.exports = (controller) => {
       'Week': 4,
       'Unit': 2,
       'Morning Exercise': '[js-euler-palindrome-challenge](https://git.generalassemb.ly/ga-wdi-boston/js-euler-palindrome-challenge)',
-      'Lesson1': '[ruby](https://git.generalassemb.ly/ga-wdi-boston/ruby)',
-      'Lesson2': '[ruby-arrays](https://git.generalassemb.ly/ga-wdi-boston/ruby-arrays)',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[ruby-vs-js-arrays-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-arrays-study)',
-      'Homework2': '[ruby-vs-js-hash-dictionary-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-hash-dictionary-study)'
+      'Lessons': [
+        '[ruby](https://git.generalassemb.ly/ga-wdi-boston/ruby)',
+        '[ruby-arrays](https://git.generalassemb.ly/ga-wdi-boston/ruby-arrays)'
+      ],
+      'Homework': [
+        '[ruby-vs-js-arrays-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-arrays-study)',
+        '[ruby-vs-js-hash-dictionary-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-hash-dictionary-study)'
+      ]
     },
     {
       '': '',
@@ -254,12 +275,13 @@ module.exports = (controller) => {
       'Week': 4,
       'Unit': 2,
       'Morning Exercise': '[ruby-vs-js-list-challenge](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-list-challenge)',
-      'Lesson1': '[ruby-hash](https://git.generalassemb.ly/ga-wdi-boston/ruby-hash)',
-      'Lesson2': '[ruby-array-methods](https://git.generalassemb.ly/ga-wdi-boston/ruby-array-methods)',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[ruby-vs-js-objects-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-objects-study)',
-      'Homework2': ''
+      'Lessons': [
+        '[ruby-hash](https://git.generalassemb.ly/ga-wdi-boston/ruby-hash)',
+        '[ruby-array-methods](https://git.generalassemb.ly/ga-wdi-boston/ruby-array-methods)'
+      ],
+      'Homework': [
+        '[ruby-vs-js-objects-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-objects-study)'
+      ]
     },
     {
       '': '',
@@ -267,12 +289,15 @@ module.exports = (controller) => {
       'Week': 4,
       'Unit': 2,
       'Morning Exercise': '[ruby-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/ruby-diagnostic)',
-      'Lesson1': '[ruby-objects](https://git.generalassemb.ly/ga-wdi-boston/ruby-objects)',
-      'Lesson2': '[ruby-object-inheritance](https://git.generalassemb.ly/ga-wdi-boston/ruby-object-inheritance)',
-      'Lesson3': '[ruby-object-model](https://git.generalassemb.ly/ga-wdi-boston/ruby-object-model)',
-      'Lesson4': '',
-      'Homework1': '[ruby-gem-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-gem-study)',
-      'Homework2': '[ruby-enumerable-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-enumerable-study)'
+      'Lessons': [
+        '[ruby-objects](https://git.generalassemb.ly/ga-wdi-boston/ruby-objects)',
+        '[ruby-object-inheritance](https://git.generalassemb.ly/ga-wdi-boston/ruby-object-inheritance)',
+        '[ruby-object-model](https://git.generalassemb.ly/ga-wdi-boston/ruby-object-model)'
+      ],
+      'Homework': [
+        '[ruby-gem-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-gem-study)',
+        '[ruby-enumerable-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-enumerable-study)'
+      ]
     },
     {
       '': '',
@@ -280,12 +305,16 @@ module.exports = (controller) => {
       'Week': 5,
       'Unit': 2,
       'Morning Exercise': '[ruby-calculator-challenge](https://git.generalassemb.ly/ga-wdi-boston/ruby-calculator-challenge)',
-      'Lesson1': '[ruby-object-self](https://git.generalassemb.ly/ga-wdi-boston/ruby-object-self)',
-      'Lesson2': '[ruby-object-class-methods](https://git.generalassemb.ly/ga-wdi-boston/ruby-object-class-methods)',
-      'Lesson3': '[ruby-enumerable-builtins](https://git.generalassemb.ly/ga-wdi-boston/ruby-enumerable-builtins)',
-      'Lesson4': '[ruby-enumerable-comparable](https://git.generalassemb.ly/ga-wdi-boston/ruby-enumerable-comparable)',
-      'Homework1': '[rails-activerecord-crud-study](https://git.generalassemb.ly/ga-wdi-boston/rails-activerecord-crud-study)',
-      'Homework2': '[sql-study](https://git.generalassemb.ly/ga-wdi-boston/sql-study)'
+      'Lessons': [
+        '[ruby-object-self](https://git.generalassemb.ly/ga-wdi-boston/ruby-object-self)',
+        '[ruby-object-class-methods](https://git.generalassemb.ly/ga-wdi-boston/ruby-object-class-methods)',
+        '[ruby-enumerable-builtins](https://git.generalassemb.ly/ga-wdi-boston/ruby-enumerable-builtins)',
+        '[ruby-enumerable-comparable](https://git.generalassemb.ly/ga-wdi-boston/ruby-enumerable-comparable)'
+      ],
+      'Homework': [
+        '[rails-activerecord-crud-study](https://git.generalassemb.ly/ga-wdi-boston/rails-activerecord-crud-study)',
+        '[sql-study](https://git.generalassemb.ly/ga-wdi-boston/sql-study)'
+      ]
     },
     {
       '': '',
@@ -293,12 +322,14 @@ module.exports = (controller) => {
       'Week': 5,
       'Unit': 2,
       'Morning Exercise': '[ruby-objects-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/ruby-objects-diagnostic)',
-      'Lesson1': '[sql](https://git.generalassemb.ly/ga-wdi-boston/sql)',
-      'Lesson2': '[rails-api](https://git.generalassemb.ly/ga-wdi-boston/rails-api)',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[ruby-objects-practice](https://git.generalassemb.ly/ga-wdi-boston/ruby-objects-practice)',
-      'Homework2': '[rails-api-study](https://git.generalassemb.ly/ga-wdi-boston/rails-api-study)'
+      'Lessons': [
+        '[sql](https://git.generalassemb.ly/ga-wdi-boston/sql)',
+        '[rails-api](https://git.generalassemb.ly/ga-wdi-boston/rails-api)'
+      ],
+      'Homework': [
+        '[ruby-objects-practice](https://git.generalassemb.ly/ga-wdi-boston/ruby-objects-practice)',
+        '[rails-api-study](https://git.generalassemb.ly/ga-wdi-boston/rails-api-study)'
+      ]
     },
     {
       '': '',
@@ -306,12 +337,13 @@ module.exports = (controller) => {
       'Week': 5,
       'Unit': 2,
       'Morning Exercise': '[ruby-enumerable-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/ruby-enumerable-diagnostic)',
-      'Lesson1': '[rails-api-single-resource](https://git.generalassemb.ly/ga-wdi-boston/rails-api-single-resource)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[rails-migrations-study](https://git.generalassemb.ly/ga-wdi-boston/rails-migrations-study)',
-      'Homework2': '[rest-study](https://git.generalassemb.ly/ga-wdi-boston/rest-study)'
+      'Lessons': [
+        '[rails-api-single-resource](https://git.generalassemb.ly/ga-wdi-boston/rails-api-single-resource)'
+      ],
+      'Homework': [
+        '[rails-migrations-study](https://git.generalassemb.ly/ga-wdi-boston/rails-migrations-study)',
+        '[rest-study](https://git.generalassemb.ly/ga-wdi-boston/rest-study)'
+      ]
     },
     {
       '': '',
@@ -319,12 +351,12 @@ module.exports = (controller) => {
       'Week': 5,
       'Unit': 2,
       'Morning Exercise': '[sql-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/sql-diagnostic)',
-      'Lesson1': '[rails-api-one-to-many](https://git.generalassemb.ly/ga-wdi-boston/rails-api-one-to-many)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[ruby-solid-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-solid-study)',
-      'Homework2': ''
+      'Lessons': [
+        '[rails-api-one-to-many](https://git.generalassemb.ly/ga-wdi-boston/rails-api-one-to-many)'
+      ],
+      'Homework': [
+        '[ruby-solid-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-solid-study)'
+      ]
     },
     {
       '': '',
@@ -332,12 +364,12 @@ module.exports = (controller) => {
       'Week': 5,
       'Unit': 2,
       'Morning Exercise': '[rails-api-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/rails-api-diagnostic)',
-      'Lesson1': '[code-retreat](https://git.generalassemb.ly/ga-wdi-boston/code-retreat)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)',
-      'Homework2': ''
+      'Lessons': [
+        '[code-retreat](https://git.generalassemb.ly/ga-wdi-boston/code-retreat)'
+      ],
+      'Homework': [
+        '[rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)'
+      ]
     },
     {
       '': '',
@@ -345,12 +377,12 @@ module.exports = (controller) => {
       'Week': 6,
       'Unit': 2,
       'Morning Exercise': '[rails-api-single-resource-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/rails-api-single-resource-diagnostic)',
-      'Lesson1': '[rails-api-many-to-many](https://git.generalassemb.ly/ga-wdi-boston/rails-api-many-to-many)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[full-stack-project-practice](https://git.generalassemb.ly/ga-wdi-boston/full-stack-project-practice)',
-      'Homework2': ''
+      'Lessons': [
+        '[rails-api-many-to-many](https://git.generalassemb.ly/ga-wdi-boston/rails-api-many-to-many)'
+      ],
+      'Homework': [
+        '[full-stack-project-practice](https://git.generalassemb.ly/ga-wdi-boston/full-stack-project-practice)'
+      ]
     },
     {
       '': '',
@@ -358,12 +390,12 @@ module.exports = (controller) => {
       'Week': 6,
       'Unit': 2,
       'Morning Exercise': '[ruby-fibonacci-challenge](https://git.generalassemb.ly/ga-wdi-boston/ruby-fibonacci-challenge)',
-      'Lesson1': '[rails-api-bdd](https://git.generalassemb.ly/ga-wdi-boston/rails-api-bdd)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        '[rails-api-bdd](https://git.generalassemb.ly/ga-wdi-boston/rails-api-bdd)'
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -371,12 +403,14 @@ module.exports = (controller) => {
       'Week': 6,
       'Unit': 2,
       'Morning Exercise': '[rails-api-relationships-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/rails-api-relationships-diagnostic)',
-      'Lesson1': '[handlebars](https://git.generalassemb.ly/ga-wdi-boston/handlebars)',
-      'Lesson2': '[full-stack-project-modeling-lab](https://git.generalassemb.ly/ga-wdi-boston/full-stack-project-modeling-lab)',
-      'Lesson3': '[rails-api-examples-walkthrough](https://git.generalassemb.ly/ga-wdi-boston/rails-api-examples-walkthrough)',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        '[handlebars](https://git.generalassemb.ly/ga-wdi-boston/handlebars)',
+        '[full-stack-project-modeling-lab](https://git.generalassemb.ly/ga-wdi-boston/full-stack-project-modeling-lab)',
+        '[rails-api-examples-walkthrough](https://git.generalassemb.ly/ga-wdi-boston/rails-api-examples-walkthrough)'
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -384,12 +418,12 @@ module.exports = (controller) => {
       'Week': 6,
       'Unit': 2,
       'Morning Exercise': 'Project 2 Worktime',
-      'Lesson1': '',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -397,12 +431,12 @@ module.exports = (controller) => {
       'Week': 6,
       'Unit': 2,
       'Morning Exercise': 'Project 2 Worktime',
-      'Lesson1': '',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -410,12 +444,12 @@ module.exports = (controller) => {
       'Week': 7,
       'Unit': 2,
       'Morning Exercise': 'Project 2 Worktime',
-      'Lesson1': '',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -423,12 +457,12 @@ module.exports = (controller) => {
       'Week': 7,
       'Unit': 2,
       'Morning Exercise': 'Project 2 Worktime',
-      'Lesson1': '',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -436,12 +470,12 @@ module.exports = (controller) => {
       'Week': 7,
       'Unit': 2,
       'Morning Exercise': 'Project 2 Presentations',
-      'Lesson1': '',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -449,12 +483,14 @@ module.exports = (controller) => {
       'Week': 7,
       'Unit': 3,
       'Morning Exercise': '',
-      'Lesson1': '[git-workflow-teams](https://git.generalassemb.ly/ga-wdi-boston/git-workflow-teams)',
-      'Lesson2': '[js-function-context-this](https://git.generalassemb.ly/ga-wdi-boston/js-function-context-this)',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[sql-nosql-study](https://git.generalassemb.ly/ga-wdi-boston/sql-nosql-study)',
-      'Homework2': '[self-learning-study](https://git.generalassemb.ly/ga-wdi-boston/self-learning-study)'
+      'Lessons': [
+        '[git-workflow-teams](https://git.generalassemb.ly/ga-wdi-boston/git-workflow-teams)',
+        '[js-function-context-this](https://git.generalassemb.ly/ga-wdi-boston/js-function-context-this)'
+      ],
+      'Homework': [
+        '[sql-nosql-study](https://git.generalassemb.ly/ga-wdi-boston/sql-nosql-study)',
+        '[self-learning-study](https://git.generalassemb.ly/ga-wdi-boston/self-learning-study)'
+      ]
     },
     {
       '': '',
@@ -462,12 +498,13 @@ module.exports = (controller) => {
       'Week': 7,
       'Unit': 3,
       'Morning Exercise': '[js-function-context-this](https://git.generalassemb.ly/ga-wdi-boston/js-function-context-this)',
-      'Lesson1': '[node-api](https://git.generalassemb.ly/ga-wdi-boston/node-api)',
-      'Lesson2': '[sql-nosql-discussion](https://git.generalassemb.ly/ga-wdi-boston/sql-nosql-discussion)',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[mongodb-study](https://git.generalassemb.ly/ga-wdi-boston/mongodb-study)',
-      'Homework2': ''
+      'Lessons': [
+        '[node-api](https://git.generalassemb.ly/ga-wdi-boston/node-api)',
+        '[sql-nosql-discussion](https://git.generalassemb.ly/ga-wdi-boston/sql-nosql-discussion)'
+      ],
+      'Homework': [
+        '[mongodb-study](https://git.generalassemb.ly/ga-wdi-boston/mongodb-study)'
+      ]
     },
     {
       '': '',
@@ -475,12 +512,13 @@ module.exports = (controller) => {
       'Week': 8,
       'Unit': 3,
       'Morning Exercise': '[node-api-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/node-api-diagnostic)',
-      'Lesson1': '[node-api-promises](https://git.generalassemb.ly/ga-wdi-boston/node-api-promises)',
-      'Lesson2': '[mongodb](https://git.generalassemb.ly/ga-wdi-boston/mongodb)',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[js-modules-study](https://git.generalassemb.ly/ga-wdi-boston/js-modules-study)',
-      'Homework2': ''
+      'Lessons': [
+        '[node-api-promises](https://git.generalassemb.ly/ga-wdi-boston/node-api-promises)',
+        '[mongodb](https://git.generalassemb.ly/ga-wdi-boston/mongodb)'
+      ],
+      'Homework': [
+        '[js-modules-study](https://git.generalassemb.ly/ga-wdi-boston/js-modules-study)'
+      ]
     },
     {
       '': '',
@@ -488,12 +526,12 @@ module.exports = (controller) => {
       'Week': 8,
       'Unit': 3,
       'Morning Exercise': '[node-api-promises-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/node-api-promises-diagnostic)',
-      'Lesson1': '[mongoose](https://git.generalassemb.ly/ga-wdi-boston/mongoose)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[node-npm-practice](https://git.generalassemb.ly/ga-wdi-boston/node-npm-practice)',
-      'Homework2': ''
+      'Lessons': [
+        '[mongoose](https://git.generalassemb.ly/ga-wdi-boston/mongoose)'
+      ],
+      'Homework': [
+        '[node-npm-practice](https://git.generalassemb.ly/ga-wdi-boston/node-npm-practice)'
+      ]
     },
     {
       '': '',
@@ -501,12 +539,12 @@ module.exports = (controller) => {
       'Week': 8,
       'Unit': 3,
       'Morning Exercise': '[mongodb-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/mongodb-diagnostic)',
-      'Lesson1': '[express-api](https://git.generalassemb.ly/ga-wdi-boston/express-api)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[aws-s3-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/aws-s3-setup-guide)',
-      'Homework2': ''
+      'Lessons': [
+        '[express-api](https://git.generalassemb.ly/ga-wdi-boston/express-api)'
+      ],
+      'Homework': [
+        '[aws-s3-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/aws-s3-setup-guide)'
+      ]
     },
     {
       '': '',
@@ -514,12 +552,12 @@ module.exports = (controller) => {
       'Week': 8,
       'Unit': 3,
       'Morning Exercise': '[mongoose-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/mongoose-diagnostic)',
-      'Lesson1': '[express-api](https://git.generalassemb.ly/ga-wdi-boston/express-api)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[express-api-deployment-guide](https://git.generalassemb.ly/ga-wdi-boston/express-api-deployment-guide)',
-      'Homework2': ''
+      'Lessons': [
+        '[express-api](https://git.generalassemb.ly/ga-wdi-boston/express-api)'
+      ],
+      'Homework': [
+        '[express-api-deployment-guide](https://git.generalassemb.ly/ga-wdi-boston/express-api-deployment-guide)'
+      ]
     },
     {
       '': '',
@@ -527,12 +565,12 @@ module.exports = (controller) => {
       'Week': 8,
       'Unit': 3,
       'Morning Exercise': '',
-      'Lesson1': '[express-multer](https://git.generalassemb.ly/ga-wdi-boston/express-multer-upload-api)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[cipher-challenge](https://git.generalassemb.ly/ga-wdi-boston/cipher-challenge)',
-      'Homework2': ''
+      'Lessons': [
+        '[express-multer](https://git.generalassemb.ly/ga-wdi-boston/express-multer-upload-api)'
+      ],
+      'Homework': [
+        '[cipher-challenge](https://git.generalassemb.ly/ga-wdi-boston/cipher-challenge)'
+      ]
     },
     {
       '': '',
@@ -540,12 +578,13 @@ module.exports = (controller) => {
       'Week': 9,
       'Unit': 3,
       'Morning Exercise': '',
-      'Lesson1': '[express-multer](https://git.generalassemb.ly/ga-wdi-boston/express-multer-upload-api)',
-      'Lesson2': '[scrum](https://git.generalassemb.ly/ga-wdi-boston/scrum)',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        '[express-multer](https://git.generalassemb.ly/ga-wdi-boston/express-multer-upload-api)',
+        '[scrum](https://git.generalassemb.ly/ga-wdi-boston/scrum)'
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -553,12 +592,12 @@ module.exports = (controller) => {
       'Week': 9,
       'Unit': 3,
       'Morning Exercise': 'Project 3 Worktime',
-      'Lesson1': '',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -566,12 +605,12 @@ module.exports = (controller) => {
       'Week': 9,
       'Unit': 3,
       'Morning Exercise': 'Project 3 Worktime',
-      'Lesson1': '',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -579,12 +618,12 @@ module.exports = (controller) => {
       'Week': 9,
       'Unit': 3,
       'Morning Exercise': 'Project 3 Worktime',
-      'Lesson1': '',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
@@ -592,12 +631,16 @@ module.exports = (controller) => {
       'Week': 9,
       'Unit': 3,
       'Morning Exercise': 'Project 3 Presentations',
-      'Lesson1': '',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        '[Intro to CS (myGA)](https://my.generalassemb.ly/activities/513)',
+        '[Intro to Algorithms (myGA)](https://my.generalassemb.ly/activities/780)',
+        '[Intro to Sorting (myGA)](https://my.generalassemb.ly/activities/818)',
+        '[Big O Notation (myGA)])(https://my.generalassemb.ly/activities/511)',
+        '[Recursion (myGA)](https://my.generalassemb.ly/activities/773)'
+      ]
     },
     {
       '': '',
@@ -605,12 +648,15 @@ module.exports = (controller) => {
       'Week': 10,
       'Unit': 4,
       'Morning Exercise': '[ruby-morse-code-challenge](https://git.generalassemb.ly/ga-wdi-boston/ruby-morse-code-challenge)',
-      'Lesson1': '[cs](https://git.generalassemb.ly/ga-wdi-boston/cs)',
-      'Lesson2': '[cs-algorithms](https://git.generalassemb.ly/ga-wdi-boston/cs-algorithms)',
-      'Lesson3': '[cs-data-structures](https://git.generalassemb.ly/ga-wdi-boston/cs-data-structures)',
-      'Lesson4': '',
-      'Homework1': '[web-accessability-study](https://git.generalassemb.ly/ga-wdi-boston/web-accessibility-study)',
-      'Homework2': ''
+      'Lessons': [
+        '[cs](https://git.generalassemb.ly/ga-wdi-boston/cs)',
+        '[cs-algorithms](https://git.generalassemb.ly/ga-wdi-boston/cs-algorithms)'
+      ],
+      'Homework': [
+        '[Intro to Data Structures (myGA)](https://my.generalassemb.ly/activities/878)',
+        '[Linked Lists (myGA)](https://my.generalassemb.ly/activities/397)',
+        '[Binary Trees & Tries (myGA)](https://my.generalassemb.ly/activities/8)'
+      ]
     },
     {
       '': '',
@@ -618,12 +664,14 @@ module.exports = (controller) => {
       'Week': 10,
       'Unit': 4,
       'Morning Exercise': '[roman-numerals-challenge](https://git.generalassemb.ly/ga-wdi-boston/roman-numerals-challenge)',
-      'Lesson1': '[conference](https://git.generalassemb.ly/ga-wdi-boston/conference)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        '[cs-data-structures](https://git.generalassemb.ly/ga-wdi-boston/cs-data-structures)'
+      ],
+      'Homework': [
+        '[Basic Sorting Algorithms (myGA)](https://my.generalassemb.ly/activities/778)',
+        '[Divide-and-Conquer Sorting Algorithms (myGA)](https://my.generalassemb.ly/activities/882)',
+        '[Search Algorithms (myGA)](https://my.generalassemb.ly/activities/633)'
+      ]
     },
     {
       '': '',
@@ -631,12 +679,13 @@ module.exports = (controller) => {
       'Week': 10,
       'Unit': 4,
       'Morning Exercise': '',
-      'Lesson1': '[conference](https://git.generalassemb.ly/ga-wdi-boston/conference)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        '[interview-discussion](https://git.generalassemb.ly/ga-wdi-boston/interview-discussion)'
+      ],
+      'Homework': [
+        '[Intro to Hash Tables (myGA)](https://my.generalassemb.ly/activities/512)',
+        '[Design Patterns (myGA)](https://my.generalassemb.ly/activities/134)'
+      ]
     },
     {
       '': '',
@@ -644,12 +693,13 @@ module.exports = (controller) => {
       'Week': 10,
       'Unit': 4,
       'Morning Exercise': '[js-atc-challenge](https://git.generalassemb.ly/ga-wdi-boston/js-atc-challenge)',
-      'Lesson1': '[interview-discussion](https://git.generalassemb.ly/ga-wdi-boston/interview-discussion)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[state-machine-challenge](https://git.generalassemb.ly/ga-wdi-boston/state-machine-challenge)',
-      'Homework2': '[react-study](https://git.generalassemb.ly/ga-wdi-boston/react-study)'
+      'Lessons': [
+        '[cs-advanced](https://git.generalassemb.ly/ga-wdi-boston/cs)'
+      ],
+      'Homework': [
+        '[react-components-study](https://git.generalassemb.ly/ga-wdi-boston/react-components-study)',
+        '[react-study](https://git.generalassemb.ly/ga-wdi-boston/react-study)'
+      ]
     },
     {
       '': '',
@@ -657,12 +707,14 @@ module.exports = (controller) => {
       'Week': 10,
       'Unit': 4,
       'Morning Exercise': '[js-binary-search-challenge](https://git.generalassemb.ly/ga-wdi-boston/js-binary-search-challenge)',
-      'Lesson1': '[react](https://git.generalassemb.ly/ga-wdi-boston/react)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '[react-components-study](https://git.generalassemb.ly/ga-wdi-boston/react-components-study)',
-      'Homework2': ''
+      'Lessons': [
+        '[react](https://git.generalassemb.ly/ga-wdi-boston/react)',
+        '[react-components-props](https://git.generalassemb.ly/ga-wdi-boston/react-components-and-props)'
+      ],
+      'Homework': [
+        '[Stacks and Queues (myGA)](https://my.generalassemb.ly/activities/803)',
+        '[web-accessibility-study](https://git.generalassemb.ly/ga-wdi-boston/web-acceaccessibility-study)'
+      ]
     },
     {
       '': '',
@@ -670,12 +722,12 @@ module.exports = (controller) => {
       'Week': 11,
       'Unit': 4,
       'Morning Exercise': '',
-      'Lesson1': '[react-components-props](https://git.generalassemb.ly/ga-wdi-boston/react-components-and-props)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        '[react-components-state](https://git.generalassemb.ly/ga-wdi-boston/react-components-state)'
+      ],
+      'Homework': [
+        '[Graphs (myGA)](https://my.generalassemb.ly/activities/403)'
+      ]
     },
     {
       '': '',
@@ -683,12 +735,13 @@ module.exports = (controller) => {
       'Week': 11,
       'Unit': 4,
       'Morning Exercise': '',
-      'Lesson1': '[react-components-state](https://git.generalassemb.ly/ga-wdi-boston/react-components-state)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        '[react-router](https://git.generalassemb.ly/ga-wdi-boston/react-router)',
+        '[react-crud](https://git.generalassemb.ly/ga-wdi-boston/react-crud)'
+      ],
+      'Homework': [
+        '[Sets (myGA)]( https://my.generalassemb.ly/activities/465)'
+      ]
     },
     {
       '': '',
@@ -696,12 +749,12 @@ module.exports = (controller) => {
       'Week': 11,
       'Unit': 4,
       'Morning Exercise': '',
-      'Lesson1': '[react-router](https://git.generalassemb.ly/ga-wdi-boston/react-router)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        '[react-crud](https://git.generalassemb.ly/ga-wdi-boston/react-crud)'
+      ],
+      'Homework': [
+        '[Hash Tables Deep Dive (myGA)](https://my.generalassemb.ly/activities/761)'
+      ]
     },
     {
       '': '',
@@ -709,12 +762,13 @@ module.exports = (controller) => {
       'Week': 11,
       'Unit': 4,
       'Morning Exercise': '',
-      'Lesson1': '[react-crud](https://git.generalassemb.ly/ga-wdi-boston/react-crud)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        '[react-crud](https://git.generalassemb.ly/ga-wdi-boston/react-crud)'
+      ],
+      'Homework': [
+        '[Balancing Binary Trees (myGA)](https://my.generalassemb.ly/activities/263)',
+        '[Distribution Sorting Algorithms (myGA)](https://my.generalassemb.ly/activities/802)'
+      ]
     },
     {
       '': '',
@@ -722,77 +776,77 @@ module.exports = (controller) => {
       'Week': 11,
       'Unit': 4,
       'Morning Exercise': '',
-      'Lesson1': '[react-auth](https://git.generalassemb.ly/ga-wdi-boston/react-auth)',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Lessons': [
+        '[react-auth](https://git.generalassemb.ly/ga-wdi-boston/react-auth)'
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
       'Day': 56,
       'Week': 12,
       'Unit': 4,
-      'Morning Exercise': '',
-      'Lesson1': 'Project 4 Worktime',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Morning Exercise': 'Project 4 Worktime',
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
       'Day': 57,
       'Week': 12,
       'Unit': 4,
-      'Morning Exercise': '',
-      'Lesson1': 'Project 4 Worktime',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Morning Exercise': 'Project 4 Worktime',
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
       'Day': 58,
       'Week': 12,
       'Unit': 4,
-      'Morning Exercise': '',
-      'Lesson1': 'Project 4 Worktime',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Morning Exercise': 'Project 4 Worktime',
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
       'Day': 59,
       'Week': 12,
       'Unit': 4,
-      'Morning Exercise': '',
-      'Lesson1': 'Project 4 Worktime',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Morning Exercise': 'Project 4 Worktime',
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     },
     {
       '': '',
       'Day': 60,
       'Week': 12,
       'Unit': 4,
-      'Morning Exercise': '',
-      'Lesson1': 'Project 4 Presentations',
-      'Lesson2': '',
-      'Lesson3': '',
-      'Lesson4': '',
-      'Homework1': '',
-      'Homework2': ''
+      'Morning Exercise': 'Project 4 Presentations',
+      'Lessons': [
+        ''
+      ],
+      'Homework': [
+        ''
+      ]
     }
   ]
 }
