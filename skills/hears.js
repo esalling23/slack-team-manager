@@ -46,7 +46,7 @@ module.exports = function (controller) {
           }
         }
         controller.store.teams[team.id] = team
-        console.log('Added new cohort: ', controller.store.teams[team.id].cohorts[newCohort])
+        controller.logger.info('Added new cohort: ', controller.store.teams[team.id].cohorts[newCohort])
       })
       .catch(console.error)
   })
@@ -65,20 +65,20 @@ module.exports = function (controller) {
     // lookup history of messages
     controller.store.getTeam(message.team)
       .then(team => {
-        console.log(message.match[0].split(' ')[1])
+        controller.logger.info(message.match[0].split(' ')[1])
         const web = new WebClient(team.bot.app_token)
         return web.conversations.history({
           channel: message.match[0].split(' ')[1],
           limit: 5
         })
       }).then(res => {
-        console.log(stringifyObject(res.messages))
+        controller.logger.info(stringifyObject(res.messages))
       })
       .catch(console.error)
   })
 
   controller.hears('test', 'direct_message', function (bot, message) {
-    console.log(message)
+    controller.logger.info(message)
     controller.store.getTeam(message.team)
       .then(team => {
         controller.studio.get(bot, 'morning_check', message.user, message.channel).then(convo => {
@@ -94,7 +94,7 @@ module.exports = function (controller) {
 
   controller.hears('^calendar(.*)', 'direct_message', function (bot, message) {
     const now = new Date()
-    console.log(message)
+    controller.logger.info(message)
     let thisTeam
     controller.store.getTeam(message.team)
       .then(team => {
@@ -111,10 +111,10 @@ module.exports = function (controller) {
         })
       })
       .then(lessons => {
-        console.log(lessons, 'the lessons')
+        controller.logger.info(lessons, 'the lessons')
         const onlyCohort = message.match[0].split(' ')[1]
         const forced = message.match[0].split(' ')[2]
-        console.log(onlyCohort)
+        controller.logger.info(onlyCohort)
         // only include calendars with at least one lesson
         const filtered = _.pick(lessons, (v, k, o) => {
           let thisCohort = !onlyCohort ? true : onlyCohort.length === 0 || onlyCohort === v.cohort
@@ -124,7 +124,7 @@ module.exports = function (controller) {
             if (thisTeam.cohorts[v.cohort].materialsSent.lastHw !== '') {
               const lastHw = new Date(thisTeam.cohorts[v.cohort].materialsSent.lastHw)
               const diff = new Date(Math.abs(lastHw.getTime(), now.getTime()))
-              console.log(`Last HW sent out ${moment.duration(diff).asHours()} hours ago`)
+              controller.logger.info(`Last HW sent out ${moment.duration(diff).asHours()} hours ago`)
               hoursAgo = moment.duration(diff).asHours() > 12
             }
           }
@@ -136,7 +136,7 @@ module.exports = function (controller) {
 
   controller.hears('^homework(.*)', 'direct_message', function (bot, message) {
     const now = new Date()
-    console.log(message)
+    controller.logger.info(message)
     let thisTeam
     controller.store.getTeam(message.team)
       .then(team => {
@@ -155,7 +155,7 @@ module.exports = function (controller) {
       .then(homework => {
         const onlyCohort = message.match[0].split(' ')[1]
         const forced = message.match[0].split(' ')[2]
-        console.log(onlyCohort)
+        controller.logger.info(onlyCohort)
         // only include calendars with at least one lesson
         const filtered = _.pick(homework, (v, k, o) => {
           let thisCohort = !onlyCohort ? true : onlyCohort.length === 0 || onlyCohort === v.cohort
@@ -165,13 +165,13 @@ module.exports = function (controller) {
             if (thisTeam.cohorts[v.cohort].materialsSent.lastHw !== '') {
               const lastHw = new Date(thisTeam.cohorts[v.cohort].materialsSent.lastHw)
               const diff = new Date(Math.abs(lastHw.getTime(), now.getTime()))
-              console.log(`Last HW sent out ${moment.duration(diff).asHours()} hours ago`)
+              controller.logger.info(`Last HW sent out ${moment.duration(diff).asHours()} hours ago`)
               hoursAgo = moment.duration(diff).asHours() > 12
             }
           }
           return v.lessons.length > 0 && thisCohort && hoursAgo
         })
-        console.log(filtered, 'the homework')
+        controller.logger.info(filtered, 'the homework')
         controller.trigger('material_message', [bot, thisTeam, 'homework_thread', filtered])
       })
       .catch(console.error)

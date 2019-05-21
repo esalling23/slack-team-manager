@@ -53,7 +53,7 @@ module.exports = (controller) => {
           access_type: 'offline',
           scope: SCOPES
         })
-        console.log('Authorize this app by visiting this url:', authUrl)
+        controller.logger.info('Authorize this app by visiting this url:', authUrl)
         const rl = readline.createInterface({
           input: process.stdin,
           output: process.stdout
@@ -66,7 +66,7 @@ module.exports = (controller) => {
             // Store the token to disk for later program executions
             fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
               if (err) return reject(err)
-              console.log('Token stored to', TOKEN_PATH)
+              controller.logger.info('Token stored to', TOKEN_PATH)
             })
             callback(oAuth2Client)
           })
@@ -85,7 +85,7 @@ module.exports = (controller) => {
     return new Promise((resolve, reject) => {
       const calendar = google.calendar({version: 'v3', auth: opt.auth})
 
-      // console.log(start, end)
+      // controller.logger.info(start, end)
 
       const calOpt = {
         timeMin: opt.startTime,
@@ -127,11 +127,11 @@ module.exports = (controller) => {
   // filter out what we need
   const filteredMaterial = (grabLessons) => {
     return controller.materialList.reduce((lessons, curr) => {
-      // console.log(curr)
+      // controller.logger.info(curr)
       const check = grabLessons ? curr['Lessons'] : curr['Homework']
 
       const availLessons = check.filter(les => {
-        // console.log(les.match(/\[(.*?)\]/)[1])
+        // controller.logger.info(les.match(/\[(.*?)\]/)[1])
         return les !== '' && les.match(/\[(.*?)\]/)
       }).map(les => {
         return les.match(/\[(.*?)\]/)[1]

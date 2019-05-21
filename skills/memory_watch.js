@@ -4,16 +4,16 @@ const os = require('os-utils')
 
 module.exports = function (controller) {
   setInterval(function () {
-    console.log('Free memory %: ', os.freemem())
+    controller.logger.info('Free memory %: ', os.freemem())
 
     os.cpuFree(function (v) {
-      console.log('CPU Free: ' + v)
+      controller.logger.info('CPU Free: ' + v)
       cmd.get(
         `git prune
           git gc`,
         function (error, data, stderror) {
           if (error) return
-          console.log('ran git commands')
+          controller.logger.info('ran git commands')
           cmd.run('rm -rf .git')
         }
       )
@@ -24,7 +24,7 @@ module.exports = function (controller) {
           ls`,
       function (error, data, stderror) {
         if (error) return
-        console.log('the reduced_uploads directory contains these files :\n\n', data)
+        controller.logger.info('the reduced_uploads directory contains these files :\n\n', data)
         cmd.run('rm -rf tmp/reduced_uploads/*')
       }
     )
@@ -34,7 +34,7 @@ module.exports = function (controller) {
           ls`,
       function (error, data, stderror) {
         if (error) return
-        console.log('the uploaded directory contains these files :\n\n', data)
+        controller.logger.info('the uploaded directory contains these files :\n\n', data)
         cmd.run('rm -rf tmp/uploaded/*')
       }
     )

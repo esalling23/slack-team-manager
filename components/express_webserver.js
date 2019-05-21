@@ -32,7 +32,7 @@ module.exports = function (controller) {
   // const io = require('socket.io')(server)
 
   server.listen(process.env.PORT || 3000, null, function () {
-    console.log('Express webserver configured and listening at http://localhost:' + process.env.PORT || 3000)
+    controller.logger.info('Express webserver configured and listening at http://localhost:' + process.env.PORT || 3000)
   })
 
   // import all the pre-defined routes that are present in /components/routes

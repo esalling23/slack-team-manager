@@ -3,7 +3,7 @@ const { WebClient } = require('@slack/client')
 
 module.exports = function (controller) {
   controller.on('team_join', function (bot, message) {
-    console.log('a user joined', message)
+    controller.logger.info('a user joined', message)
     if (!controller.isUser(message.user)) return
 
     controller.storage.getTeam(message.team_id, function (error, team) {
@@ -24,7 +24,7 @@ module.exports = function (controller) {
 
         team.users = team.users
         controller.store.teams[team.id] = team
-      }).catch(error => console.log('Team Join User Profile Get error: ', error))
+      }).catch(error => controller.logger.info('Team Join User Profile Get error: ', error))
     })
   })
 }

@@ -6,7 +6,7 @@ module.exports = controller => {
 
     web.chat.delete({ ts: msg.ts, channel: msg.channel })
       .then(res => {
-        console.log(res, 'deleted')
+        controller.logger.info(res, 'deleted')
       }).catch(console.error)
   }
 }

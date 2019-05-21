@@ -4,10 +4,10 @@ module.exports = function (controller) {
   // Gets a script with thread, consts, and logic
   // returns the conversation object
   controller.makeCard = function (bot, context, scriptName, threadName, consts, cb) {
-    // console.log(context, ' make card context')
+    // controller.logger.info(context, ' make card context')
 
     controller.studio.get(bot, scriptName, context.user, context.channel).then(function (convo) {
-      // console.log(convo)
+      // controller.logger.info(convo)
       let thread
       if (consts.sameDoor) {
         thread = convo.thread
@@ -44,7 +44,7 @@ module.exports = function (controller) {
       template.username = process.env.username
       template.icon_url = process.env.icon_url
 
-      // console.log(template, ' make card template')
+      // controller.logger.info(template, ' make card template')
 
       convo.stop('card_only')
       cb(template)

@@ -3,12 +3,12 @@
 
 module.exports = function (controller) {
   controller.middleware.receive.use(function (bot, message, next) {
-    // console.log('RCVD:', message)
+    // controller.logger.info('RCVD:', message)
     next()
   })
 
   controller.middleware.send.use(function (bot, message, next) {
-    // console.log('SEND:', message)
+    // controller.logger.info('SEND:', message)
     next()
   })
 }

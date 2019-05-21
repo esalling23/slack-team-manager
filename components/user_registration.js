@@ -44,7 +44,7 @@ module.exports = function (controller) {
             testbot.team_info = team
 
             // team.bot_instance = testbot
-            // console.log(team.bot_instance, " THIS IS THE BOT INSTANCE")
+            // controller.logger.info(team.bot_instance, " THIS IS THE BOT INSTANCE")
 
             // Replace this with your own database!
 
