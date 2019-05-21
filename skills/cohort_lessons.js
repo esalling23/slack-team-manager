@@ -635,11 +635,11 @@ module.exports = (controller) => {
         ''
       ],
       'Homework': [
-        '[Intro to CS (myGA)](https://my.generalassemb.ly/activities/513)',
-        '[Intro to Algorithms (myGA)](https://my.generalassemb.ly/activities/780)',
-        '[Intro to Sorting (myGA)](https://my.generalassemb.ly/activities/818)',
-        '[Big O Notation (myGA)])(https://my.generalassemb.ly/activities/511)',
-        '[Recursion (myGA)](https://my.generalassemb.ly/activities/773)'
+        '[intro-to-cs (myGA)](https://my.generalassemb.ly/activities/513)',
+        '[intro-to-algorithms (myGA)](https://my.generalassemb.ly/activities/780)',
+        '[intro-to-sorting (myGA)](https://my.generalassemb.ly/activities/818)',
+        '[big-o-notation (myGA)])(https://my.generalassemb.ly/activities/511)',
+        '[recursion (myGA)](https://my.generalassemb.ly/activities/773)'
       ]
     },
     {
@@ -653,9 +653,9 @@ module.exports = (controller) => {
         '[cs-algorithms](https://git.generalassemb.ly/ga-wdi-boston/cs-algorithms)'
       ],
       'Homework': [
-        '[Intro to Data Structures (myGA)](https://my.generalassemb.ly/activities/878)',
-        '[Linked Lists (myGA)](https://my.generalassemb.ly/activities/397)',
-        '[Binary Trees & Tries (myGA)](https://my.generalassemb.ly/activities/8)'
+        '[intro-to-data-structures (myGA)](https://my.generalassemb.ly/activities/878)',
+        '[linked-lists (myGA)](https://my.generalassemb.ly/activities/397)',
+        '[binary-trees-and-tries (myGA)](https://my.generalassemb.ly/activities/8)'
       ]
     },
     {
@@ -668,9 +668,9 @@ module.exports = (controller) => {
         '[cs-data-structures](https://git.generalassemb.ly/ga-wdi-boston/cs-data-structures)'
       ],
       'Homework': [
-        '[Basic Sorting Algorithms (myGA)](https://my.generalassemb.ly/activities/778)',
-        '[Divide-and-Conquer Sorting Algorithms (myGA)](https://my.generalassemb.ly/activities/882)',
-        '[Search Algorithms (myGA)](https://my.generalassemb.ly/activities/633)'
+        '[basic-sorting-algorithms (myGA)](https://my.generalassemb.ly/activities/778)',
+        '[divide-and-conquer-sorting-algorithms (myGA)](https://my.generalassemb.ly/activities/882)',
+        '[search-algorithms (myGA)](https://my.generalassemb.ly/activities/633)'
       ]
     },
     {
@@ -683,8 +683,8 @@ module.exports = (controller) => {
         '[interview-discussion](https://git.generalassemb.ly/ga-wdi-boston/interview-discussion)'
       ],
       'Homework': [
-        '[Intro to Hash Tables (myGA)](https://my.generalassemb.ly/activities/512)',
-        '[Design Patterns (myGA)](https://my.generalassemb.ly/activities/134)'
+        '[intro-to-hash-tables (myGA)](https://my.generalassemb.ly/activities/512)',
+        '[design-patterns (myGA)](https://my.generalassemb.ly/activities/134)'
       ]
     },
     {
@@ -712,7 +712,7 @@ module.exports = (controller) => {
         '[react-components-props](https://git.generalassemb.ly/ga-wdi-boston/react-components-and-props)'
       ],
       'Homework': [
-        '[Stacks and Queues (myGA)](https://my.generalassemb.ly/activities/803)',
+        '[stacks-and-queues (myGA)](https://my.generalassemb.ly/activities/803)',
         '[web-accessibility-study](https://git.generalassemb.ly/ga-wdi-boston/web-acceaccessibility-study)'
       ]
     },
@@ -726,7 +726,7 @@ module.exports = (controller) => {
         '[react-components-state](https://git.generalassemb.ly/ga-wdi-boston/react-components-state)'
       ],
       'Homework': [
-        '[Graphs (myGA)](https://my.generalassemb.ly/activities/403)'
+        '[graphs (myGA)](https://my.generalassemb.ly/activities/403)'
       ]
     },
     {
@@ -740,7 +740,7 @@ module.exports = (controller) => {
         '[react-crud](https://git.generalassemb.ly/ga-wdi-boston/react-crud)'
       ],
       'Homework': [
-        '[Sets (myGA)]( https://my.generalassemb.ly/activities/465)'
+        '[sets (myGA)]( https://my.generalassemb.ly/activities/465)'
       ]
     },
     {
@@ -753,7 +753,7 @@ module.exports = (controller) => {
         '[react-crud](https://git.generalassemb.ly/ga-wdi-boston/react-crud)'
       ],
       'Homework': [
-        '[Hash Tables Deep Dive (myGA)](https://my.generalassemb.ly/activities/761)'
+        '[hash-tables-deep-dive (myGA)](https://my.generalassemb.ly/activities/761)'
       ]
     },
     {
@@ -766,8 +766,8 @@ module.exports = (controller) => {
         '[react-crud](https://git.generalassemb.ly/ga-wdi-boston/react-crud)'
       ],
       'Homework': [
-        '[Balancing Binary Trees (myGA)](https://my.generalassemb.ly/activities/263)',
-        '[Distribution Sorting Algorithms (myGA)](https://my.generalassemb.ly/activities/802)'
+        '[balancing-binary-trees (myGA)](https://my.generalassemb.ly/activities/263)',
+        '[distribution-sorting-algorithms (myGA)](https://my.generalassemb.ly/activities/802)'
       ]
     },
     {

@@ -57,7 +57,7 @@ module.exports = function (controller) {
             }
           }
         })
-      }).catch(console.error)
+      }).catch(controller.logger.error)
   })
 
   controller.on('create_team', function (bot, team, payload) {
