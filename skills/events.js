@@ -167,12 +167,19 @@ module.exports = function (controller) {
         })
         .then(lessons => {
           // only include calendars with at least one lesson
-          const filtered = _.pick(lessons, (v, k, o) => {
-            return v.lessons.length > 0
-          })
-          console.log(filtered, 'the lessons')
           for (const id in controller.store.teams) {
             const team = controller.store.teams[id]
+            // only include calendars with at least one lesson
+            const filtered = _.pick(lessons, (v, k, o) => {
+              let hoursAgo = true
+              if (team.cohorts[v.cohort] && team.cohorts[v.cohort].materialsSent) {
+                const lastHw = new Date(team.cohorts[v.cohort].materialsSent.lastHw)
+                const diff = new Date(Math.abs(lastHw.getTime(), now.getTime()))
+                hoursAgo = moment.duration(diff).asHours() > 12
+              }
+              return v.lessons.length > 0 && hoursAgo
+            })
+            console.log(filtered, 'the lessons')
             controller.trigger('material_message', [controller.spawn(team.bot), team, 'calendar_alert', filtered])
           }
         })
@@ -205,7 +212,7 @@ module.exports = function (controller) {
               if (team.cohorts[v.cohort] && team.cohorts[v.cohort].materialsSent) {
                 const lastHw = new Date(team.cohorts[v.cohort].materialsSent.lastHw)
                 const diff = new Date(Math.abs(lastHw.getTime(), now.getTime()))
-                hoursAgo = moment.duration(diff).asHours() > 24
+                hoursAgo = moment.duration(diff).asHours() > 12
               }
               return v.lessons.length > 0 && hoursAgo
             })

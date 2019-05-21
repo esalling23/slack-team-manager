@@ -11,6 +11,20 @@ module.exports = function (controller) {
   //     bot.reply(message, 'I experienced an error with a request to Botkit Studio: ' + error)
   //   })
   // })
+  controller.hears('^help$', 'direct_message', function (bot, message) {
+    controller.store.getTeam(message.team)
+      .then(team => {
+        return controller.studio.get(bot, 'help', team.createdBy, message.channel)
+      })
+      .then(convo => {
+        convo.changeTopic('default')
+        const template = convo.threads['default'][0]
+        template.username = process.env.username
+        template.icon_url = process.env.icon_url
+
+        convo.activate()
+      }).catch(console.error)
+  })
 
   controller.hears('^cohort(.*)', 'direct_message', function (bot, message) {
     if (message.match[0].split(' ').length < 4) {
@@ -78,7 +92,8 @@ module.exports = function (controller) {
       }).catch(console.error)
   })
 
-  controller.hears('calendar', 'direct_message', function (bot, message) {
+  controller.hears('^calendar(.*)', 'direct_message', function (bot, message) {
+    const now = new Date()
     console.log(message)
     let thisTeam
     controller.store.getTeam(message.team)
@@ -97,7 +112,25 @@ module.exports = function (controller) {
       })
       .then(lessons => {
         console.log(lessons, 'the lessons')
-        controller.trigger('material_message', [bot, thisTeam, 'calendar_alert', lessons])
+        const onlyCohort = message.match[0].split(' ')[1]
+        const forced = message.match[0].split(' ')[2]
+        console.log(onlyCohort)
+        // only include calendars with at least one lesson
+        const filtered = _.pick(lessons, (v, k, o) => {
+          let thisCohort = !onlyCohort ? true : onlyCohort.length === 0 || onlyCohort === v.cohort
+
+          let hoursAgo = true
+          if (!forced && thisTeam.cohorts[v.cohort] && thisTeam.cohorts[v.cohort].materialsSent) {
+            if (thisTeam.cohorts[v.cohort].materialsSent.lastHw !== '') {
+              const lastHw = new Date(thisTeam.cohorts[v.cohort].materialsSent.lastHw)
+              const diff = new Date(Math.abs(lastHw.getTime(), now.getTime()))
+              console.log(`Last HW sent out ${moment.duration(diff).asHours()} hours ago`)
+              hoursAgo = moment.duration(diff).asHours() > 12
+            }
+          }
+          return v.lessons.length > 0 && thisCohort && hoursAgo
+        })
+        controller.trigger('material_message', [bot, thisTeam, 'calendar_alert', filtered])
       }).catch(console.error)
   })
 
@@ -121,13 +154,14 @@ module.exports = function (controller) {
       })
       .then(homework => {
         const onlyCohort = message.match[0].split(' ')[1]
+        const forced = message.match[0].split(' ')[2]
         console.log(onlyCohort)
         // only include calendars with at least one lesson
         const filtered = _.pick(homework, (v, k, o) => {
           let thisCohort = !onlyCohort ? true : onlyCohort.length === 0 || onlyCohort === v.cohort
 
           let hoursAgo = true
-          if (thisTeam.cohorts[v.cohort] && thisTeam.cohorts[v.cohort].materialsSent) {
+          if (!forced && thisTeam.cohorts[v.cohort] && thisTeam.cohorts[v.cohort].materialsSent) {
             if (thisTeam.cohorts[v.cohort].materialsSent.lastHw !== '') {
               const lastHw = new Date(thisTeam.cohorts[v.cohort].materialsSent.lastHw)
               const diff = new Date(Math.abs(lastHw.getTime(), now.getTime()))
