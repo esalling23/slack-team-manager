@@ -19,6 +19,6 @@ module.exports = function (controller) {
         }
         next()
       })
-      .catch(console.error)
+      .catch(controller.logger.error)
   })
 }

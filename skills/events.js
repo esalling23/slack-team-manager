@@ -86,7 +86,7 @@ module.exports = function (controller) {
         controller.store.teams[thisTeam.id] = thisTeam
         controller.sendMaterialMessage(convos, cohorts, cohortChannels)
       })
-      .catch(console.error)
+      .catch(controller.logger.error)
   })
 
   controller.setTime = function (type) {
@@ -139,7 +139,7 @@ module.exports = function (controller) {
   //
   //         convo.activate()
   //       })
-  //       .catch(console.error)
+  //       .catch(controller.logger.error)
   //   }
   // })
 
@@ -173,8 +173,8 @@ module.exports = function (controller) {
             const filtered = _.pick(lessons, (v, k, o) => {
               let hoursAgo = true
               if (team.cohorts[v.cohort] && team.cohorts[v.cohort].materialsSent) {
-                const lastHw = new Date(team.cohorts[v.cohort].materialsSent.lastHw)
-                const diff = new Date(Math.abs(lastHw.getTime(), now.getTime()))
+                const last = new Date(team.cohorts[v.cohort].materialsSent.lastHw)
+                const diff = moment(now).diff(last)
                 hoursAgo = moment.duration(diff).asHours() > 12
               }
               return v.lessons.length > 0 && hoursAgo
@@ -183,7 +183,7 @@ module.exports = function (controller) {
             controller.trigger('material_message', [controller.spawn(team.bot), team, 'calendar_alert', filtered])
           }
         })
-        .catch(console.error)
+        .catch(controller.logger.error)
     } else if (hours === 13 && mins === 0 && dayOfWeek !== 0 && dayOfWeek !== 6) {
       // Every week day at 8am
       // for (const id in controller.store.teams) {
@@ -210,8 +210,8 @@ module.exports = function (controller) {
             const filtered = _.pick(homework, (v, k, o) => {
               let hoursAgo = true
               if (team.cohorts[v.cohort] && team.cohorts[v.cohort].materialsSent) {
-                const lastHw = new Date(team.cohorts[v.cohort].materialsSent.lastHw)
-                const diff = new Date(Math.abs(lastHw.getTime(), now.getTime()))
+                const last = new Date(team.cohorts[v.cohort].materialsSent.lastHw)
+                const diff = moment(now).diff(last)
                 hoursAgo = moment.duration(diff).asHours() > 12
               }
               return v.lessons.length > 0 && hoursAgo
@@ -220,7 +220,7 @@ module.exports = function (controller) {
             controller.trigger('material_message', [controller.spawn(team.bot), team, 'homework_thread', filtered])
           }
         })
-        .catch(console.error)
+        .catch(controller.logger.error)
     }
   }, 1000 * 60)
 }

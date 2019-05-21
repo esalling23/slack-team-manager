@@ -166,7 +166,7 @@ module.exports = function (controller) {
     //         })
     //       })
     //     })
-    //     .catch(console.error)
+    //     .catch(controller.logger.error)
     // }
   })
 }

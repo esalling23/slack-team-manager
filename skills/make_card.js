@@ -50,7 +50,7 @@ module.exports = function (controller) {
       cb(template)
     }).catch(function (error) {
       if (error) return
-      console.error('makeCard error: ', error)
+      controller.logger.error('makeCard error: ', error)
     })
   }
 }
