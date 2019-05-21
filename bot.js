@@ -1,6 +1,7 @@
 const env = require('node-env-file')
 const path = require('path')
 const winston = require('winston')
+const { combine, timestamp, prettyPrint, json, printf } = winston.format
 env(path.join(__dirname, '/.env'))
 
 if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
@@ -39,10 +40,19 @@ const controller = Botkit.slackbot(botOptions)
 
 controller.startTicking()
 
+const myFormat = printf(({ level, message, label, timestamp }) => {
+  return `${timestamp} [${label}] ${level}: ${message}`
+})
+
 // Logger
 controller.logger = winston.createLogger({
   level: 'info',
-  format: winston.format.json(),
+  format: combine(
+    myFormat,
+    timestamp(),
+    json(),
+    prettyPrint()
+  ),
   defaultMeta: { service: 'user-service' },
   transports: [
     //
