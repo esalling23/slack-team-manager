@@ -42,7 +42,7 @@ module.exports = function (controller) {
         const hideUrl = template.attachments[0].title === 'Upcoming Lessons'
 
         for (let i of lessons) {
-          const text = hideUrl ? `${i}` : `<https://git.generalassemb.ly/ga-wdi-boston/${i}|${i}>`
+          const text = hideUrl ? `${i.name}` : `<${i.url}|${i.name}>`
           template.attachments[0].text += `- ${text} \n`
         }
 
