@@ -24,27 +24,10 @@ module.exports = function (controller) {
       convo.consts = consts
       const template = convo.cloneMessage(convo.threads[thread][0])
 
-      // Use the recap thread as an attachment in the current template
-      if (consts.recap) {
-        template.attachments[1] = convo.threads[consts.recap][0].attachments[0]
-      }
-
-      // Strange symbols slideshow logic
-      if (consts.symbols_state) {
-        template.attachments[0].actions.push({
-          'text': 'Download Cypher Wheel',
-          'name': 'link_button',
-          'url': controller.cypherUrls.download,
-          type: 'button'
-        })
-        // there's a new image?
-        // template.text = ''
-      }
-
       template.username = process.env.username
       template.icon_url = process.env.icon_url
 
-      // controller.logger.info(template, ' make card template')
+      // controller.logger.info(template)
 
       convo.stop('card_only')
       cb(template)

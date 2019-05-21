@@ -149,7 +149,7 @@ module.exports = function (controller) {
     const hours = now.getHours() - 4
     const mins = now.getMinutes()
     const dayOfWeek = now.getDay()
-    controller.logger.info(hours, mins)
+    controller.logger.info(`hours: ${hours}, minutes: ${mins}`)
     // controller.logger.info('is it friday @ 3pm?', now.getDay() === 5 && mins === 0 && hours === 15)
 
     if (dayOfWeek === 5 && mins === 0 && hours === 15) {

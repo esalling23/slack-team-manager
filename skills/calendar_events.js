@@ -130,31 +130,37 @@ module.exports = (controller) => {
       // controller.logger.info(curr)
       const check = grabLessons ? curr['Lessons'] : curr['Homework']
 
-      const availLessons = check.filter(les => {
+      const available = check.filter(les => {
         // controller.logger.info(les.match(/\[(.*?)\]/)[1])
-        return les !== '' && les.match(/\[(.*?)\]/)
+        return les !== '' && les.match(/\[(.*?)\]/) && les.match(/\((.*?)\)/)
       }).map(les => {
-        return les.match(/\[(.*?)\]/)[1]
+        return { name: les.match(/\[(.*?)\]/)[1], url: les.match(/\((.*?)\)/)[1] }
       })
 
-      return lessons.concat(availLessons)
+      return lessons.concat(available)
     }, [])
   }
 
   // Set up events promises
   const eventsPromise = (calendar, opt, grabLessons) => {
+    const material = filteredMaterial(grabLessons)
     return new Promise((resolve, reject) => {
       return calendar.events.list(opt, (err, res) => {
         if (err) reject(err)
         const events = _.map(res.data.items, item => {
           return item.summary.replace(/\((.*?)\)/, '').replace(/\s+/g, '')
         }).filter(item => {
-          return filteredMaterial(grabLessons).includes(item)
+          return _.pluck(material, 'name').includes(item)
         })
+
+        const upcoming = material.filter(item => {
+          return events.includes(item.name)
+        })
+
         const id = res.data.summary.split('BOS ')[1]
         const items = {
           cohort: id,
-          lessons: events
+          lessons: upcoming
         }
         resolve(items)
       })
