@@ -41,6 +41,7 @@
     "sorted-object": "^2.0.1",
     "stringify-object": "^3.3.0",
     "underscore": "^1.8.3",
+    "winston": "^3.2.1",
     "wordfilter": "^0.2.6"
   },
   "engines": {

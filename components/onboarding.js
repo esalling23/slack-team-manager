@@ -7,8 +7,8 @@ module.exports = function (controller) {
         storeTeam.cohorts = {}
         // store
         controller.store.teams[team.id] = storeTeam
-        console.log('Bot added to team: ', storeTeam.url)
+        controller.logger.info('Bot added to team: ', storeTeam.url)
       })
-      .catch((error) => console.log(error)) // End users.list call
+      .catch((error) => controller.logger.info(error)) // End users.list call
   })
 }

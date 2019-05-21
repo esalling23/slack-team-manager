@@ -7,16 +7,16 @@ module.exports = function (controller) {
   // const usersClicking = []
 
   controller.on('interactive_message_callback', function (bot, event) {
-    // console.log(event, 'is the interactive message callback event')
+    // controller.logger.info(event, 'is the interactive message callback event')
     // A user selected a menu option
     if (event.actions[0].name.match(/^choose(.*)$/)) {
-      // console.log(event.attachment_id)
+      // controller.logger.info(event.attachment_id)
       const reply = event.original_message
 
       // Grab the 'value' field from the selected option
       let value = event.actions[0].selected_options[0].value
       let choice
-      // console.log(value)
+      // controller.logger.info(value)
       const actions = reply.attachments[0].actions
 
       // for each attachment option
@@ -32,7 +32,7 @@ module.exports = function (controller) {
           }
         }
       }
-      // console.log(choice)
+      // controller.logger.info(choice)
 
       // Take the original message attachment
       const menuAttachment = reply.attachments[0].actions[0]
@@ -44,9 +44,9 @@ module.exports = function (controller) {
       // If this user does not already have a choice stored
       if (!_.findWhere(choiceSelect, { user: event.user })) {
         if (event.actions[0].name.includes('multi')) {
-          // console.log(event.actions[0].name)
+          // controller.logger.info(event.actions[0].name)
           const key = parseInt(event.actions[0].name.match(/\d+/))
-          // console.log(key)
+          // controller.logger.info(key)
           const val = {}
           const choiceMulti = {}
 
@@ -57,7 +57,7 @@ module.exports = function (controller) {
           value = val
         }
 
-        // console.log('we are adding this choice')
+        // controller.logger.info('we are adding this choice')
         // Create object to hold this selection
         // Selection is 'valid' or the solution/key if the value is 'correct'
         // Any other value will be incorrect
@@ -70,7 +70,7 @@ module.exports = function (controller) {
         })
       } else {
         // User has choice stored
-        // console.log('we are updating this choice')
+        // controller.logger.info('we are updating this choice')
         // Update stored choice with new choice, valid bool, and callback_id
         choiceSelect = _.map(choiceSelect, function (item) {
           if (item.user === event.user) {
@@ -80,7 +80,7 @@ module.exports = function (controller) {
               if (typeof item.choice === 'string') item.choice = {}
               if (typeof item.value === 'string') item.value = {}
               const key = parseInt(event.actions[0].name.match(/\d+/))
-              // console.log(key)
+              // controller.logger.info(key)
               item.choice[key] = choice
               item.value[key] = value
             } else {
@@ -91,7 +91,7 @@ module.exports = function (controller) {
           } else return item
         })
       }
-      console.log(choiceSelect, 'is the choice select')
+      controller.logger.info(choiceSelect, 'is the choice select')
     }
 
     // Confirm menu choice
@@ -109,7 +109,7 @@ module.exports = function (controller) {
 
           if (event.actions[0].name.includes('status')) {
             controller.makeCard(bot, event, 'morning_check', 'response', {}, function (card) {
-              console.log('responded to morning status')
+              controller.logger.info('responded to morning status')
               bot.replyInteractive(event, card)
             })
 

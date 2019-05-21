@@ -6,7 +6,7 @@ module.exports = function (controller) {
     const consts = {}
 
     if (!thread) thread = 'default'
-    // console.log(params.user.codesEntered, params.data.value)
+    // controller.logger.info(params.user.codesEntered, params.data.value)
 
     // If this user has already entered this code
     if (params.user.codesEntered) {

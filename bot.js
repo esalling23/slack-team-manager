@@ -1,5 +1,6 @@
 const env = require('node-env-file')
 const path = require('path')
+const winston = require('winston')
 env(path.join(__dirname, '/.env'))
 
 if (!process.env.clientId || !process.env.clientSecret || !process.env.PORT) {
@@ -20,8 +21,6 @@ const botOptions = {
   studio_command_uri: process.env.studio_command_uri
 }
 
-console.log(process.env.cal_id)
-
 // Use a mongo database if specified, otherwise store in a JSON file local to the app.
 // Mongo is automatically configured when deploying to Heroku
 if (process.env.MONGO_URI) {
@@ -39,6 +38,21 @@ if (process.env.MONGO_URI) {
 const controller = Botkit.slackbot(botOptions)
 
 controller.startTicking()
+
+// Logger
+controller.logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  defaultMeta: { service: 'user-service' },
+  transports: [
+    //
+    // - Write to all logs with level `info` and below to `combined.log`
+    // - Write all logs error (and below) to `error.log`.
+    //
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+})
 
 // Set up an Express-powered webserver to expose oauth and webhook endpoints
 const webserver = require(path.join(__dirname, '/components/express_webserver.js'))(controller)

@@ -6,7 +6,7 @@ module.exports = function (controller) {
 
     controller.store.getTeam(id)
       .then(team => {
-        console.log(convo)
+        controller.logger.info(convo)
         if (convo.thread === 'default') {
           _.each(team.users, function (user) {
             convo.threads.default[0].attachments[0].fields.push({ title: '', value: '' })

@@ -12,13 +12,13 @@ module.exports = function (controller) {
   controller.findForumChannels = function (list, cohorts) {
     const cohortChannels = _.filter(list.channels, (channel) => {
       const match = _.pick(cohorts, (val, key, obj) => {
-        console.log(val, key, obj)
+        // controller.logger.info(val, key, obj)
         const match = new RegExp(val.cohort + '-forum', 'g')
         return channel.name.match(match) !== null
       })
       return Object.keys(match).length > 0
     })
-    console.log('Cohort Channels:', cohortChannels)
+    // controller.logger.info('Cohort Channels:', cohortChannels)
     return cohortChannels
   }
 
@@ -27,12 +27,12 @@ module.exports = function (controller) {
       const channel = _.findWhere(cohortChannels, { id: convo.context.channel })
 
       const lessons = _.uniq(_.filter(cohorts, item => {
-        console.log(item, channel.name)
+        // controller.logger.info(item, channel.name)
         return item.cohort === channel.name.split('-')[2]
       })[0].lessons)
 
       convo.changeTopic('default')
-      console.log(lessons, 'are the homeworks')
+      controller.logger.info(lessons, '- events.js:35')
       if (lessons.length > 0) {
         const template = convo.threads['default'][0]
         template.username = process.env.username.replace('_', ' ')
@@ -81,7 +81,7 @@ module.exports = function (controller) {
               thisTeam.cohorts[num].materialsSent.lastHw = new Date()
               break
           }
-          console.log(`Cohort ${num} got ${scriptName} last at ${new Date()}`)
+          controller.logger.info(`Cohort ${num} got ${scriptName} last at ${new Date()}`)
         })
         controller.store.teams[thisTeam.id] = thisTeam
         controller.sendMaterialMessage(convos, cohorts, cohortChannels)
@@ -118,17 +118,17 @@ module.exports = function (controller) {
   }
 
   // controller.on('morning_checkin', function (bot, team) {
-  //   // console.log(event)
-  //   console.log(team.id)
+  //   // controller.logger.info(event)
+  //   controller.logger.info(team.id)
   //   for (const user of team.users) {
-  //     console.log(bot)
+  //     controller.logger.info(bot)
   //     const web = new WebClient(bot.config.token)
   //
   //     web.conversations.list({ types: 'im' })
   //       .then(list => {
-  //         console.log(list)
+  //         controller.logger.info(list)
   //         const thisIM = _.findWhere(list.channels, { user: user.userId })
-  //         console.log(thisIM)
+  //         controller.logger.info(thisIM)
   //         return controller.studio.get(bot, 'morning_check', user.userId, thisIM.id)
   //       })
   //       .then(convo => {
@@ -149,8 +149,8 @@ module.exports = function (controller) {
     const hours = now.getHours() - 4
     const mins = now.getMinutes()
     const dayOfWeek = now.getDay()
-    console.log(hours, mins)
-    // console.log('is it friday @ 3pm?', now.getDay() === 5 && mins === 0 && hours === 15)
+    controller.logger.info(hours, mins)
+    // controller.logger.info('is it friday @ 3pm?', now.getDay() === 5 && mins === 0 && hours === 15)
 
     if (dayOfWeek === 5 && mins === 0 && hours === 15) {
       // Every friday at 3pm
@@ -179,7 +179,7 @@ module.exports = function (controller) {
               }
               return v.lessons.length > 0 && hoursAgo
             })
-            console.log(filtered, 'the lessons')
+            controller.logger.info(filtered, 'the lessons  - events.js:182')
             controller.trigger('material_message', [controller.spawn(team.bot), team, 'calendar_alert', filtered])
           }
         })
@@ -216,7 +216,7 @@ module.exports = function (controller) {
               }
               return v.lessons.length > 0 && hoursAgo
             })
-            console.log(filtered, 'the homework')
+            controller.logger.info(filtered, 'the homework - events.js:219')
             controller.trigger('material_message', [controller.spawn(team.bot), team, 'homework_thread', filtered])
           }
         })
