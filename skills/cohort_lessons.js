@@ -91,8 +91,7 @@ module.exports = (controller) => {
       'Unit': 1,
       'Morning Exercise': '[js-reference-types-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/js-reference-types-diagnostic)',
       'Lessons': [
-        '[js-objects-constructors](https://git.generalassemb.ly/ga-wdi-boston/js-objects-constructors)',
-        '[js-objects-prototypes](https://git.generalassemb.ly/ga-wdi-boston/js-objects-prototypes)',
+        '[js-objects-constructors-prototypes](https://git.generalassemb.ly/ga-wdi-boston/js-objects-constructors-prototypes)',
         '[html-css](https://git.generalassemb.ly/ga-wdi-boston/html-css)'
       ],
       'Homework': [
@@ -394,7 +393,7 @@ module.exports = (controller) => {
         '[rails-api-bdd](https://git.generalassemb.ly/ga-wdi-boston/rails-api-bdd)'
       ],
       'Homework': [
-        ''
+        '[ruby-fibonacci-challenge](https://git.generalassemb.ly/ga-wdi-boston/ruby-fibonacci-challenge)'
       ]
     },
     {
