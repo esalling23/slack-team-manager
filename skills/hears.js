@@ -176,4 +176,15 @@ module.exports = function (controller) {
       })
       .catch(controller.logger.error)
   })
+
+  controller.hears('^create (.*)', 'direct_message', function (bot, message) {
+    // create a channel
+    controller.store.getTeam(message.team)
+      .then(team => {
+        const web = new WebClient(team.oauth_token)
+        return web.groups.create({ name: message.match[0].split(' ')[1] })
+      })
+      .then(controller.logger.info)
+      .catch(console.log)
+  })
 }
