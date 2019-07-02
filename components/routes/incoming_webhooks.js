@@ -79,8 +79,8 @@ module.exports = function (webserver, controller) {
     } else {
       let responseBody = `*Quick Links for ${category}:*\n`
       controller.searchLinks[category].forEach(link => {
-        const name = link.match(/\[(.*?)\]/)
-        const url = link.match(/\((.*?)\)/)
+        const name = link.match(/\[(.*?)\]/)[1]
+        const url = link.match(/\((.*?)\)/)[1]
         responseBody += `\n <${url}|${name}>`
       })
 
