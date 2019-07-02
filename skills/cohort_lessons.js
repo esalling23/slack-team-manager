@@ -139,7 +139,7 @@ module.exports = (controller) => {
         '[http-json-discussion](https://git.generalassemb.ly/ga-wdi-boston/http-json-discussion)'
       ],
       'Homework': [
-        '[js-async-study](https://git.generalassemb.ly/ga-wdi-boston/http-study)',
+        '[js-async-study](https://git.generalassemb.ly/ga-wdi-boston/js-async-study)',
         '[library-api-guide](https://git.generalassemb.ly/ga-wdi-boston/library-api-guide)'
       ]
     },
@@ -167,7 +167,7 @@ module.exports = (controller) => {
         '[jquery-ajax-token-auth](https://git.generalassemb.ly/ga-wdi-boston/jquery-ajax-token-auth)'
       ],
       'Homework': [
-        '[game-project-scope-study](https://git.generalassemb.ly/ga-wdi-boston/game-project-scope-study'
+        '[game-project-scope-study](https://git.generalassemb.ly/ga-wdi-boston/game-project-scope-study)'
       ]
     },
     {
@@ -278,7 +278,8 @@ module.exports = (controller) => {
         '[ruby-array-methods](https://git.generalassemb.ly/ga-wdi-boston/ruby-array-methods)'
       ],
       'Homework': [
-        '[ruby-vs-js-objects-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-objects-study)'
+        '[ruby-vs-js-objects-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-objects-study)',
+        '[markdown-study](https://git.generalassemb.ly/ga-wdi-boston/markdown-study)'
       ]
     },
     {
@@ -634,9 +635,9 @@ module.exports = (controller) => {
       ],
       'Homework': [
         '[intro-to-cs-myGA](https://my.generalassemb.ly/activities/513)',
+        '[big-o-notation-myGA])(https://my.generalassemb.ly/activities/511)',
         '[intro-to-algorithms-myGA](https://my.generalassemb.ly/activities/780)',
         '[intro-to-sorting-myGA](https://my.generalassemb.ly/activities/818)',
-        '[big-o-notation-myGA])(https://my.generalassemb.ly/activities/511)',
         '[recursion-myGA](https://my.generalassemb.ly/activities/773)'
       ]
     },
