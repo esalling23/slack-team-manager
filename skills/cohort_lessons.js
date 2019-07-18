@@ -367,7 +367,8 @@ module.exports = (controller) => {
         '[code-retreat](https://git.generalassemb.ly/ga-wdi-boston/code-retreat)'
       ],
       'Homework': [
-        '[rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)'
+        '[rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)',
+        '[bdd-study](https://git.generalassemb.ly/ga-wdi-boston/bdd-study)'
       ]
     },
     {

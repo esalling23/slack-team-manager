@@ -74,7 +74,7 @@ module.exports = function (webserver, controller) {
     if (!category || !controller.searchLinks[category]) {
       res.status(201).json({
         response_type: 'ephemeral',
-        text: `Make sure to include a category like \`/quick-links orientation\`\n\nAvailable Categories: ${Object.keys(controller.searchLinks).join(', ')}`
+        text: `*Hm..That didn't work.*\n\nMake sure to include a category like \`/quick-links orientation\`\n\nAvailable Categories: ${Object.keys(controller.searchLinks).join(', ')}`
       })
     } else {
       let responseBody = `*Quick Links for ${category}:*\n`
