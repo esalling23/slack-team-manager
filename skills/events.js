@@ -12,12 +12,13 @@ module.exports = function (controller) {
   controller.findForumChannels = function (list, cohorts) {
     const cohortChannels = _.filter(list.channels, (channel) => {
       const match = _.pick(cohorts, (val, key, obj) => {
-        const match = new RegExp(val.cohort + '-forum')
+        // controller.logger.info(val, key, obj)
+        const match = new RegExp(val.cohort + '-forum', 'g')
         return channel.name.match(match) !== null
       })
       return Object.keys(match).length > 0
     })
-    controller.logger.info(`Cohort Channels: ${JSON.stringify(cohortChannels)}`)
+    // controller.logger.info('Cohort Channels:', cohortChannels)
     return cohortChannels
   }
 

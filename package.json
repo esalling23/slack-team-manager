@@ -1,6 +1,6 @@
 {
   "name": "ga-manager",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "GA Manager bot",
   "main": "bot.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "flat": "^4.1.0",
     "fs": "^0.0.2",
     "gojs": "^1.8.14",
-    "handlebars": "^4.0.11",
+    "handlebars": "^4.1.2",
     "moment": "^2.24.0",
     "node-cmd": "^3.0.0",
     "node-env-file": "^0.1.8",
@@ -40,7 +40,7 @@
     "sharp": "^0.20.5",
     "sorted-object": "^2.0.1",
     "stringify-object": "^3.3.0",
-    "underscore": "^1.8.3",
+    "underscore": "^1.9.1",
     "winston": "^3.2.1",
     "wordfilter": "^0.2.6"
   },

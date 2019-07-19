@@ -26,6 +26,14 @@ module.exports = function (controller) {
       }).catch(controller.logger.error)
   })
 
+  controller.hears('^missing(.*)', 'direct_message', function (bot, message) {
+    if (message.match[0].split(' ').length < 2) {
+      bot.reply(message, 'I need more info. Please send me the cohort number. Ex: \'missing 03\'')
+      return
+    }
+    controller.listMissingPrs(controller.developers[message.match[0].split(' ')[1]])
+  })
+
   controller.hears('^cohort(.*)', 'direct_message', function (bot, message) {
     if (message.match[0].split(' ').length < 4) {
       bot.reply(message, 'I need more info. Please send me the new cohort\'s number, first day, and last day. Ex: \'cohort 01 05-03-2019 08-03-2019\'')
