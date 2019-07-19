@@ -713,7 +713,7 @@ module.exports = (controller) => {
       ],
       'Homework': [
         '[stacks-and-queues-myGA](https://my.generalassemb.ly/activities/803)',
-        '[web-accessibility-study](https://git.generalassemb.ly/ga-wdi-boston/web-acceaccessibility-study)'
+        '[web-accessibility-study](https://git.generalassemb.ly/ga-wdi-boston/web-accessibility-study)'
       ]
     },
     {
