@@ -114,7 +114,7 @@ module.exports = function (controller) {
         const { start, end } = controller.setTime('lessons')
         return controller.calendarEvents({
           auth,
-          grabLessons: true,
+          type: 'lessons',
           startTime: start.toISOString(),
           endTime: end.toISOString()
         })
@@ -156,7 +156,7 @@ module.exports = function (controller) {
         const { start, end } = controller.setTime('homework')
         return controller.calendarEvents({
           auth,
-          grabLessons: false,
+          type: 'homework',
           startTime: start.toISOString(),
           endTime: end.toISOString()
         })
@@ -167,6 +167,49 @@ module.exports = function (controller) {
         controller.logger.info(`We only want this cohort: ${onlyCohort}`)
         // only include calendars with at least one lesson
         const filtered = _.pick(homework, (v, k, o) => {
+          let thisCohort = !onlyCohort ? true : onlyCohort.length === 0 || onlyCohort === v.cohort
+
+          let hoursAgo = true
+          if (!forced && thisTeam.cohorts[v.cohort] && thisTeam.cohorts[v.cohort].materialsSent) {
+            if (thisTeam.cohorts[v.cohort].materialsSent.lastHw !== '') {
+              const last = new Date(thisTeam.cohorts[v.cohort].materialsSent.lastHw)
+              const diff = moment(now).diff(last)
+              controller.logger.info(`Last HW sent out ${moment.duration(diff).asHours()} hours ago`)
+              hoursAgo = moment.duration(diff).asHours() > 12
+            }
+          }
+          return v.lessons.length > 0 && thisCohort && hoursAgo
+        })
+        controller.logger.info(`Filtered Homework: \n ${JSON.stringify(filtered)}`)
+        controller.trigger('material_message', [bot, thisTeam, 'homework_thread', filtered])
+      })
+      .catch(controller.logger.error)
+  })
+
+  controller.hears('^diagnostic(.*)', 'direct_message', function (bot, message) {
+    const now = new Date()
+    controller.logger.info(message)
+    let thisTeam
+    controller.store.getTeam(message.team)
+      .then(team => {
+        thisTeam = team
+        return controller.calendarAuth()
+      })
+      .then(auth => {
+        const { start, end } = controller.setTime('homework')
+        return controller.calendarEvents({
+          auth,
+          type: 'diagnostic',
+          startTime: start.toISOString(),
+          endTime: end.toISOString()
+        })
+      })
+      .then(diagnostic => {
+        const onlyCohort = message.match[0].split(' ')[1]
+        const forced = message.match[0].split(' ')[2]
+        controller.logger.info(`We only want this cohort: ${onlyCohort}`)
+        // only include calendars with at least one lesson
+        const filtered = _.pick(diagnostic, (v, k, o) => {
           let thisCohort = !onlyCohort ? true : onlyCohort.length === 0 || onlyCohort === v.cohort
 
           let hoursAgo = true

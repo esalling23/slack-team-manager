@@ -110,7 +110,7 @@ module.exports = (controller) => {
         const calPromises = _.map(filtered, (cal) => {
           const data = calOpt
           data.calendarId = cal.id
-          return eventsPromise(calendar, data, opt.grabLessons)
+          return eventsPromise(calendar, data, opt.type)
         })
 
         // promise all the promises
@@ -125,10 +125,24 @@ module.exports = (controller) => {
   }
 
   // filter out what we need
-  const filteredMaterial = (grabLessons) => {
+  const filteredMaterial = (type) => {
     return controller.materialList.reduce((lessons, curr) => {
       // controller.logger.info(curr)
-      const check = grabLessons ? curr['Lessons'] : curr['Homework']
+      const check = ((type) => {
+        let stuffWeWant
+        switch (type) {
+          case 'homework':
+            stuffWeWant = curr['Homework']
+            break
+          case 'lessons':
+            stuffWeWant = curr['Lessons']
+            break
+          case 'diagnostic':
+            stuffWeWant = [curr['Morning Exercise']]
+            break
+        }
+        return stuffWeWant
+      })(type)
 
       const available = check.filter(les => {
         // controller.logger.info(les.match(/\[(.*?)\]/)[1])
@@ -142,8 +156,8 @@ module.exports = (controller) => {
   }
 
   // Set up events promises
-  const eventsPromise = (calendar, opt, grabLessons) => {
-    const material = filteredMaterial(grabLessons)
+  const eventsPromise = (calendar, opt, type) => {
+    const material = filteredMaterial(type)
     return new Promise((resolve, reject) => {
       return calendar.events.list(opt, (err, res) => {
         if (err) reject(err)
