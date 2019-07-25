@@ -209,9 +209,10 @@ module.exports = function (controller) {
             // only include calendars with at least one lesson
             const filtered = _.pick(homework, (v, k, o) => {
               let hoursAgo = true
-              if (team.cohorts[v.cohort] && team.cohorts[v.cohort].materialsSent) {
+              if (team.cohorts && team.cohorts[v.cohort] && team.cohorts[v.cohort].materialsSent) {
                 const last = new Date(team.cohorts[v.cohort].materialsSent.lastHw)
                 const diff = moment(now).diff(last)
+                controller.logger.info(`Last HW sent out ${moment.duration(diff).asHours()} hours ago`)
                 hoursAgo = moment.duration(diff).asHours() > 12
               }
               return v.lessons.length > 0 && hoursAgo

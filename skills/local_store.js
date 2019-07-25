@@ -10,7 +10,7 @@ module.exports = function (controller) {
             if (error) reject(error)
 
             controller.store.teams[teamId] = team
-            controller.logger.info(`found team: ${team.url}`)
+            controller.logger.info(`found team: ${team ? team.url : 'Empty'}`)
             resolve(team)
           })
         } else {

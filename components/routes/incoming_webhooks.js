@@ -57,8 +57,8 @@ module.exports = function (webserver, controller) {
           method: 'POST',
           uri: responseUrl,
           body: {
-            response_type: 'in_channel',
-            text: 'Done!'
+            response_type: 'ephemeral',
+            text: 'Done! Go check out your new channels!'
           },
           json: true
         })

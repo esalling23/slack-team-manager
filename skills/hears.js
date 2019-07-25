@@ -55,6 +55,7 @@ module.exports = function (controller) {
         }
         controller.store.teams[team.id] = team
         controller.logger.info('Added new cohort: ', controller.store.teams[team.id].cohorts[newCohort])
+        bot.reply(message, 'All Done! Cohort added.')
       })
       .catch(controller.logger.error)
   })
