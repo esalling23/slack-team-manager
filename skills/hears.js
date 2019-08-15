@@ -101,6 +101,40 @@ module.exports = function (controller) {
       }).catch(controller.logger.error)
   })
 
+  controller.hears('^schedule(.*)', 'direct_message', function (bot, message) {
+    controller.logger.info(message)
+    const onlyCohort = message.match[0].split(' ')[1]
+    let thisTeam
+    controller.store.getTeam(message.team)
+      .then(team => {
+        thisTeam = team
+        console.log(thisTeam.cohorts[onlyCohort])
+        return controller.calendarAuth()
+      })
+      .then(auth => {
+        const { start, end } = controller.setTime('schedule', thisTeam.cohorts[onlyCohort])
+        console.log(start, end)
+        return controller.calendarEvents({
+          limit: 2000,
+          auth,
+          type: 'lessons',
+          startTime: start.toISOString(),
+          endTime: end.toISOString()
+        })
+      })
+      .then(lessons => {
+        controller.logger.info(lessons, 'the lessons')
+        const onlyCohort = message.match[0].split(' ')[1]
+        // only include calendars with at least one lesson
+        const filtered = _.pick(lessons, (v, k, o) => {
+          let thisCohort = !onlyCohort ? true : onlyCohort.length === 0 || onlyCohort === v.cohort
+          return thisCohort
+        })
+        console.log(filtered)
+        // controller.trigger('material_message', [bot, thisTeam, 'calendar_alert', filtered])
+      }).catch(controller.logger.error)
+  })
+
   controller.hears('^calendar(.*)', 'direct_message', function (bot, message) {
     const now = new Date()
     controller.logger.info(message)
@@ -196,7 +230,7 @@ module.exports = function (controller) {
         return controller.calendarAuth()
       })
       .then(auth => {
-        const { start, end } = controller.setTime('homework')
+        const { start, end } = controller.setTime('diagnostic')
         return controller.calendarEvents({
           auth,
           type: 'diagnostic',
@@ -223,8 +257,8 @@ module.exports = function (controller) {
           }
           return v.lessons.length > 0 && thisCohort && hoursAgo
         })
-        controller.logger.info(`Filtered Homework: \n ${JSON.stringify(filtered)}`)
-        controller.trigger('material_message', [bot, thisTeam, 'homework_thread', filtered])
+        controller.logger.info(`Filtered Diagnostics: \n ${JSON.stringify(filtered)}`)
+        controller.trigger('material_message', [bot, thisTeam, 'diagnostic_thread', filtered])
       })
       .catch(controller.logger.error)
   })

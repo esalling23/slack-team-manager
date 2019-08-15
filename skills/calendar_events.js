@@ -90,7 +90,7 @@ module.exports = (controller) => {
       const calOpt = {
         timeMin: opt.startTime,
         timeMax: opt.endTime,
-        maxResults: 40,
+        maxResults: opt.limit ? opt.limit : 40,
         singleEvents: true,
         orderBy: 'startTime'
       }

@@ -75,7 +75,7 @@ module.exports = (controller) => {
       'Unit': 1,
       'Morning Exercise': '[js-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/js-diagnostic)',
       'Lessons': [
-        '[js-objects-modeling](https://git.generalassemb.ly/ga-wdi-boston/js-objects-modeling)',
+        '[js-object-modeling](https://git.generalassemb.ly/ga-wdi-boston/js-object-modeling)',
         '[js-objects-this](https://git.generalassemb.ly/ga-wdi-boston/js-objects-this)'
       ],
       'Homework': [

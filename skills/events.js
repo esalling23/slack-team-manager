@@ -89,13 +89,20 @@ module.exports = function (controller) {
       .catch(controller.logger.error)
   })
 
-  controller.setTime = function (type) {
+  controller.setTime = function (type, opt) {
     // adjust 3 hours for boston time
     const now = new Date().getTime() + 240
     let start
     let end
 
     switch (type) {
+      case 'schedule':
+        // Grab all lessons from cohort startDate
+        start = new Date(opt.startDate)
+        // ....to the endDate
+        end = new Date(opt.endDate)
+        break
+
       case 'lessons':
         // look 24 hours ahead so we don't include today's lessons
         start = new Date(now + (24 * 60 * 60 * 1000))
@@ -106,6 +113,14 @@ module.exports = function (controller) {
       case 'homework':
         // start a few hours behind
         start = new Date(now - (3 * 60 * 60 * 1000))
+        // end in a couple hours
+        end = new Date(start.getTime())
+        end.setHours(24, 0, 0, 0)
+        break
+
+      case 'diagnostic':
+        // start a few hours behind
+        start = new Date(now - (8 * 60 * 60 * 1000))
         // end in a couple hours
         end = new Date(start.getTime())
         end.setHours(24, 0, 0, 0)
