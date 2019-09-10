@@ -577,7 +577,7 @@ module.exports = (controller) => {
       'Day': 41,
       'Week': 9,
       'Unit': 3,
-      'Morning Exercise': '',
+      'Morning Exercise': '[html-css-sass-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/html-css-sass-diagnostic)',
       'Lessons': [
         '[express-multer](https://git.generalassemb.ly/ga-wdi-boston/express-multer-upload-api)',
         '[scrum](https://git.generalassemb.ly/ga-wdi-boston/scrum)'
@@ -734,13 +734,14 @@ module.exports = (controller) => {
       'Day': 52,
       'Week': 11,
       'Unit': 4,
-      'Morning Exercise': '',
+      'Morning Exercise': '[react-router-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/react-router-diagnostic)',
       'Lessons': [
         '[react-router](https://git.generalassemb.ly/ga-wdi-boston/react-router)',
         '[react-crud](https://git.generalassemb.ly/ga-wdi-boston/react-crud)'
       ],
       'Homework': [
-        '[sets-myGA]( https://my.generalassemb.ly/activities/465)'
+        '[sets-myGA](https://my.generalassemb.ly/activities/465)',
+        '[react-hooks-study](https://git.generalassemb.ly/ga-wdi-boston/react-hooks-study)'
       ]
     },
     {
