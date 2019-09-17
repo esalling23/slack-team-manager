@@ -497,7 +497,7 @@ module.exports = (controller) => {
       'Day': 35,
       'Week': 7,
       'Unit': 3,
-      'Morning Exercise': '[js-function-context-this](https://git.generalassemb.ly/ga-wdi-boston/js-function-context-this)',
+      'Morning Exercise': '[js-function-context-this-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/js-function-context-this-diagnostic)',
       'Lessons': [
         '[node-api](https://git.generalassemb.ly/ga-wdi-boston/node-api)',
         '[sql-nosql-discussion](https://git.generalassemb.ly/ga-wdi-boston/sql-nosql-discussion)'
