@@ -24,7 +24,8 @@ module.exports = (controller) => {
         '[installfest](https://git.generalassemb.ly/ga-wdi-boston/installfest)'
       ],
       'Homework': [
-        '[unix-cli-study](https://git.generalassemb.ly/ga-wdi-boston/unix-cli-study)'
+        '[unix-cli-study](https://git.generalassemb.ly/ga-wdi-boston/unix-cli-study)',
+        '[git-study](https://git.generalassemb.ly/ga-wdi-boston/git-study)'
       ]
     },
     {
