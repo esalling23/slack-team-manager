@@ -244,7 +244,7 @@ module.exports = (controller) => {
       'Day': 17,
       'Week': 4,
       'Unit': 1,
-      'Morning Exercise': '',
+      'Morning Exercise': '[html-css-sass-diagnostic](https://git.generalassemb.ly/ga-wdi-boston/html-css-sass-diagnostic)',
       'Lessons': [
         'Project 1 Presentations'
       ],
@@ -261,7 +261,7 @@ module.exports = (controller) => {
       'Morning Exercise': '[js-euler-palindrome-challenge](https://git.generalassemb.ly/ga-wdi-boston/js-euler-palindrome-challenge)',
       'Lessons': [
         '[ruby](https://git.generalassemb.ly/ga-wdi-boston/ruby)',
-        '[ruby-arrays](https://git.generalassemb.ly/ga-wdi-boston/ruby-arrays)'
+        '[ruby-array](https://git.generalassemb.ly/ga-wdi-boston/ruby-array)'
       ],
       'Homework': [
         '[ruby-vs-js-arrays-study](https://git.generalassemb.ly/ga-wdi-boston/ruby-vs-js-arrays-study)',
